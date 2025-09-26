@@ -11,13 +11,16 @@ A comprehensive training platform offering professional development programs wit
 ### ✅ **Implemented Features**
 
 **Public Features:**
+- **Sylvanity Header Navigation** — Professional header with Sylvanity branding and navigation to all pages
+- **Complete Page Structure** — About, Contact, Newsletter, and Training pages with consistent design
 - **Database-Driven Training Catalog** — Dynamic course listings from Supabase with hero images, PDF materials, and multiple start dates
 - **Enhanced Training Details** — Each training displays hero images, skill tags, PDF course materials, and multiple available start dates
 - **Professional Course Presentation** — Visual tags for skill categories, instructor information, and downloadable course syllabi
 - **Real-Time Content Updates** — Homepage and training pages automatically reflect database changes via ISR
-- **Stripe Payment System** — Complete checkout flow with success/cancel pages and demo mode fallbacks
+- **Promo Code Discount System** — Real-time validation, dynamic pricing display, and checkout integration
+- **Stripe Payment System** — Complete checkout flow with discount application, success/cancel pages and demo mode fallbacks
 - **Lead Capture System** — Contact forms with automatic promo code generation stored in database
-- **Newsletter Subscription** — Email capture with validation and real database persistence
+- **Newsletter Subscription** — Email capture with enhanced email delivery and troubleshooting guidance
 - **Dynamic Testimonials** — Customer testimonials loaded from database with automatic featured selection
 
 **Admin Features:**
@@ -56,9 +59,12 @@ A comprehensive training platform offering professional development programs wit
 sylvanity-training-site/
 ├── pages/                    # Next.js Pages Router
 │   ├── index.tsx            # Homepage with testimonials
+│   ├── about.tsx            # About page with company information
+│   ├── contact.tsx          # Contact page with lead capture
+│   ├── newsletter.tsx       # Newsletter subscription page
 │   ├── trainings/           # Training catalog and detail pages
 │   │   ├── index.tsx        # Training list
-│   │   └── [id].tsx         # Training details with payment/lead capture
+│   │   └── [id].tsx         # Training details with promo codes and payment
 │   ├── auth/                # Authentication pages
 │   │   ├── signin.tsx       # Login page
 │   │   └── signup.tsx       # Registration page
@@ -71,15 +77,17 @@ sylvanity-training-site/
 │   │   ├── success.tsx      # Payment success
 │   │   └── cancel.tsx       # Payment cancelled
 │   └── api/                 # API routes
-│       ├── checkout/        # Stripe session creation
+│       ├── checkout/        # Stripe session creation with discount support
 │       ├── leads/           # Lead submission
-│       └── newsletter/      # Newsletter subscription
+│       ├── newsletter/      # Newsletter subscription
+│       └── promo-codes/     # Promo code validation API
 ├── components/
 │   ├── forms/               # Form components
 │   │   ├── lead-capture-form.tsx
 │   │   ├── newsletter-form.tsx
 │   │   └── promo-code-modal.tsx
 │   ├── layout/              # Layout components
+│   │   ├── header.tsx       # Sylvanity header with navigation
 │   │   └── footer.tsx       # Footer with newsletter signup
 │   └── training-list.tsx    # Training catalog component
 ├── lib/
@@ -123,8 +131,9 @@ sylvanity-training-site/
 3. **Demo Mode Features**
    - Browse training catalog with hero images and PDF downloads
    - Test lead capture forms (generates promo codes)
-   - Try newsletter subscription (validates and logs to console)
-   - Experience Stripe payment flow (demo mode with clear indicators)
+   - Try newsletter subscription (enhanced email delivery with troubleshooting)
+   - Test promo code validation and discount application
+   - Experience Stripe payment flow with discount integration (demo mode with clear indicators)
    - Access admin panel at `/admin` (mock authentication for demo)
 
 ### Production Setup
@@ -195,8 +204,14 @@ The platform includes a comprehensive admin panel accessible at `/admin` with th
 
 ### Dual Conversion Strategy
 Each training page offers two paths:
-1. **"Register Now"** — Direct Stripe payment for immediate enrollment
+1. **"Register Now"** — Direct Stripe payment with promo code discount integration
 2. **"Get More Info & Discount"** — Lead capture with promo code generation
+
+### Promo Code System
+- **Real-time Validation** — Instant feedback on promo code validity
+- **Dynamic Pricing Display** — Shows original and discounted prices
+- **Seamless Checkout Integration** — Discounts automatically applied during payment
+- **Database-Driven** — All promo codes stored and validated in Supabase
 
 ### Professional Design
 - Hero images for all training programs

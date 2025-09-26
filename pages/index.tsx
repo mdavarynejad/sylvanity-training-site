@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { getFeaturedTestimonials, renderStars, Testimonial } from '@/lib/supabase-testimonials'
+import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
 interface HomePageProps {
@@ -18,6 +19,8 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Header />
 
       <div className="flex flex-col items-center justify-center min-h-screen p-8">
         <div className="max-w-4xl mx-auto text-center">

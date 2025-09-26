@@ -6,6 +6,7 @@ import { getTrainings, getTrainingById } from '@/lib/supabase-training'
 import { getStripe, isStripeConfigured } from '@/lib/stripe/client'
 import LeadCaptureForm from '@/components/forms/lead-capture-form'
 import PromoCodeModal from '@/components/forms/promo-code-modal'
+import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
 interface TrainingDetailPageProps {
@@ -18,11 +19,49 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
   const [showLeadForm, setShowLeadForm] = useState(false)
   const [showPromoCode, setShowPromoCode] = useState(false)
   const [generatedPromoCode, setGeneratedPromoCode] = useState('')
+  const [promoCode, setPromoCode] = useState('')
+  const [discount, setDiscount] = useState(0)
+  const [promoError, setPromoError] = useState('')
 
   const availableSpots = training.maxParticipants - training.currentParticipants
   const isAlmostFull = availableSpots <= 3
   const isFull = availableSpots === 0
   const stripeConfigured = isStripeConfigured()
+
+  const validatePromoCode = async (code: string) => {
+    if (!code.trim()) {
+      setDiscount(0)
+      setPromoError('')
+      return
+    }
+
+    try {
+      const response = await fetch('/api/promo-codes/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          code: code.trim().toUpperCase(),
+          trainingId: training.id,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.valid) {
+        setDiscount(data.discount_percent)
+        setPromoError('')
+      } else {
+        setDiscount(0)
+        setPromoError(data.message || 'Invalid promo code')
+      }
+    } catch (error) {
+      console.error('Error validating promo code:', error)
+      setDiscount(0)
+      setPromoError('Error validating promo code')
+    }
+  }
 
   const handleRegister = async (e?: React.MouseEvent) => {
     e?.preventDefault()
@@ -44,6 +83,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         },
         body: JSON.stringify({
           trainingId: training.id,
+          promoCode: promoCode.trim().toUpperCase() || null,
         }),
       })
 
@@ -88,6 +128,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         <Link
           href="/trainings"
@@ -178,7 +219,19 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
                 <div className="bg-gray-50 rounded-lg p-6 sticky top-8">
                   <div className="text-center mb-6">
                     <div className="text-3xl font-bold text-gray-900 mb-1">
-                      {formatPrice(training.price, training.currency)}
+                      {discount > 0 ? (
+                        <>
+                          <span className="line-through text-gray-500 text-xl mr-2">
+                            {formatPrice(training.price, training.currency)}
+                          </span>
+                          {formatPrice(training.price * (1 - discount / 100), training.currency)}
+                          <div className="text-sm text-green-600 font-medium">
+                            {discount}% discount applied!
+                          </div>
+                        </>
+                      ) : (
+                        formatPrice(training.price, training.currency)
+                      )}
                     </div>
                     <div className="text-sm text-gray-600">per person</div>
                   </div>
@@ -216,6 +269,41 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
                       <span className={`font-medium ${isAlmostFull ? 'text-orange-600' : isFull ? 'text-red-600' : 'text-green-600'}`}>
                         {isFull ? 'Full' : `${availableSpots} left`}
                       </span>
+                    </div>
+                  </div>
+
+                  {/* Promo Code Section */}
+                  <div className="mb-6 p-4 border border-gray-200 rounded-lg bg-white">
+                    <h3 className="text-sm font-medium text-gray-900 mb-3">Have a Promo Code?</h3>
+                    <div className="space-y-3">
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={promoCode}
+                          onChange={(e) => {
+                            setPromoCode(e.target.value.toUpperCase())
+                            if (promoError) setPromoError('')
+                          }}
+                          onBlur={() => validatePromoCode(promoCode)}
+                          placeholder="Enter promo code"
+                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm uppercase"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => validatePromoCode(promoCode)}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm"
+                        >
+                          Apply
+                        </button>
+                      </div>
+                      {promoError && (
+                        <div className="text-sm text-red-600">{promoError}</div>
+                      )}
+                      {discount > 0 && (
+                        <div className="text-sm text-green-600 font-medium">
+                          ✓ Promo code "{promoCode}" applied - {discount}% discount!
+                        </div>
+                      )}
                     </div>
                   </div>
 

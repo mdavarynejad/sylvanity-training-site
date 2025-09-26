@@ -9,7 +9,7 @@ This guide provides comprehensive instructions for administrators to manage the 
 ### Accessing the Admin Panel
 
 1. **Navigate to Admin Panel**
-   - Go to `https://your-domain.com/admin` or click "Admin" in the footer
+   - Go to `https://your-domain.com/admin` or click "Admin" in the header navigation
    - You'll be redirected to sign in if not authenticated
 
 2. **Admin Authentication**
@@ -104,6 +104,38 @@ This guide provides comprehensive instructions for administrators to manage the 
 
 ---
 
+## 🎟️ Promo Code System
+
+### Real-Time Discount Functionality
+
+**Core Features:**
+- **Live Validation** — Promo codes validated instantly as users type
+- **Dynamic Pricing** — Original price crossed out, discounted price prominently displayed
+- **Checkout Integration** — Discounts automatically applied during Stripe payment
+- **Database-Driven** — All codes stored and validated against Supabase database
+
+**User Experience:**
+1. **Code Entry** — Users enter promo codes on training detail pages
+2. **Instant Feedback** — Real-time validation with error/success messages
+3. **Visual Confirmation** — Price updates immediately with discount percentage
+4. **Seamless Payment** — Discount carried through to Stripe checkout
+
+**Admin Benefits:**
+- **Automatic Generation** — Promo codes created via lead capture forms
+- **Usage Tracking** — Monitor code application and redemption rates
+- **Expiration Management** — Time-limited offers with automatic validation
+- **Training-Specific** — Codes can be limited to specific courses
+
+### API Integration
+
+**Validation Endpoint:** `/api/promo-codes/validate`
+- Validates code against database
+- Checks expiration dates
+- Verifies training-specific restrictions
+- Returns discount percentage and status
+
+---
+
 ## 👥 Lead Management (`/admin/leads`)
 
 ### Lead Tracking Dashboard
@@ -120,7 +152,8 @@ This guide provides comprehensive instructions for administrators to manage the 
 **Filter and Sort:**
 - **All Sources** — View all leads
 - **Training Pages** — Leads from "Get More Info" buttons
-- **Newsletter Footer** — Leads from newsletter signups
+- **Newsletter Pages** — Leads from newsletter and contact pages
+- **Contact Form** — Leads from dedicated contact page
 
 **Export and Follow-up:**
 - **CSV Export** — Download lead data for CRM import
@@ -164,8 +197,10 @@ This guide provides comprehensive instructions for administrators to manage the 
 
 **Current Capabilities:**
 - Subscriber list management
-- Source tracking (footer signups)
+- Source tracking (newsletter page, contact page, footer signups)
 - Status monitoring (active/unsubscribed)
+- Enhanced email deliverability with optimized templates
+- User-facing troubleshooting guidance for missing emails
 
 **Production Capabilities (With Email Service):**
 - Send targeted email campaigns
@@ -479,7 +514,7 @@ EMAIL_FROM=noreply@yourcompany.com
 - `leads` - Lead capture form submissions
 - `newsletter_subscribers` - Email subscription list
 - `profiles` - User accounts and admin roles
-- `promo_codes` - Discount codes and usage tracking
+- `promo_codes` - Discount codes with real-time validation and usage tracking
 
 **Data Validation:**
 - All required fields must be filled
@@ -579,6 +614,30 @@ EMAIL_FROM=noreply@yourcompany.com
 - Use YYYY-MM-DD format in database
 - Space dates 4-6 weeks apart
 - Update regularly to keep dates current
+
+---
+
+## 🎨 Platform Design Updates
+
+### Sylvanity Header Navigation
+
+**Professional Branding:**
+- Official Sylvanity logo and branding integration
+- Consistent navigation across all pages
+- Professional header design matching Sylvanity brand standards
+
+**Navigation Structure:**
+- **Home** — Main landing page with featured trainings
+- **Trainings** — Complete catalog with promo code functionality
+- **About** — Company information and mission
+- **Contact** — Lead capture form with company details
+- **Newsletter** — Dedicated subscription page
+- **Admin** — Administrative access (visible to authorized users)
+
+**Enhanced User Experience:**
+- Responsive design for all device sizes
+- Consistent branding and navigation flow
+- Professional appearance matching corporate standards
 
 ---
 

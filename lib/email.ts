@@ -15,46 +15,26 @@ export async function sendNewsletterConfirmation(email: string, name?: string) {
       from: 'Sylvanity Training <onboarding@resend.dev>',
       to: [email],
       subject: 'Welcome to Sylvanity Training Newsletter!',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #2563eb;">Welcome to Sylvanity Training!</h1>
-
-          <p>Hi ${name || 'there'},</p>
-
-          <p>Thank you for subscribing to our newsletter! You'll now receive updates about:</p>
-
-          <ul>
-            <li>🤖 New AI & Technology training programs</li>
-            <li>👥 Leadership & Management workshops</li>
-            <li>📊 Data & Analytics courses</li>
-            <li>🎯 Exclusive early-bird discounts</li>
-            <li>💡 Industry insights and tips</li>
-          </ul>
-
-          <p>We're excited to help you stay ahead in the rapidly evolving world of AI and business transformation.</p>
-
-          <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #2563eb; margin-top: 0;">🚀 Get Started Today</h3>
-            <p>Browse our current training programs and find the perfect fit for your professional development:</p>
-            <a href="${process.env.NEXT_PUBLIC_APP_URL}/trainings"
-               style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
-              View Training Programs
-            </a>
-          </div>
-
-          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
-
-          <p style="color: #6b7280; font-size: 14px;">
-            Best regards,<br>
-            The Sylvanity Training Team
-          </p>
-
-          <p style="color: #9ca3af; font-size: 12px;">
-            You can unsubscribe from these emails at any time by clicking
-            <a href="${process.env.NEXT_PUBLIC_APP_URL}/unsubscribe" style="color: #9ca3af;">here</a>.
-          </p>
+      html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #2563eb;">Welcome to Sylvanity Training! 🎉</h1>
+        <p>Hi ${name || 'there'},</p>
+        <p>Thank you for subscribing to our newsletter! You'll now receive updates about:</p>
+        <ul>
+          <li>🤖 New AI & Technology training programs</li>
+          <li>👥 Leadership & Management workshops</li>
+          <li>📊 Data & Analytics courses</li>
+          <li>🎯 Exclusive early-bird discounts</li>
+          <li>💡 Industry insights and tips</li>
+        </ul>
+        <p>We're excited to help you stay ahead in the rapidly evolving world of AI and business transformation.</p>
+        <div style="background-color: #f0f9ff; border: 2px solid #2563eb; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
+          <h3 style="color: #2563eb; margin-top: 0;">🚀 Get Started Today</h3>
+          <p>Browse our current training programs and find the perfect fit for your professional development:</p>
+          <a href="${process.env.NEXT_PUBLIC_APP_URL}/trainings" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">View Training Programs</a>
         </div>
-      `,
+        <p style="color: #6b7280; font-size: 14px;">Best regards,<br>The Sylvanity Training Team</p>
+        <p style="color: #9ca3af; font-size: 12px;">You can unsubscribe from these emails at any time by clicking <a href="${process.env.NEXT_PUBLIC_APP_URL}/unsubscribe" style="color: #9ca3af;">here</a>.</p>
+      </div>`,
     })
 
     if (error) {
