@@ -17,6 +17,7 @@ export async function getTrainings(): Promise<Training[]> {
       return mockTrainings
     }
 
+
     // Transform database format to match frontend interface
     return data.map(training => {
       // Handle start_dates JSONB array - take the first available date
@@ -32,6 +33,7 @@ export async function getTrainings(): Promise<Training[]> {
         currency: training.currency || 'USD',
         duration: training.duration,
         startDate: firstStartDate,
+        startDates: startDates, // Add start dates array
         endDate: training.end_date || null,
         maxParticipants: training.max_participants || 20,
         currentParticipants: training.current_participants || 0,
@@ -41,6 +43,8 @@ export async function getTrainings(): Promise<Training[]> {
         tags: training.tags || [],
         featured: training.featured || false,
         imageUrl: training.hero_image_url,
+        heroImageUrl: training.hero_image_url, // Add heroImageUrl for detail page
+        pdfAttachmentUrl: training.pdf_attachment_url, // Add PDF attachment URL
         prerequisites: training.prerequisites || []
       }
     })
@@ -84,6 +88,7 @@ export async function getTrainingById(id: string): Promise<Training | null> {
       currency: data.currency || 'USD',
       duration: data.duration,
       startDate: firstStartDate,
+      startDates: startDates, // Add start dates array
       endDate: data.end_date || null,
       maxParticipants: data.max_participants || 20,
       currentParticipants: data.current_participants || 0,
@@ -93,6 +98,8 @@ export async function getTrainingById(id: string): Promise<Training | null> {
       tags: data.tags || [],
       featured: data.featured || false,
       imageUrl: data.hero_image_url,
+      heroImageUrl: data.hero_image_url, // Add heroImageUrl for detail page
+      pdfAttachmentUrl: data.pdf_attachment_url, // Add PDF attachment URL
       prerequisites: data.prerequisites || []
     }
   } catch (error) {

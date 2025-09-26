@@ -24,7 +24,9 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
   const isFull = availableSpots === 0
   const stripeConfigured = isStripeConfigured()
 
-  const handleRegister = async () => {
+  const handleRegister = async (e?: React.MouseEvent) => {
+    e?.preventDefault()
+
     if (!stripeConfigured) {
       setError('Payment system is not configured. Please contact support.')
       return
@@ -225,6 +227,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
                   <div className="space-y-3">
                     <button
+                      type="button"
                       onClick={handleRegister}
                       disabled={isFull || loading || !stripeConfigured}
                       className={`w-full py-3 px-4 rounded-lg font-medium transition-colors text-center ${

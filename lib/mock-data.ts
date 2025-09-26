@@ -6,7 +6,9 @@ export interface Training {
   price: number
   currency: string
   duration: string
-  startDates: string[] // Multiple start dates
+  startDate?: string // First start date for backward compatibility
+  startDates?: string[] // Multiple start dates
+  endDate?: string
   maxParticipants: number
   currentParticipants: number
   instructor: string
@@ -14,7 +16,8 @@ export interface Training {
   category: string
   tags: string[]
   featured: boolean
-  heroImageUrl?: string
+  imageUrl?: string // For list view compatibility
+  heroImageUrl?: string // For detail view
   pdfAttachmentUrl?: string
   prerequisites?: string[]
 }

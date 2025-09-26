@@ -12,6 +12,8 @@ A comprehensive training platform offering professional development programs wit
 
 **Public Features:**
 - **Database-Driven Training Catalog** — Dynamic course listings from Supabase with hero images, PDF materials, and multiple start dates
+- **Enhanced Training Details** — Each training displays hero images, skill tags, PDF course materials, and multiple available start dates
+- **Professional Course Presentation** — Visual tags for skill categories, instructor information, and downloadable course syllabi
 - **Real-Time Content Updates** — Homepage and training pages automatically reflect database changes via ISR
 - **Stripe Payment System** — Complete checkout flow with success/cancel pages and demo mode fallbacks
 - **Lead Capture System** — Contact forms with automatic promo code generation stored in database

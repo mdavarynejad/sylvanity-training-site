@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { stripe, isStripeConfigured } from '@/lib/stripe/server'
-import { getTrainingById } from '@/lib/mock-data'
+import { getTrainingById } from '@/lib/supabase-training'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Get training details
-    const training = getTrainingById(trainingId)
+    const training = await getTrainingById(trainingId)
     if (!training) {
       return res.status(404).json({ message: 'Training not found' })
     }

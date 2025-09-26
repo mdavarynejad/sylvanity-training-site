@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { createClient } from '@supabase/supabase-js'
+import { sendDiscountEmail } from '@/lib/email'
 
-// Mock implementation for lead capture
-// In production, this would integrate with your database/CRM
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
@@ -32,22 +32,74 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Generate promo code (mock implementation)
     const promoCode = generatePromoCode('LEAD')
 
-    // Log to console for MVP (replace with database/CRM integration)
-    console.log('📋 New Lead Submitted:')
-    console.log('Name:', name)
-    console.log('Email:', email)
-    console.log('Company:', company || 'N/A')
-    console.log('Phone:', phone || 'N/A')
-    console.log('Message:', message || 'N/A')
-    console.log('Training ID:', interestedTrainingId || 'N/A')
-    console.log('Source:', source)
-    console.log('Generated Promo Code:', promoCode)
-    console.log('---')
+    // Store lead in Supabase database using service role
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
-    // TODO: In production, integrate with:
-    // 1. Database (Supabase) to store lead
-    // 2. Email service (Resend) to send confirmation + promo code
-    // 3. CRM integration (optional)
+    try {
+      // Insert lead into database
+      const { data: leadData, error: leadError } = await supabase
+        .from('leads')
+        .insert({
+          name,
+          email,
+          company,
+          phone,
+          message,
+          training_id: interestedTrainingId,
+          source
+        })
+        .select()
+        .single()
+
+      if (leadError) {
+        console.error('Error storing lead:', leadError)
+        // Continue with promo code generation even if lead storage fails
+      }
+
+      // Store promo code in database
+      const { data: promoData, error: promoError } = await supabase
+        .from('promo_codes')
+        .insert({
+          code: promoCode,
+          lead_id: leadData?.id || null,
+          training_id: interestedTrainingId,
+          discount_percent: 10, // 10% discount
+          valid_until: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+          is_active: true
+        })
+        .select()
+        .single()
+
+      if (promoError) {
+        console.error('Error storing promo code:', promoError)
+      }
+
+      // Log to console for debugging
+      console.log('📋 New Lead Submitted:')
+      console.log('Name:', name)
+      console.log('Email:', email)
+      console.log('Company:', company || 'N/A')
+      console.log('Phone:', phone || 'N/A')
+      console.log('Message:', message || 'N/A')
+      console.log('Training ID:', interestedTrainingId || 'N/A')
+      console.log('Source:', source)
+      console.log('Generated Promo Code:', promoCode)
+      console.log('Lead ID:', leadData?.id || 'Failed to store')
+      console.log('---')
+
+    } catch (dbError) {
+      console.error('Database error:', dbError)
+      // Continue with the flow even if database fails
+    }
+
+    // Send discount email
+    const emailResult = await sendDiscountEmail(email, name, promoCode, 'Sylvanity Training')
+    if (!emailResult.success) {
+      console.log('⚠️ Failed to send discount email:', emailResult.error)
+    }
 
     // Mock response
     return res.status(200).json({

@@ -33,8 +33,13 @@ export default function TrainingCard({ training, variant = 'default' }: Training
 
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            {training.title}
+          <h3 className="text-xl font-semibold mb-2">
+            <Link
+              href={`/trainings/${training.id}`}
+              className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
+            >
+              {training.title}
+            </Link>
           </h3>
           <p className="text-gray-600 text-sm mb-3 line-clamp-2">
             {training.description}
@@ -54,6 +59,24 @@ export default function TrainingCard({ training, variant = 'default' }: Training
         </span>
       </div>
 
+      {/* Tags */}
+      {training.tags && training.tags.length > 0 && (
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-1">
+            {training.tags.slice(0, 3).map((tag, index) => (
+              <span key={index} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                #{tag}
+              </span>
+            ))}
+            {training.tags.length > 3 && (
+              <span className="text-xs text-gray-500 px-2 py-1">
+                +{training.tags.length - 3} more
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="space-y-2 mb-4">
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Instructor:</span>
@@ -64,6 +87,8 @@ export default function TrainingCard({ training, variant = 'default' }: Training
           <span className="font-medium">
             {training.startDates && training.startDates.length > 0
               ? formatDate(training.startDates[0])
+              : training.startDate
+              ? formatDate(training.startDate)
               : 'TBD'
             }
           </span>
@@ -92,7 +117,7 @@ export default function TrainingCard({ training, variant = 'default' }: Training
 
         <Link
           href={`/trainings/${training.id}`}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+          className={`inline-block px-4 py-2 rounded-lg font-medium transition-colors text-center ${
             isFull
               ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700'

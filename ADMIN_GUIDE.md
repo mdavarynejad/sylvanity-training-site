@@ -391,10 +391,11 @@ EMAIL_FROM=noreply@yourcompany.com
 
 ### Content Management
 
-1. **Regular Updates** — Keep training descriptions current
-2. **Quality Images** — Use professional hero images
-3. **Clear Materials** — Provide detailed course syllabi
-4. **Instructor Profiles** — Highlight expertise and credentials
+1. **Database-Driven Content** — All content now managed via Supabase database
+2. **Regular Updates** — Content changes appear automatically via ISR (5-minute revalidation)
+3. **Quality Images** — Use professional hero images stored in `/public/images/trainings/`
+4. **Clear Materials** — Provide detailed course syllabi as PDF attachments
+5. **Instructor Profiles** — Highlight expertise and credentials in training descriptions
 
 ### Newsletter Growth
 
@@ -402,6 +403,182 @@ EMAIL_FROM=noreply@yourcompany.com
 2. **Consistent Schedule** — Regular newsletter delivery
 3. **Segmentation** — Target content to subscriber interests
 4. **Call-to-Actions** — Clear next steps for engagement
+
+---
+
+## 🗃️ Database Content Management
+
+**Platform Status:** The platform now uses real database persistence with Supabase for all content and data.
+
+### Managing Training Content
+
+**Direct Database Access:**
+1. **Access Supabase Dashboard**
+   ```
+   https://supabase.com/dashboard/project/gqmlvtcnzscobhrwtymd
+   ```
+
+2. **Navigate to Table Editor**
+   - Click "Table Editor" in the left sidebar
+   - Select the table you want to edit
+
+**Training Content (trainings table):**
+- **title** - Training program name (displays as main heading)
+- **description** - Short description for listing pages (shows in cards and search)
+- **long_description** - Detailed description for training detail pages (main course overview)
+- **price** - Course price in dollars (displays prominently on cards and detail pages)
+- **currency** - Currency code (default: 'USD')
+- **duration** - Course length (e.g., "2 days", "1 week") - shows as badge
+- **instructor** - Instructor name and credentials (displays in sidebar)
+- **category** - Training category for filtering (shows as badge)
+- **level** - Difficulty level ('Beginner', 'Intermediate', 'Advanced') - shows as colored badge
+- **max_participants** - Maximum enrollment capacity
+- **current_participants** - Current enrollment count
+- **start_dates** - JSONB array of available start dates (e.g., ["2024-03-15", "2024-04-12", "2024-05-10"])
+  - First date shows as "Next Start"
+  - Additional dates show as "+2 more" indicator
+- **hero_image_url** - Path to training hero image (displays at top of detail page)
+  - Store images in `/public/images/trainings/`
+  - Recommended: .webp format for best performance
+- **pdf_attachment_url** - Path to course syllabus PDF (download button on detail page)
+  - Store PDFs in `/public/attachments/`
+  - Shows as red download button with icon
+- **tags** - Array of skill tags for search/filtering
+  - Displays as blue badges under "What You'll Learn" section
+  - Also shows as hashtags on training cards (#Leadership, #Strategy)
+  - Used for search functionality
+- **featured** - Boolean to mark as featured on homepage (blue border on cards)
+
+**Content Update Process:**
+1. Edit content directly in Supabase Table Editor
+2. Changes appear automatically on website within 5 minutes (ISR)
+3. No server restart or deployment required
+
+### Managing Testimonials
+
+**Testimonials Table (testimonials):**
+- **participant_name** - Customer name
+- **participant_company** - Company name (optional)
+- **testimonial** - Quote text
+- **rating** - Star rating (1-5)
+- **training_title** - Associated training program
+- **featured** - Boolean to show on homepage (max 3 recommended)
+
+**Adding New Testimonials:**
+1. Go to Supabase → Table Editor → testimonials
+2. Click "Insert" → "Insert row"
+3. Fill in all required fields
+4. Set **featured** to `true` for homepage display
+5. Click "Save"
+
+### Database Schema Reference
+
+**Core Tables:**
+- `trainings` - Training programs and content
+- `testimonials` - Customer testimonials and reviews
+- `leads` - Lead capture form submissions
+- `newsletter_subscribers` - Email subscription list
+- `profiles` - User accounts and admin roles
+- `promo_codes` - Discount codes and usage tracking
+
+**Data Validation:**
+- All required fields must be filled
+- Price must be numeric
+- Level must be one of: 'Beginner', 'Intermediate', 'Advanced'
+- Dates should be in YYYY-MM-DD format
+- JSONB fields use array format: ["item1", "item2"]
+
+### Content Publishing Workflow
+
+**For New Training Programs:**
+1. **Create Database Entry**
+   - Add row to `trainings` table via Supabase
+   - Fill all required fields with complete information
+
+2. **Add Supporting Files**
+   - Upload hero image to `/public/images/trainings/`
+   - Upload course syllabus to `/public/attachments/`
+   - Update database URLs to match file paths
+
+3. **Verify Publication**
+   - Check training appears on `/trainings` page
+   - Verify detail page loads correctly
+   - Test lead capture and payment flows
+
+4. **Optional: Add Testimonials**
+   - Create testimonial entries in database
+   - Set featured testimonials for homepage
+
+**For Content Updates:**
+1. Edit existing database entries
+2. Changes appear automatically via ISR
+3. Monitor console for any errors
+4. Test functionality after major changes
+
+### Example: Adding a New Training
+
+**Step-by-Step Process:**
+
+1. **Prepare Content Files** (before database entry):
+   ```
+   Upload hero image: /public/images/trainings/my-new-training-hero.webp
+   Upload PDF syllabus: /public/attachments/my-new-training-syllabus.pdf
+   ```
+
+2. **Add Database Entry** in Supabase → trainings table:
+   ```json
+   {
+     "title": "Advanced Data Analytics",
+     "description": "Master data-driven decision making with advanced analytics techniques.",
+     "long_description": "This comprehensive program teaches advanced data analytics...",
+     "price": 1599.00,
+     "currency": "USD",
+     "duration": "3 days",
+     "instructor": "Dr. Jane Smith",
+     "category": "Data & Analytics",
+     "level": "Advanced",
+     "max_participants": 15,
+     "current_participants": 0,
+     "start_dates": ["2024-04-15", "2024-05-20", "2024-06-18"],
+     "hero_image_url": "/images/trainings/my-new-training-hero.webp",
+     "pdf_attachment_url": "/attachments/my-new-training-syllabus.pdf",
+     "tags": ["Data Analytics", "Business Intelligence", "Statistical Analysis", "Decision Making"],
+     "featured": true
+   }
+   ```
+
+3. **Verify Results** (within 5 minutes):
+   - Check training appears on `/trainings` page
+   - Verify hero image loads on detail page
+   - Test PDF download functionality
+   - Confirm tags display correctly
+   - Check start dates show properly
+
+### Content Best Practices
+
+**Hero Images:**
+- Dimensions: 1200x600px or 16:9 aspect ratio
+- Format: .webp for best performance (or .jpg/.png)
+- File size: Under 500KB for fast loading
+- Professional, high-quality images related to training topic
+
+**PDF Attachments:**
+- Clear, professional course syllabus
+- Include learning objectives, agenda, prerequisites
+- File size: Under 5MB for easy download
+- Consistent branding and formatting
+
+**Tags:**
+- 3-6 relevant skill tags per training
+- Use consistent terminology across trainings
+- Focus on searchable keywords
+- Examples: "Leadership", "AI", "Strategy", "Communication"
+
+**Start Dates:**
+- Provide 3-4 upcoming dates when possible
+- Use YYYY-MM-DD format in database
+- Space dates 4-6 weeks apart
+- Update regularly to keep dates current
 
 ---
 
