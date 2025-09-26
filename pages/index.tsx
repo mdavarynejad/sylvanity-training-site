@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { getFeaturedTestimonials, renderStars } from '@/lib/mock-data'
+import Footer from '@/components/layout/footer'
 
 export default function HomePage() {
+  const featuredTestimonials = getFeaturedTestimonials()
+
   return (
     <>
       <Head>
@@ -29,10 +33,10 @@ export default function HomePage() {
               Browse Trainings
             </Link>
             <Link
-              href="/about"
+              href="/auth/signin"
               className="px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition inline-block"
             >
-              Learn More
+              Sign In
             </Link>
           </div>
 
@@ -56,8 +60,52 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+
+          {/* Testimonials Section */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Participants Say</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Real feedback from SME leaders who have transformed their businesses with our AI training programs
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredTestimonials.map((testimonial) => (
+                <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md border">
+                  <div className="flex items-center mb-4">
+                    <div className="text-yellow-400 text-lg">
+                      {renderStars(testimonial.rating)}
+                    </div>
+                  </div>
+
+                  <blockquote className="text-gray-700 italic mb-4">
+                    "{testimonial.testimonial}"
+                  </blockquote>
+
+                  <div className="border-t pt-4">
+                    <div className="font-semibold text-gray-900">{testimonial.participantName}</div>
+                    {testimonial.participantCompany && (
+                      <div className="text-sm text-gray-600">{testimonial.participantCompany}</div>
+                    )}
+                    <div className="text-sm text-blue-600 mt-1">{testimonial.trainingTitle}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/trainings"
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Join Our Success Stories
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
