@@ -8,6 +8,14 @@ export const supabase = !supabaseUrl || supabaseUrl.includes('your_supabase') ||
   ? null
   : createClient(supabaseUrl, supabaseAnonKey)
 
+// Helper function to create a new client instance
+export function createSupabaseClient() {
+  if (!supabaseUrl || supabaseUrl.includes('your_supabase') || !supabaseAnonKey) {
+    throw new Error('Missing Supabase credentials')
+  }
+  return createClient(supabaseUrl, supabaseAnonKey)
+}
+
 export type Database = {
   public: {
     Tables: {

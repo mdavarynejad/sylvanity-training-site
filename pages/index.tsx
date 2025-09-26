@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { getFeaturedTestimonials, renderStars } from '@/lib/mock-data'
+import { GetStaticProps } from 'next'
+import { getFeaturedTestimonials, renderStars, Testimonial } from '@/lib/supabase-testimonials'
 import Footer from '@/components/layout/footer'
 
-export default function HomePage() {
-  const featuredTestimonials = getFeaturedTestimonials()
+interface HomePageProps {
+  featuredTestimonials: Testimonial[]
+}
+
+export default function HomePage({ featuredTestimonials }: HomePageProps) {
 
   return (
     <>
@@ -108,4 +112,15 @@ export default function HomePage() {
       <Footer />
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const featuredTestimonials = await getFeaturedTestimonials()
+
+  return {
+    props: {
+      featuredTestimonials,
+    },
+    revalidate: 300, // Revalidate every 5 minutes
+  }
 }

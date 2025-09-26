@@ -1,13 +1,14 @@
-import { supabase } from './supabase'
+import { createSupabaseClient } from './supabase'
 import { Training } from './mock-data'
 
 export async function getTrainings(): Promise<Training[]> {
   try {
+    const supabase = createSupabaseClient()
     const { data, error } = await supabase
       .from('trainings')
       .select('*')
       .order('featured', { ascending: false })
-      .order('start_date', { ascending: true })
+      .order('created_at', { ascending: false })
 
     if (error) {
       console.error('Error fetching trainings:', error)
@@ -17,26 +18,32 @@ export async function getTrainings(): Promise<Training[]> {
     }
 
     // Transform database format to match frontend interface
-    return data.map(training => ({
-      id: training.id,
-      title: training.title,
-      description: training.description,
-      longDescription: training.long_description,
-      price: training.price,
-      currency: training.currency,
-      duration: training.duration,
-      startDate: training.start_date,
-      endDate: training.end_date,
-      maxParticipants: training.max_participants,
-      currentParticipants: training.current_participants,
-      instructor: training.instructor,
-      level: training.level as 'Beginner' | 'Intermediate' | 'Advanced',
-      category: training.category,
-      tags: training.tags || [],
-      featured: training.featured,
-      imageUrl: training.image_url,
-      prerequisites: training.prerequisites
-    }))
+    return data.map(training => {
+      // Handle start_dates JSONB array - take the first available date
+      const startDates = training.start_dates || []
+      const firstStartDate = Array.isArray(startDates) && startDates.length > 0 ? startDates[0] : null
+
+      return {
+        id: training.id,
+        title: training.title,
+        description: training.description,
+        longDescription: training.long_description,
+        price: training.price,
+        currency: training.currency || 'USD',
+        duration: training.duration,
+        startDate: firstStartDate,
+        endDate: training.end_date || null,
+        maxParticipants: training.max_participants || 20,
+        currentParticipants: training.current_participants || 0,
+        instructor: training.instructor,
+        level: training.level as 'Beginner' | 'Intermediate' | 'Advanced',
+        category: training.category,
+        tags: training.tags || [],
+        featured: training.featured || false,
+        imageUrl: training.hero_image_url,
+        prerequisites: training.prerequisites || []
+      }
+    })
   } catch (error) {
     console.error('Error in getTrainings:', error)
     // Fallback to mock data
@@ -47,6 +54,7 @@ export async function getTrainings(): Promise<Training[]> {
 
 export async function getTrainingById(id: string): Promise<Training | null> {
   try {
+    const supabase = createSupabaseClient()
     const { data, error } = await supabase
       .from('trainings')
       .select('*')
@@ -62,6 +70,10 @@ export async function getTrainingById(id: string): Promise<Training | null> {
 
     if (!data) return null
 
+    // Handle start_dates JSONB array - take the first available date
+    const startDates = data.start_dates || []
+    const firstStartDate = Array.isArray(startDates) && startDates.length > 0 ? startDates[0] : null
+
     // Transform database format to match frontend interface
     return {
       id: data.id,
@@ -69,19 +81,19 @@ export async function getTrainingById(id: string): Promise<Training | null> {
       description: data.description,
       longDescription: data.long_description,
       price: data.price,
-      currency: data.currency,
+      currency: data.currency || 'USD',
       duration: data.duration,
-      startDate: data.start_date,
-      endDate: data.end_date,
-      maxParticipants: data.max_participants,
-      currentParticipants: data.current_participants,
+      startDate: firstStartDate,
+      endDate: data.end_date || null,
+      maxParticipants: data.max_participants || 20,
+      currentParticipants: data.current_participants || 0,
       instructor: data.instructor,
       level: data.level as 'Beginner' | 'Intermediate' | 'Advanced',
       category: data.category,
       tags: data.tags || [],
-      featured: data.featured,
-      imageUrl: data.image_url,
-      prerequisites: data.prerequisites
+      featured: data.featured || false,
+      imageUrl: data.hero_image_url,
+      prerequisites: data.prerequisites || []
     }
   } catch (error) {
     console.error('Error in getTrainingById:', error)
@@ -93,6 +105,7 @@ export async function getTrainingById(id: string): Promise<Training | null> {
 
 export async function createBooking(trainingId: string, userId: string) {
   try {
+    const supabase = createSupabaseClient()
     const { data, error } = await supabase
       .from('bookings')
       .insert({
