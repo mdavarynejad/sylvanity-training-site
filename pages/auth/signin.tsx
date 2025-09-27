@@ -23,7 +23,7 @@ export default function SignInPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
-          <p className="mt-2 text-gray-600">Sign in to your Sylvanity account</p>
+          <p className="mt-2 text-gray-600">Sign in to your Sylvanity training account</p>
         </div>
 
         <AuthForm mode="signin" onSuccess={handleSuccess} />
@@ -38,8 +38,13 @@ export default function SignInPage() {
         </div>
 
         <div className="mt-6 text-center">
-          <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
-            ← Back to Home
+          <Link href="/">
+            <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors duration-200 shadow-sm cursor-pointer">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Home
+            </span>
           </Link>
         </div>
       </div>

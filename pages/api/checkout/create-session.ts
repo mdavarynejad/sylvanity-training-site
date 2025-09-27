@@ -51,7 +51,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .from('promo_codes')
           .select('*')
           .eq('code', promoCode.toUpperCase())
-          .eq('is_active', true)
           .single()
 
         if (!error && promoData) {
@@ -60,14 +59,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const validUntil = new Date(promoData.valid_until)
 
           if (currentDate <= validUntil) {
-            // Check if promo code is for this training or general
-            if (!promoData.training_id || promoData.training_id === trainingId) {
-              // Apply discount
-              const discountPercent = promoData.discount_percent
-              discountAmount = Math.round((training.price * discountPercent) / 100)
-              finalPrice = training.price - discountAmount
-              appliedPromoCode = promoData
-            }
+            // Apply discount (current schema doesn't support training-specific codes)
+            const discountPercent = promoData.discount_percent
+            discountAmount = Math.round((training.price * discountPercent) / 100)
+            finalPrice = training.price - discountAmount
+            appliedPromoCode = promoData
+
+            // Log promo code usage during checkout
+            console.log('🛒 Promo Code Applied at Checkout:')
+            console.log('Code:', promoData.code)
+            console.log('Discount:', discountPercent + '%')
+            console.log('Original Price:', training.price)
+            console.log('Final Price:', finalPrice)
+            console.log('---')
           }
         }
       } catch (dbError) {

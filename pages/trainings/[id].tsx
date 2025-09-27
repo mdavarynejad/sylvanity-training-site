@@ -6,6 +6,8 @@ import { getTrainings, getTrainingById } from '@/lib/supabase-training'
 import { getStripe, isStripeConfigured } from '@/lib/stripe/client'
 import LeadCaptureForm from '@/components/forms/lead-capture-form'
 import PromoCodeModal from '@/components/forms/promo-code-modal'
+import CourseMaterialsTabs from '@/components/course-materials-tabs'
+import EnrollmentModal, { EnrollmentData } from '@/components/enrollment-modal'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
@@ -18,21 +20,14 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
   const [error, setError] = useState<string | null>(null)
   const [showLeadForm, setShowLeadForm] = useState(false)
   const [showPromoCode, setShowPromoCode] = useState(false)
+  const [showEnrollmentModal, setShowEnrollmentModal] = useState(false)
   const [generatedPromoCode, setGeneratedPromoCode] = useState('')
-  const [promoCode, setPromoCode] = useState('')
-  const [discount, setDiscount] = useState(0)
-  const [promoError, setPromoError] = useState('')
 
-  const availableSpots = training.maxParticipants - training.currentParticipants
-  const isAlmostFull = availableSpots <= 3
-  const isFull = availableSpots === 0
   const stripeConfigured = isStripeConfigured()
 
   const validatePromoCode = async (code: string) => {
     if (!code.trim()) {
-      setDiscount(0)
-      setPromoError('')
-      return
+      return { valid: false }
     }
 
     try {
@@ -50,27 +45,35 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
       const data = await response.json()
 
       if (response.ok && data.valid) {
-        setDiscount(data.discount_percent)
-        setPromoError('')
+        return {
+          valid: true,
+          discount_percent: data.discount_percent
+        }
       } else {
-        setDiscount(0)
-        setPromoError(data.message || 'Invalid promo code')
+        return {
+          valid: false,
+          message: data.message || 'Invalid promo code'
+        }
       }
     } catch (error) {
       console.error('Error validating promo code:', error)
-      setDiscount(0)
-      setPromoError('Error validating promo code')
+      return {
+        valid: false,
+        message: 'Error validating promo code'
+      }
     }
   }
 
-  const handleRegister = async (e?: React.MouseEvent) => {
-    e?.preventDefault()
-
+  const handleEnrollClick = () => {
     if (!stripeConfigured) {
       setError('Payment system is not configured. Please contact support.')
       return
     }
+    setShowEnrollmentModal(true)
+  }
 
+  const handleProceedToPayment = async (enrollmentData: EnrollmentData) => {
+    setShowEnrollmentModal(false)
     setLoading(true)
     setError(null)
 
@@ -83,7 +86,10 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         },
         body: JSON.stringify({
           trainingId: training.id,
-          promoCode: promoCode.trim().toUpperCase() || null,
+          promoCode: enrollmentData.promoCode || null,
+          selectedDate: enrollmentData.selectedDate,
+          dataConsent: enrollmentData.dataConsent,
+          marketingConsent: enrollmentData.marketingConsent,
         }),
       })
 
@@ -127,240 +133,278 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="page-container">
       <Header />
-      <div className="container mx-auto px-4 py-8">
-        <Link
-          href="/trainings"
-          className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6"
-        >
-          ← Back to Trainings
+      <div className="page-section">
+        <Link href="/trainings">
+          <div className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 bg-white border border-gray-200 hover:border-gray-300 px-4 py-3 rounded-lg transition-all duration-200 hover:shadow-md mb-12 group cursor-pointer">
+            <svg className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-sm font-medium">All Trainings</span>
+          </div>
         </Link>
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          {training.featured && (
-            <div className="bg-blue-500 text-white px-6 py-3">
-              <span className="font-medium">Featured Training</span>
+        {/* Hero Section */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl p-12 mb-12">
+          <div className="max-w-4xl">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {training.featured && (
+                <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+                  ⭐ Featured
+                </span>
+              )}
+              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+                {training.level}
+              </span>
+              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+                {training.category}
+              </span>
+              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+                {training.duration}
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              {training.title}
+            </h1>
+
+            <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-3xl">
+              {training.description}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={handleEnrollClick}
+                disabled={loading || !stripeConfigured}
+                className={`px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 ${
+                  !stripeConfigured
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : loading
+                    ? 'bg-white bg-opacity-80 text-blue-600 cursor-wait'
+                    : 'bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 shadow-lg'
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <span className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600 mr-2"></span>
+                    Processing...
+                  </>
+                ) : !stripeConfigured ? (
+                  'Enrollment Currently Unavailable'
+                ) : (
+                  'Enroll Now'
+                )}
+              </button>
+
+              <button
+                onClick={() => setShowLeadForm(true)}
+                className="px-8 py-4 border-2 border-white border-opacity-30 text-white rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200 font-medium text-lg"
+              >
+                Get More Information
+              </button>
+            </div>
+
+            {!stripeConfigured && (
+              <p className="text-blue-200 text-sm mt-4">
+                💡 Demo mode: Contact us for enrollment details
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Course Overview */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Course Overview</h2>
+          <div className="prose max-w-none">
+            <p className="text-lg text-gray-700 leading-relaxed">
+              {training.longDescription}
+            </p>
+          </div>
+        </div>
+
+        {/* What You'll Learn */}
+        {training.tags && training.tags.length > 0 && (
+          <div className="card p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">What You'll Learn</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {training.tags.map((tag, index) => (
+                <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg">
+                  <span className="text-blue-600 mr-3">✓</span>
+                  <span className="text-gray-800 font-medium">{tag}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <CourseMaterialsTabs training={training} />
+
+        {/* Why Choose This Training */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose This {training.title} Training?</h2>
+          <div className="prose max-w-none text-gray-700">
+            <p className="text-lg leading-relaxed">
+              {training.seoWhyChoose || `Transform your career with our comprehensive ${training.title} training program.
+              This hands-on ${training.category} course is designed for professionals seeking to master
+              ${training.level.toLowerCase()} level skills in today's competitive market.
+              Our expert-led ${training.duration} program combines theoretical knowledge with practical application,
+              ensuring you gain real-world expertise that employers value.`}
+            </p>
+          </div>
+        </div>
+
+        {/* Learning Outcomes */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Learning Outcomes</h2>
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
+            <p className="text-gray-700 mb-6 text-lg">
+              {training.seoLearningOutcomes || `Upon completing this ${training.category} training, participants will:`}
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {(training.learningOutcomes || [
+                `Master fundamental and advanced concepts in ${training.category}`,
+                `Apply practical skills through hands-on exercises and real-world scenarios`,
+                `Develop strategic thinking and problem-solving capabilities`,
+                `Build confidence in implementing ${training.category} solutions`,
+                `Network with industry professionals and expand your career opportunities`
+              ]).map((outcome, index) => (
+                <div key={index} className="flex items-start p-3 bg-white rounded-lg">
+                  <span className="text-blue-600 mr-3 font-bold">✓</span>
+                  <span className="text-gray-700 font-medium">{outcome}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Who Should Attend */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Who Should Attend This Training?</h2>
+          <div className="prose max-w-none text-gray-700">
+            <p className="text-lg leading-relaxed">
+              {training.seoTargetAudience || `This ${training.level} level ${training.category} training is ideal for
+              professionals, managers, and executives looking to enhance their skills and advance their careers.
+              Whether you're transitioning into ${training.category} or seeking to deepen your existing knowledge,
+              this comprehensive program provides the tools and insights needed for success.`}
+            </p>
+          </div>
+        </div>
+
+        {/* Training Methodology */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Training Methodology</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">🎯 Interactive Learning</h3>
+              <p className="text-gray-700">Engaging workshops with hands-on exercises and group discussions</p>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">💡 Real-World Cases</h3>
+              <p className="text-gray-700">Learn from actual business scenarios and industry best practices</p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">📚 Comprehensive Materials</h3>
+              <p className="text-gray-700">Access to exclusive resources, templates, and ongoing support</p>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQs */}
+        <div className="card p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {(training.faqs || [
+              {
+                question: `What prerequisites are needed for this ${training.category} training?`,
+                answer: `This ${training.level} level course ${training.level === 'Beginner' ?
+                  'requires no prior experience' :
+                  'assumes basic familiarity with core concepts'}. We provide all necessary materials and support.`
+              },
+              {
+                question: "What certification will I receive?",
+                answer: "Upon successful completion, you'll receive an official Sylvanity Training certificate recognized by industry leaders."
+              },
+              {
+                question: "Is this training available online?",
+                answer: "We offer flexible delivery options including in-person, virtual, and hybrid formats to suit your needs."
+              }
+            ]).map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6">
+                <h3 className="font-bold text-gray-900 mb-3 text-lg">{faq.question}</h3>
+                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action Section */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-12 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Skills?</h2>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Join hundreds of professionals who have already enhanced their capabilities through our expert-led training programs.
+          </p>
+
+          {error && (
+            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg max-w-md mx-auto">
+              {error}
             </div>
           )}
 
-          {training.heroImageUrl && (
-            <div className="relative h-64 md:h-80">
-              <img
-                src={training.heroImageUrl}
-                alt={training.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
+            <button
+              onClick={handleEnrollClick}
+              disabled={loading || !stripeConfigured}
+              className={`w-full sm:w-auto px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 ${
+                !stripeConfigured
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : loading
+                  ? 'bg-blue-400 text-white cursor-wait'
+                  : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-lg'
+              }`}
+            >
+              {loading ? (
+                <>
+                  <span className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></span>
+                  Processing...
+                </>
+              ) : !stripeConfigured ? (
+                'Enrollment Currently Unavailable'
+              ) : (
+                'Enroll Now'
+              )}
+            </button>
+
+            <button
+              onClick={() => setShowLeadForm(true)}
+              className="w-full sm:w-auto px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 font-medium text-lg"
+            >
+              Get More Information
+            </button>
+          </div>
+
+          {!stripeConfigured && (
+            <p className="text-blue-600 text-sm mt-4">
+              💡 Demo mode: Contact us for enrollment details
+            </p>
           )}
 
-          <div className="p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                  {training.title}
-                </h1>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  <span className={`text-sm font-medium px-3 py-1 rounded-full ${levelColors[training.level]}`}>
-                    {training.level}
-                  </span>
-                  <span className="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
-                    {training.category}
-                  </span>
-                  <span className="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
-                    {training.duration}
-                  </span>
-                </div>
-
-                <p className="text-lg text-gray-600 mb-6">
-                  {training.description}
-                </p>
-
-                <div className="prose max-w-none">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3">Course Overview</h2>
-                  <p className="text-gray-700 leading-relaxed">
-                    {training.longDescription}
-                  </p>
-                </div>
-
-                {training.tags && training.tags.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">What You'll Learn</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {training.tags.map((tag, index) => (
-                        <span key={index} className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {training.pdfAttachmentUrl && (
-                  <div className="mt-8">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Course Materials</h3>
-                    <a
-                      href={training.pdfAttachmentUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                      Download Course Syllabus (PDF)
-                    </a>
-                  </div>
-                )}
-              </div>
-
-              <div className="lg:col-span-1">
-                <div className="bg-gray-50 rounded-lg p-6 sticky top-8">
-                  <div className="text-center mb-6">
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      {discount > 0 ? (
-                        <>
-                          <span className="line-through text-gray-500 text-xl mr-2">
-                            {formatPrice(training.price, training.currency)}
-                          </span>
-                          {formatPrice(training.price * (1 - discount / 100), training.currency)}
-                          <div className="text-sm text-green-600 font-medium">
-                            {discount}% discount applied!
-                          </div>
-                        </>
-                      ) : (
-                        formatPrice(training.price, training.currency)
-                      )}
-                    </div>
-                    <div className="text-sm text-gray-600">per person</div>
-                  </div>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Instructor:</span>
-                      <span className="font-medium">{training.instructor}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Next Start:</span>
-                      <span className="font-medium">
-                        {training.startDates && training.startDates.length > 0
-                          ? formatDate(training.startDates[0])
-                          : 'TBD'
-                        }
-                      </span>
-                    </div>
-                    {training.startDates && training.startDates.length > 1 && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">More Dates:</span>
-                        <span className="font-medium text-blue-600">+{training.startDates.length - 1} more</span>
-                      </div>
-                    )}
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Duration:</span>
-                      <span className="font-medium">{training.duration}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Max Participants:</span>
-                      <span className="font-medium">{training.maxParticipants}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Available Spots:</span>
-                      <span className={`font-medium ${isAlmostFull ? 'text-orange-600' : isFull ? 'text-red-600' : 'text-green-600'}`}>
-                        {isFull ? 'Full' : `${availableSpots} left`}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Promo Code Section */}
-                  <div className="mb-6 p-4 border border-gray-200 rounded-lg bg-white">
-                    <h3 className="text-sm font-medium text-gray-900 mb-3">Have a Promo Code?</h3>
-                    <div className="space-y-3">
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          value={promoCode}
-                          onChange={(e) => {
-                            setPromoCode(e.target.value.toUpperCase())
-                            if (promoError) setPromoError('')
-                          }}
-                          onBlur={() => validatePromoCode(promoCode)}
-                          placeholder="Enter promo code"
-                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm uppercase"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => validatePromoCode(promoCode)}
-                          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm"
-                        >
-                          Apply
-                        </button>
-                      </div>
-                      {promoError && (
-                        <div className="text-sm text-red-600">{promoError}</div>
-                      )}
-                      {discount > 0 && (
-                        <div className="text-sm text-green-600 font-medium">
-                          ✓ Promo code "{promoCode}" applied - {discount}% discount!
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {error && (
-                    <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-                      {error}
-                    </div>
-                  )}
-
-                  <div className="space-y-3">
-                    <button
-                      type="button"
-                      onClick={handleRegister}
-                      disabled={isFull || loading || !stripeConfigured}
-                      className={`w-full py-3 px-4 rounded-lg font-medium transition-colors text-center ${
-                        isFull || !stripeConfigured
-                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                          : loading
-                          ? 'bg-blue-400 text-white cursor-wait'
-                          : 'bg-blue-600 text-white hover:bg-blue-700'
-                      }`}
-                    >
-                      {loading ? (
-                        <>
-                          <span className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></span>
-                          Processing...
-                        </>
-                      ) : isFull ? (
-                        'Join Waitlist'
-                      ) : !stripeConfigured ? (
-                        'Payment System Unavailable'
-                      ) : (
-                        'Register Now'
-                      )}
-                    </button>
-
-                    <button
-                      onClick={() => setShowLeadForm(true)}
-                      className="w-full py-2 px-4 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition text-center font-medium"
-                    >
-                      Get More Info & Discount
-                    </button>
-                  </div>
-
-                  {!stripeConfigured && (
-                    <p className="text-orange-600 text-sm text-center mt-2">
-                      💡 Demo mode: Add Stripe credentials to enable payments
-                    </p>
-                  )}
-
-                  {isAlmostFull && !isFull && (
-                    <p className="text-orange-600 text-sm text-center mt-2">
-                      Only {availableSpots} spots remaining!
-                    </p>
-                  )}
-                </div>
-              </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center">
+              <span className="text-green-600 mr-2">✓</span>
+              Instant Enrollment
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-600 mr-2">✓</span>
+              Secure Payment
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-600 mr-2">✓</span>
+              Money-Back Guarantee
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-600 mr-2">✓</span>
+              Certificate Included
             </div>
           </div>
         </div>
@@ -384,6 +428,15 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
           onClose={() => setShowPromoCode(false)}
         />
       )}
+
+      {/* Enrollment Modal */}
+      <EnrollmentModal
+        training={training}
+        isOpen={showEnrollmentModal}
+        onClose={() => setShowEnrollmentModal(false)}
+        onProceedToPayment={handleProceedToPayment}
+        onValidatePromoCode={validatePromoCode}
+      />
 
       <Footer />
     </div>

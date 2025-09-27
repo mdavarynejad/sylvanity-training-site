@@ -35,17 +35,11 @@ export default function TrainingList({
   const regularTrainings = filteredTrainings.filter(training => !training.featured)
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">{subtitle}</p>
-      </div>
-
+    <div className="page-section">
       {/* Filters */}
       {showFilters && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="card p-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Search */}
             <div>
               <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
@@ -57,7 +51,7 @@ export default function TrainingList({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by title, description, or tags..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
               />
             </div>
 
@@ -70,7 +64,7 @@ export default function TrainingList({
                 id="category"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
@@ -87,7 +81,7 @@ export default function TrainingList({
                 id="level"
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
               >
                 {levels.map(level => (
                   <option key={level} value={level}>{level}</option>
@@ -97,7 +91,7 @@ export default function TrainingList({
           </div>
 
           {/* Results count */}
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-6 text-sm text-gray-600">
             Showing {filteredTrainings.length} of {trainings.length} trainings
           </div>
         </div>
@@ -105,9 +99,9 @@ export default function TrainingList({
 
       {/* Featured Trainings */}
       {featuredTrainings.length > 0 && (
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Trainings</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="mb-20">
+          <h2 className="text-3xl font-medium text-gray-900 mb-8">Featured Trainings</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {featuredTrainings.map(training => (
               <TrainingCard key={training.id} training={training} variant="featured" />
             ))}
@@ -118,10 +112,10 @@ export default function TrainingList({
       {/* Regular Trainings */}
       {regularTrainings.length > 0 && (
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-medium text-gray-900 mb-8">
             {featuredTrainings.length > 0 ? 'All Trainings' : 'Trainings'}
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {regularTrainings.map(training => (
               <TrainingCard key={training.id} training={training} />
             ))}
@@ -131,10 +125,10 @@ export default function TrainingList({
 
       {/* No results */}
       {filteredTrainings.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-gray-400 text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No trainings found</h3>
-          <p className="text-gray-600 mb-4">
+        <div className="text-center py-20">
+          <div className="text-gray-400 text-6xl mb-6">🔍</div>
+          <h3 className="text-xl font-medium text-gray-900 mb-3">No trainings found</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed">
             Try adjusting your search criteria or browse all available trainings.
           </p>
           <button
@@ -143,7 +137,7 @@ export default function TrainingList({
               setSelectedCategory('All')
               setSelectedLevel('All Levels')
             }}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="btn-primary"
           >
             Clear Filters
           </button>

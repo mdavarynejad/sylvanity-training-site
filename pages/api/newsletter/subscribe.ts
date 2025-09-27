@@ -110,9 +110,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log('---')
 
       // Send welcome email
+      console.log('🔄 Attempting to send newsletter confirmation email to:', email)
       const emailResult = await sendNewsletterConfirmation(email, name)
+      console.log('📧 Email send result:', emailResult)
       if (!emailResult.success) {
         console.log('⚠️ Failed to send welcome email:', emailResult.error)
+      } else {
+        console.log('✅ Newsletter confirmation email sent successfully to:', email)
       }
 
     } catch (dbError) {

@@ -31,6 +31,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
           email,
           password,
           options: {
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
             data: {
               full_name: fullName,
               company: company

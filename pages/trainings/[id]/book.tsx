@@ -125,14 +125,6 @@ export default function BookingPage({ training }: BookingPageProps) {
                       <span className="font-medium">{formatPrice(training.price, training.currency)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Available Spots:</span>
-                      <span className={`font-medium ${
-                        isFull ? 'text-red-600' : availableSpots <= 3 ? 'text-orange-600' : 'text-green-600'
-                      }`}>
-                        {isFull ? 'Full' : `${availableSpots} left`}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
                       <span className="text-gray-600">Status:</span>
                       <span className="text-blue-600 font-medium">Pending Payment</span>
                     </div>

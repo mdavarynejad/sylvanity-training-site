@@ -60,24 +60,24 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Training Categories</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="/trainings?category=AI" className="text-gray-300 hover:text-white transition">
                   AI & Technology
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="/trainings?category=Leadership" className="text-gray-300 hover:text-white transition">
                   Leadership & Management
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="/trainings?category=Data" className="text-gray-300 hover:text-white transition">
                   Data & Analytics
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="/trainings?category=Strategy" className="text-gray-300 hover:text-white transition">
                   Strategy & Planning
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

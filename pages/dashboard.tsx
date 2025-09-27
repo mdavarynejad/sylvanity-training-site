@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAuth } from '@/components/auth/auth-provider'
 import { supabase } from '@/lib/supabase'
+import EditProfileModal from '@/components/edit-profile-modal'
+import ProgressTracker from '@/components/progress-tracker'
 
 interface Booking {
   id: string
@@ -24,6 +26,7 @@ export default function DashboardPage() {
   const [bookings, setBookings] = useState<Booking[]>([])
   const [profile, setProfile] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const [showEditProfile, setShowEditProfile] = useState(false)
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -74,6 +77,40 @@ export default function DashboardPage() {
   const handleSignOut = async () => {
     await signOut()
     router.push('/')
+  }
+
+  const handleDeleteAccount = async () => {
+    if (!confirm('Are you sure you want to delete your account? This action cannot be undone and will permanently delete all your data.')) {
+      return
+    }
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        alert('You must be logged in to delete your account')
+        return
+      }
+
+      const response = await fetch('/api/auth/delete-account', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        alert('Your account has been successfully deleted.')
+        await signOut()
+        router.push('/')
+      } else {
+        const errorData = await response.json()
+        alert(`Failed to delete account: ${errorData.error}`)
+      }
+    } catch (error) {
+      console.error('Delete account error:', error)
+      alert('An error occurred while deleting your account. Please try again.')
+    }
   }
 
   if (authLoading || loading) {
@@ -249,8 +286,70 @@ export default function DashboardPage() {
               </ul>
             )}
           </div>
+
+          {/* Training Progress Section */}
+          <div className="mt-8">
+            <ProgressTracker />
+          </div>
+
+          {/* Account Management Section */}
+          <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-md">
+            <div className="px-4 py-5 sm:px-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">
+                Account Management
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                Manage your account settings and preferences
+              </p>
+            </div>
+            <div className="px-4 py-5 sm:px-6 border-t border-gray-200">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between py-4">
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-900">Profile Information</h4>
+                    <p className="text-sm text-gray-500">
+                      Name: {profile?.full_name || 'Not provided'}<br />
+                      Email: {user?.email}<br />
+                      Company: {profile?.company || 'Not provided'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowEditProfile(true)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  >
+                    Edit Profile
+                  </button>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-medium text-red-900">Delete Account</h4>
+                      <p className="text-sm text-red-600">
+                        Permanently delete your account and all associated data. This action cannot be undone.
+                      </p>
+                    </div>
+                    <button
+                      onClick={handleDeleteAccount}
+                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm"
+                    >
+                      Delete Account
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Edit Profile Modal */}
+      <EditProfileModal
+        isOpen={showEditProfile}
+        onClose={() => setShowEditProfile(false)}
+        profile={profile}
+        onUpdate={fetchUserData}
+      />
     </div>
   )
 }

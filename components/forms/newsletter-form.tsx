@@ -17,6 +17,8 @@ export default function NewsletterForm({ source = 'footer', className = '' }: Ne
     setLoading(true)
     setError(null)
 
+    console.log('🔥 Newsletter form submission started for:', email)
+
     try {
       const response = await fetch('/api/newsletter/subscribe', {
         method: 'POST',

@@ -23,15 +23,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     )
 
     try {
+      // Log the validation attempt
+      console.log('🎟️ Promo Code Validation Attempt:')
+      console.log('Code:', code.toUpperCase())
+      console.log('Training ID:', trainingId)
+      console.log('---')
+
       // Query promo codes table
       const { data: promoCode, error } = await supabase
         .from('promo_codes')
         .select('*')
         .eq('code', code.toUpperCase())
-        .eq('is_active', true)
         .single()
 
+      console.log('Database query result:')
+      console.log('Error:', error)
+      console.log('PromoCode data:', promoCode)
+      console.log('---')
+
       if (error || !promoCode) {
+        console.log('❌ Promo code not found or error occurred')
         return res.status(200).json({
           valid: false,
           message: 'Invalid or expired promo code'
@@ -49,15 +60,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
       }
 
-      // Check if promo code is for a specific training
-      if (promoCode.training_id && promoCode.training_id !== trainingId) {
-        return res.status(200).json({
-          valid: false,
-          message: 'This promo code is not valid for this training'
-        })
-      }
+      // Training-specific validation removed as current schema doesn't support training_id
 
-      // Promo code is valid
+      // Promo code is valid - log usage
+      console.log('✅ Promo code validation successful!')
+      console.log('Discount:', promoCode.discount_percent + '%')
+
+      // Track promo code usage (increment usage count)
+      await supabase
+        .from('promo_codes')
+        .update({
+          current_uses: (promoCode.current_uses || 0) + 1
+        })
+        .eq('id', promoCode.id)
+
+      console.log('📊 Promo code usage tracked')
+
       return res.status(200).json({
         valid: true,
         discount_percent: promoCode.discount_percent,

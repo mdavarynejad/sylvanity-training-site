@@ -59,16 +59,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Continue with promo code generation even if lead storage fails
       }
 
-      // Store promo code in database
+      // Store promo code in database (remove training_id as it doesn't exist in current schema)
       const { data: promoData, error: promoError } = await supabase
         .from('promo_codes')
         .insert({
           code: promoCode,
-          lead_id: leadData?.id || null,
-          training_id: interestedTrainingId,
           discount_percent: 10, // 10% discount
-          valid_until: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
-          is_active: true
+          valid_until: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days from now, date only
+          current_uses: 0
         })
         .select()
         .single()

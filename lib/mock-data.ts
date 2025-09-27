@@ -20,6 +20,16 @@ export interface Training {
   heroImageUrl?: string // For detail view
   pdfAttachmentUrl?: string
   prerequisites?: string[]
+  // SEO-optimized content fields
+  format?: string
+  seoWhyChoose?: string
+  seoLearningOutcomes?: string
+  seoTargetAudience?: string
+  learningOutcomes?: string[]
+  faqs?: { question: string; answer: string }[]
+  metaTitle?: string
+  metaDescription?: string
+  metaKeywords?: string
 }
 
 export interface Testimonial {

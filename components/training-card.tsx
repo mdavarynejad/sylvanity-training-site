@@ -12,8 +12,8 @@ export default function TrainingCard({ training, variant = 'default' }: Training
   const isFull = availableSpots === 0
 
   const cardClasses = variant === 'featured'
-    ? 'border-2 border-blue-500 bg-blue-50'
-    : 'border border-gray-200 hover:border-gray-300'
+    ? 'card border-2 border-blue-500 bg-blue-50'
+    : 'card'
 
   const levelColors = {
     'Beginner': 'bg-green-100 text-green-800',
@@ -22,29 +22,27 @@ export default function TrainingCard({ training, variant = 'default' }: Training
   }
 
   return (
-    <div className={`${cardClasses} rounded-lg p-6 transition-all duration-200 hover:shadow-lg`}>
+    <div className={`${cardClasses} p-8`}>
       {variant === 'featured' && (
-        <div className="flex items-center mb-3">
-          <span className="bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+        <div className="flex items-center mb-4">
+          <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
             Featured
           </span>
         </div>
       )}
 
-      <div className="flex justify-between items-start mb-3">
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold mb-2">
-            <Link
-              href={`/trainings/${training.id}`}
-              className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
-            >
-              {training.title}
-            </Link>
-          </h3>
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-            {training.description}
-          </p>
-        </div>
+      <div className="mb-4">
+        <h3 className="text-xl font-medium mb-3 leading-tight">
+          <Link
+            href={`/trainings/${training.id}`}
+            className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
+          >
+            {training.title}
+          </Link>
+        </h3>
+        <p className="text-gray-600 leading-relaxed line-clamp-2">
+          {training.description}
+        </p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
@@ -77,14 +75,14 @@ export default function TrainingCard({ training, variant = 'default' }: Training
         </div>
       )}
 
-      <div className="space-y-2 mb-4">
+      <div className="space-y-3 mb-6">
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Instructor:</span>
-          <span className="font-medium">{training.instructor}</span>
+          <span className="font-medium text-gray-900">{training.instructor}</span>
         </div>
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Next Start:</span>
-          <span className="font-medium">
+          <span className="font-medium text-gray-900">
             {training.startDates && training.startDates.length > 0
               ? formatDate(training.startDates[0])
               : training.startDate
@@ -99,28 +97,22 @@ export default function TrainingCard({ training, variant = 'default' }: Training
             <span className="font-medium text-blue-600">+{training.startDates.length - 1} more</span>
           </div>
         )}
-        <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Available Spots:</span>
-          <span className={`font-medium ${isAlmostFull ? 'text-orange-600' : isFull ? 'text-red-600' : 'text-green-600'}`}>
-            {isFull ? 'Full' : `${availableSpots} left`}
-          </span>
-        </div>
       </div>
 
       <div className="flex justify-between items-center">
-        <div className="text-right">
-          <div className="text-2xl font-bold text-gray-900">
+        <div>
+          <div className="text-2xl font-medium text-gray-900">
             {formatPrice(training.price, training.currency)}
           </div>
-          <div className="text-sm text-gray-500">per person</div>
+          <div className="text-sm text-gray-600">per person</div>
         </div>
 
         <Link
           href={`/trainings/${training.id}`}
-          className={`inline-block px-4 py-2 rounded-lg font-medium transition-colors text-center ${
+          className={`${
             isFull
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              : 'bg-blue-600 text-white hover:bg-blue-700'
+              ? 'btn-secondary opacity-60 cursor-not-allowed'
+              : 'btn-primary'
           }`}
         >
           {isFull ? 'Waitlist' : 'View Details'}

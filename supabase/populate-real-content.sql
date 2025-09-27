@@ -24,7 +24,6 @@ INSERT INTO trainings (
     hero_image_url,
     pdf_attachment_url,
     tags,
-    featured,
     created_at
 ) VALUES
 (
@@ -44,7 +43,6 @@ INSERT INTO trainings (
     '/images/trainings/ai-prompt-engineering-hero.webp',
     '/attachments/ai-prompt-engineering-syllabus.pdf',
     ARRAY['AI', 'Prompt Engineering', 'Productivity', 'SME', 'ChatGPT', 'Automation', 'Data Privacy', 'RTCFE Framework'],
-    true,
     now()
 ),
 (
@@ -64,7 +62,6 @@ INSERT INTO trainings (
     '/images/trainings/business-automation-hero.webp',
     '/attachments/automation-playbook.pdf',
     ARRAY['Automation', 'Business Processes', 'AI Workflows', 'Zapier', 'API Integration', 'Efficiency', 'Low-code', 'No-code'],
-    true,
     now()
 ),
 (
@@ -84,7 +81,6 @@ INSERT INTO trainings (
     '/images/trainings/change-management-hero.webp',
     '/attachments/change-management-toolkit.pdf',
     ARRAY['Change Management', 'AI Transformation', 'Leadership', 'SME', 'Digital Strategy', 'Kotter Model', 'Team Management'],
-    true,
     now()
 ),
 (
@@ -104,7 +100,6 @@ INSERT INTO trainings (
     '/images/trainings/agentic-ai-hero.webp',
     '/attachments/agentic-ai-blueprint.pdf',
     ARRAY['Agentic AI', 'AI Agents', 'Automation', 'Advanced AI', 'Machine Learning', 'AI Workflows', 'Autonomous Systems'],
-    true,
     now()
 ),
 (
@@ -124,7 +119,6 @@ INSERT INTO trainings (
     '/images/trainings/data-analysis-hero.webp',
     '/attachments/data-analysis-workbook.pdf',
     ARRAY['Data Analysis', 'Business Insights', 'SME', 'Spreadsheets', 'Excel', 'Visualization', 'AI-driven Analysis'],
-    false,
     now()
 );
 
@@ -136,7 +130,6 @@ INSERT INTO testimonials (
     training_title,
     rating,
     testimonial,
-    featured,
     created_at
 ) VALUES
 (
@@ -146,7 +139,6 @@ INSERT INTO testimonials (
     'AI & Prompt Engineering Workshop',
     5,
     'This workshop completely transformed how we approach AI in our startup. The practical frameworks and hands-on exercises made complex concepts accessible. Within a week, we had implemented AI solutions that saved us 10 hours weekly.',
-    true,
     now()
 ),
 (
@@ -156,7 +148,6 @@ INSERT INTO testimonials (
     'Change Management in the AI Era',
     5,
     'Outstanding training! Prof. Chen''s approach to managing AI transformation was exactly what our team needed. The toolkit provided is invaluable, and our AI adoption rate increased by 300% post-training.',
-    true,
     now()
 ),
 (
@@ -166,7 +157,6 @@ INSERT INTO testimonials (
     'Practical Data Analysis for SMEs',
     5,
     'Finally, a data analysis course that speaks SME language! Alex made complex statistical concepts simple and actionable. Our decision-making process is now completely data-driven.',
-    true,
     now()
 ),
 (
@@ -176,7 +166,6 @@ INSERT INTO testimonials (
     'AI-Powered Business Automation',
     4,
     'Great practical insights into business automation. The ROI from implementing just two of the suggested workflows has already covered the training cost twice over.',
-    false,
     now()
 ),
 (
@@ -186,7 +175,6 @@ INSERT INTO testimonials (
     'Agentic AI Workshop',
     5,
     'Dr. Rodriguez''s advanced workshop opened our eyes to the future of AI. The agentic AI solutions we built are now handling 40% of our customer inquiries autonomously.',
-    true,
     now()
 ),
 (
@@ -196,7 +184,6 @@ INSERT INTO testimonials (
     'AI & Prompt Engineering Workshop',
     5,
     'The practical approach to prompt engineering was game-changing. We now have a structured method for AI integration that every team member can follow confidently.',
-    false,
     now()
 );
 
@@ -207,18 +194,16 @@ SELECT
     currency,
     level,
     category,
-    featured,
     jsonb_array_length(start_dates) as num_start_dates,
     array_length(tags, 1) as num_tags
 FROM trainings
-ORDER BY featured DESC, created_at;
+ORDER BY created_at;
 
 -- Show testimonials summary
 SELECT
     training_title,
     count(*) as testimonial_count,
-    avg(rating) as avg_rating,
-    count(*) FILTER (WHERE featured = true) as featured_count
+    avg(rating) as avg_rating
 FROM testimonials
 GROUP BY training_title
 ORDER BY avg_rating DESC;

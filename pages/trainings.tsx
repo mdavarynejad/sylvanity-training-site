@@ -1,35 +1,128 @@
-import { GetStaticProps } from 'next'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import TrainingList from '../components/training-list'
 import { Training } from '@/lib/mock-data'
 import { getTrainings } from '@/lib/supabase-training'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
-interface TrainingsPageProps {
-  trainings: Training[]
-}
+export default function TrainingsPage() {
+  const router = useRouter()
+  const { category } = router.query
+  const [trainings, setTrainings] = useState<Training[]>([])
+  const [filteredTrainings, setFilteredTrainings] = useState<Training[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
-export default function TrainingsPage({ trainings }: TrainingsPageProps) {
+  const categories = [
+    { value: 'all', label: 'All Categories' },
+    { value: 'AI', label: 'AI & Technology' },
+    { value: 'Leadership', label: 'Leadership & Management' },
+    { value: 'Data', label: 'Data & Analytics' },
+    { value: 'Strategy', label: 'Strategy & Planning' }
+  ]
+
+  useEffect(() => {
+    loadTrainings()
+  }, [])
+
+  useEffect(() => {
+    if (category && typeof category === 'string') {
+      setSelectedCategory(category)
+    }
+  }, [category])
+
+  useEffect(() => {
+    filterTrainings()
+  }, [trainings, selectedCategory])
+
+  const loadTrainings = async () => {
+    try {
+      const data = await getTrainings()
+      setTrainings(data)
+    } catch (error) {
+      console.error('Error loading trainings:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const filterTrainings = () => {
+    if (selectedCategory === 'all') {
+      setFilteredTrainings(trainings)
+    } else {
+      const filtered = trainings.filter(training =>
+        training.category?.toLowerCase().includes(selectedCategory.toLowerCase())
+      )
+      setFilteredTrainings(filtered)
+    }
+  }
+
+  const handleCategoryChange = (categoryValue: string) => {
+    setSelectedCategory(categoryValue)
+    if (categoryValue === 'all') {
+      router.push('/trainings', undefined, { shallow: true })
+    } else {
+      router.push(`/trainings?category=${categoryValue}`, undefined, { shallow: true })
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="page-container">
       <Header />
-      <TrainingList
-        trainings={trainings}
-        title="Professional AI Training Programs"
-        subtitle="Empower your SME with cutting-edge AI knowledge and practical skills designed for business leaders and professionals"
-      />
+      <div className="page-header">
+        <div className="text-center">
+          <h1 className="heading-page mb-6">Professional AI Training Programs</h1>
+          <p className="text-subtitle max-w-3xl mx-auto">
+            Empower your SME with cutting-edge AI knowledge and practical skills designed for business leaders and professionals
+          </p>
+        </div>
+      </div>
+
+      {/* Category Filter */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
+        <div className="bg-white rounded-lg shadow-sm border p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter by Category</h3>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat.value}
+                onClick={() => handleCategoryChange(cat.value)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === cat.value
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+          {selectedCategory !== 'all' && (
+            <div className="mt-4 text-sm text-gray-600">
+              Showing {filteredTrainings.length} training{filteredTrainings.length !== 1 ? 's' : ''} in "{categories.find(c => c.value === selectedCategory)?.label}"
+            </div>
+          )}
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="bg-white rounded-lg shadow-sm border p-6 animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+                <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <TrainingList trainings={filteredTrainings} />
+      )}
+
       <Footer />
     </div>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const trainings = await getTrainings()
-
-  return {
-    props: {
-      trainings,
-    },
-    revalidate: 60, // Revalidate every minute
-  }
 }
