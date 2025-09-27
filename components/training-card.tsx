@@ -112,7 +112,7 @@ export default function TrainingCard({ training, variant = 'default' }: Training
           className={`${
             isFull
               ? 'btn-secondary opacity-60 cursor-not-allowed'
-              : 'btn-primary'
+              : 'btn-gradient-primary hover-gradient-lift'
           }`}
         >
           {isFull ? 'Waitlist' : 'View Details'}

@@ -137,7 +137,7 @@ export default function TrainingList({
               setSelectedCategory('All')
               setSelectedLevel('All Levels')
             }}
-            className="btn-primary"
+            className="btn-gradient-primary hover-gradient-lift"
           >
             Clear Filters
           </button>

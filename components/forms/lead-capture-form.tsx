@@ -196,7 +196,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-400 transition flex items-center justify-center"
+                className="flex-1 btn-gradient-primary hover-gradient-lift px-4 py-2 disabled:opacity-50 flex items-center justify-center"
               >
                 {loading ? (
                   <>

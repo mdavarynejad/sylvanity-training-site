@@ -181,8 +181,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
                   !stripeConfigured
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     : loading
-                    ? 'bg-white bg-opacity-80 text-blue-600 cursor-wait'
-                    : 'bg-white text-blue-600 hover:bg-blue-50 hover:scale-105 shadow-lg'
+                    ? 'btn-gradient-primary opacity-80 cursor-wait'
+                    : 'btn-gradient-primary hover-gradient-lift'
                 }`}
               >
                 {loading ? (
@@ -199,7 +199,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
               <button
                 onClick={() => setShowLeadForm(true)}
-                className="px-8 py-4 border-2 border-white border-opacity-30 text-white rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200 font-medium text-lg"
+                className="btn-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
               >
                 Get More Information
               </button>
@@ -359,8 +359,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
                 !stripeConfigured
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : loading
-                  ? 'bg-blue-400 text-white cursor-wait'
-                  : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-lg'
+                  ? 'btn-gradient-primary opacity-80 cursor-wait'
+                  : 'btn-gradient-primary hover-gradient-lift'
               }`}
             >
               {loading ? (
@@ -377,7 +377,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
             <button
               onClick={() => setShowLeadForm(true)}
-              className="w-full sm:w-auto px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 font-medium text-lg"
+              className="w-full sm:w-auto btn-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
             >
               Get More Information
             </button>
