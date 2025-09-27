@@ -74,7 +74,7 @@ Thumbs.db
 
 # Stripe CLI
 stripe.exe
-stripe
+/stripe
 
 # Testing
 playwright-report/

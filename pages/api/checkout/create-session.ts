@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { stripe, isStripeConfigured } from '../../../lib/stripe/server'
+import { stripe, isStripeConfigured } from '@/lib/stripe/server'
 import { getTrainingById } from '@/lib/supabase-training'
 import { createClient } from '@supabase/supabase-js'
 
