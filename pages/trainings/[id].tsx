@@ -199,7 +199,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
               <button
                 onClick={() => setShowLeadForm(true)}
-                className="btn-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
+                className="btn-gradient-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
               >
                 Get More Information
               </button>
@@ -377,7 +377,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
             <button
               onClick={() => setShowLeadForm(true)}
-              className="w-full sm:w-auto btn-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
+              className="w-full sm:w-auto btn-gradient-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
             >
               Get More Information
             </button>

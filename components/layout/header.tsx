@@ -145,7 +145,7 @@ export default function Header() {
             ) : (
               <Link
                 href="/auth/signin"
-                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                className="btn-gradient-secondary px-4 py-2 text-sm hover-gradient-lift"
               >
                 Sign In
               </Link>
@@ -261,7 +261,7 @@ export default function Header() {
                   <>
                     <Link href="/auth/signin">
                       <div
-                        className="block w-full text-center text-sm font-medium text-gray-700 hover:text-gray-900 py-3 cursor-pointer transition-colors duration-200 hover:bg-gray-50"
+                        className="block w-full btn-gradient-secondary hover-gradient-lift text-white px-4 py-3 rounded-lg text-sm font-medium text-center transition-all duration-300 cursor-pointer mt-2"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Sign In
@@ -271,7 +271,7 @@ export default function Header() {
                 )}
                 <Link href="/trainings">
                   <div
-                    className="block w-full bg-gradient-primary hover-gradient-lift text-white px-4 py-3 rounded-lg text-sm font-medium text-center transition-all duration-300 cursor-pointer mt-2"
+                    className="block w-full btn-gradient-primary hover-gradient-lift text-white px-4 py-3 rounded-lg text-sm font-medium text-center transition-all duration-300 cursor-pointer mt-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Browse Trainings

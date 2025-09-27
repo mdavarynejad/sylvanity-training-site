@@ -108,11 +108,15 @@ export default function AboutPage() {
               Explore our training programs and take the next step in your professional development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
-                Browse Trainings
+              <Link href="/trainings">
+                <span className="btn-gradient-primary hover-gradient-lift text-base inline-block text-center cursor-pointer">
+                  Browse Trainings
+                </span>
               </Link>
-              <Link href="/contact" className="btn-secondary hover-lift px-8 py-4 text-base inline-block text-center">
-                Contact Us
+              <Link href="/contact">
+                <span className="btn-gradient-secondary hover-gradient-lift text-base inline-block text-center cursor-pointer">
+                  Contact Us
+                </span>
               </Link>
             </div>
           </div>
