@@ -257,26 +257,7 @@ export default function Header() {
                       )}
                     </button>
                   </>
-                ) : (
-                  <>
-                    <Link href="/auth/signin">
-                      <div
-                        className="block w-full text-center text-sm font-medium text-gray-700 hover:text-gray-900 py-3 cursor-pointer transition-colors duration-200"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        Sign In
-                      </div>
-                    </Link>
-                  </>
-                )}
-                <Link href="/trainings">
-                  <div
-                    className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-sm font-medium text-center transition-colors duration-200 cursor-pointer mt-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Browse Trainings
-                  </div>
-                </Link>
+                ) : null}
               </div>
             </nav>
           </div>
