@@ -20,6 +20,20 @@ const nextConfig = {
     // Disable type checking during build for deployment
     ignoreBuildErrors: true,
   },
+  // Reduce caching for faster development feedback
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=60, stale-while-revalidate=30',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
