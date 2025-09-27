@@ -132,17 +132,16 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-4 sm:py-6">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-gray-900">
+              <Link href="/" className="text-lg sm:text-xl font-bold text-gradient-primary">
                 Sylvanity Training
               </Link>
             </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-700">Welcome, {profile?.full_name || user.email}</span>
+            <div className="flex items-center">
               <button
                 onClick={handleSignOut}
-                className="text-gray-500 hover:text-gray-700"
+                className="btn-gradient-secondary text-sm px-4 py-2 hover-gradient-lift"
               >
                 Sign Out
               </button>
@@ -154,7 +153,7 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">My Dashboard</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Welcome, {profile?.full_name || user.email?.split('@')[0]}!</h1>
             <p className="mt-2 text-gray-600">Manage your training bookings and account</p>
           </div>
 
