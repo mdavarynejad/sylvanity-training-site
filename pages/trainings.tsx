@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import TrainingList from '../components/training-list'
 import { Training } from '@/lib/mock-data'
 import { getTrainings } from '@/lib/supabase-training'
@@ -68,8 +69,33 @@ export default function TrainingsPage() {
   }
 
   return (
-    <div className="page-container">
-      <Header />
+    <>
+      <Head>
+        <title>AI Training Programs - Sylvanity Training Platform</title>
+        <meta name="description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sylvanity-training-site.netlify.app/trainings" />
+        <meta property="og:title" content="AI Training Programs - Sylvanity Training Platform" />
+        <meta property="og:description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
+        <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
+        <meta property="og:site_name" content="Sylvanity Training" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="AI Training Programs - Sylvanity Training Platform" />
+        <meta property="twitter:description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
+        <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
+
+        {/* Additional SEO */}
+        <meta name="keywords" content="AI courses, machine learning training, data analytics programs, leadership development, professional training, SME education, artificial intelligence certification" />
+        <link rel="canonical" href="https://sylvanity-training-site.netlify.app/trainings" />
+      </Head>
+
+      <div className="page-container">
+        <Header />
       <div className="page-header">
         <div className="text-center">
           <h1 className="heading-page mb-6">Professional AI Training Programs</h1>
@@ -122,7 +148,8 @@ export default function TrainingsPage() {
         <TrainingList trainings={filteredTrainings} />
       )}
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   )
 }
