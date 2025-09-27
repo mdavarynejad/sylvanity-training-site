@@ -247,11 +247,13 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </div>
 
             <div className="text-center animate-on-scroll">
-              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-flex items-center">
-                Join Our Success Stories
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              <Link href="/trainings">
+                <span className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-flex items-center">
+                  Join Our Success Stories
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
               </Link>
             </div>
           </div>
