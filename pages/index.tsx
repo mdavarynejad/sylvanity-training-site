@@ -149,10 +149,10 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </p>
 
             <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.4s'}}>
-              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift text-base inline-block text-center">
+              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
                 Browse Trainings
               </Link>
-              <Link href="/auth/signin" className="btn-secondary hover-lift text-base inline-block text-center">
+              <Link href="/auth/signin" className="btn-gradient-secondary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
                 Sign In
               </Link>
             </div>
