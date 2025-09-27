@@ -183,7 +183,7 @@ export default function Footer() {
             <p className="text-gray-300 text-sm mb-4">
               Get notified about new training programs and special offers.
             </p>
-            <NewsletterForm source="footer" className="max-w-xs" />
+            <NewsletterForm source="footer" className="w-full md:max-w-xs" />
           </div>
         </div>
 

@@ -149,11 +149,15 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </p>
 
             <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.4s'}}>
-              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
-                Browse Trainings
+              <Link href="/trainings">
+                <span className="btn-gradient-primary hover-gradient-lift text-base inline-block text-center cursor-pointer">
+                  Browse Trainings
+                </span>
               </Link>
-              <Link href="/auth/signin" className="btn-gradient-secondary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
-                Sign In
+              <Link href="/auth/signin">
+                <span className="btn-gradient-secondary hover-gradient-lift text-base inline-block text-center cursor-pointer">
+                  Sign In
+                </span>
               </Link>
             </div>
           </div>
@@ -248,7 +252,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
 
             <div className="text-center animate-on-scroll">
               <Link href="/trainings">
-                <span className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-flex items-center">
+                <span className="btn-gradient-primary hover-gradient-lift text-base inline-flex items-center cursor-pointer">
                   Join Our Success Stories
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
