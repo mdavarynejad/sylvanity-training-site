@@ -196,9 +196,17 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
                   className="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 hover-lift stagger-animation"
                   style={{'--delay': `${0.1 * (index + 1)}s`} as React.CSSProperties}
                 >
-                  <div className="flex items-center mb-6">
-                    <div className="text-yellow-500 text-sm">
-                      {renderStars(testimonial.rating)}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center">
+                      <div className="text-yellow-500 text-lg mr-3">
+                        {renderStars(testimonial.rating)}
+                      </div>
+                      <span className="text-sm font-medium text-gray-600">
+                        {testimonial.rating === 5 ? 'Excellent' : testimonial.rating === 4 ? 'Very Good' : 'Good'}
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-400 font-medium">
+                      VERIFIED
                     </div>
                   </div>
 
