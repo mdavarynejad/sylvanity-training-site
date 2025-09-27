@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
@@ -107,12 +108,12 @@ export default function AboutPage() {
               Explore our training programs and take the next step in your professional development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base">
+              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base">
                 Browse Trainings
-              </a>
-              <a href="/contact" className="btn-secondary hover-gradient-lift px-8 py-4 text-base">
+              </Link>
+              <Link href="/contact" className="btn-secondary hover-gradient-lift px-8 py-4 text-base">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>
