@@ -89,8 +89,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side - Login & CTA */}
-          <div className="flex items-center space-x-4">
+          {/* Right side - Login & CTA - Hidden on mobile */}
+          <div className="hidden lg:flex items-center space-x-4">
             {user ? (
               <div className="relative">
                 <button
@@ -257,7 +257,26 @@ export default function Header() {
                       )}
                     </button>
                   </>
-                ) : null}
+                ) : (
+                  <>
+                    <Link href="/auth/signin">
+                      <div
+                        className="block w-full text-center text-sm font-medium text-gray-700 hover:text-gray-900 py-3 cursor-pointer transition-colors duration-200 hover:bg-gray-50"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Sign In
+                      </div>
+                    </Link>
+                  </>
+                )}
+                <Link href="/trainings">
+                  <div
+                    className="block w-full bg-gradient-primary hover-gradient-lift text-white px-4 py-3 rounded-lg text-sm font-medium text-center transition-all duration-300 cursor-pointer mt-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Browse Trainings
+                  </div>
+                </Link>
               </div>
             </nav>
           </div>
