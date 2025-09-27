@@ -69,7 +69,7 @@ export default function NewsletterForm({ source = 'footer', className = '' }: Ne
     <div className={className}>
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label htmlFor="newsletter-name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="newsletter-name" className="block text-sm font-medium text-gray-300 mb-1">
             Name (optional)
           </label>
           <input
@@ -77,13 +77,13 @@ export default function NewsletterForm({ source = 'footer', className = '' }: Ne
             id="newsletter-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label htmlFor="newsletter-email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="newsletter-email" className="block text-sm font-medium text-gray-300 mb-1">
             Email Address *
           </label>
           <input
@@ -92,7 +92,7 @@ export default function NewsletterForm({ source = 'footer', className = '' }: Ne
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
             placeholder="your@email.com"
           />
         </div>

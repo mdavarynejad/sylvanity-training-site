@@ -149,10 +149,10 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </p>
 
             <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.4s'}}>
-              <Link href="/trainings" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 hover-lift inline-block text-center">
+              <Link href="/trainings" className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-base inline-block text-center">
                 Browse Trainings
               </Link>
-              <Link href="/auth/signin" className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 hover-lift inline-block text-center">
+              <Link href="/auth/signin" className="btn-secondary hover-lift px-8 py-4 text-base inline-block text-center">
                 Sign In
               </Link>
             </div>
