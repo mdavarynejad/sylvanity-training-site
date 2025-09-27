@@ -1,23 +1,15 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  # Netlify Next.js plugin handles publish directory automatically
 
 [build.environment]
   NODE_VERSION = "20"
   # Ignore public environment variables in secrets scanning
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
 
-# Redirect all server routes to index.html for client-side routing
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-# Handle Next.js routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Use Netlify Next.js plugin for proper routing
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 # Security headers
 [[headers]]
