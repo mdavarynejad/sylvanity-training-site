@@ -72,7 +72,7 @@ export default function Header() {
                 href={item.href}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-blue-600'
+                    ? 'text-gradient-primary'
                     : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
@@ -91,7 +91,7 @@ export default function Header() {
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                   className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2 rounded-lg hover:bg-gray-100"
                 >
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-medium">
+                  <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-white font-medium">
                     {profile?.full_name ? profile.full_name[0].toUpperCase() : user.email?.[0].toUpperCase()}
                   </div>
                   <span className="hidden sm:block">
@@ -139,7 +139,7 @@ export default function Header() {
 
             <Link
               href="/trainings"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="btn-gradient-primary px-4 py-2 text-sm hover-gradient-lift"
             >
               Browse Trainings
             </Link>

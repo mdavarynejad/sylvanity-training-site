@@ -62,7 +62,7 @@ export default function ContactPage() {
         {/* Hero Section */}
         <div className="page-header">
           <div className="text-center">
-            <h1 className="heading-page mb-6">Get in Touch</h1>
+            <h1 className="heading-page mb-6 text-gradient-primary">Get in Touch</h1>
             <p className="text-subtitle max-w-3xl mx-auto">
               Have questions about our training programs? Want to discuss custom training
               solutions for your team? We'd love to hear from you.
@@ -211,7 +211,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full py-4 text-base font-medium"
+                    className="btn-gradient-primary hover-gradient-lift w-full py-4 text-base font-medium"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>

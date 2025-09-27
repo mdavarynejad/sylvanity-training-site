@@ -79,7 +79,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
                   id="fullName"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus-gradient"
                   required
                 />
               </div>
@@ -93,7 +93,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
                   id="company"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus-gradient"
                 />
               </div>
             </>
@@ -131,7 +131,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full btn-gradient-primary py-2 px-4 disabled:opacity-50 disabled:cursor-not-allowed hover-gradient-lift"
           >
             {loading ? 'Loading...' : mode === 'signin' ? 'Sign In' : 'Create Account'}
           </button>

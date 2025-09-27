@@ -22,6 +22,24 @@
     --color-background-secondary: 249 250 251; /* gray-50 */
     --color-background-tertiary: 243 244 246; /* gray-100 */
 
+    /* Gradient Color System */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-warning: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-info: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Feature Gradients */
+    --gradient-blue-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-green-teal: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-yellow-orange: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-pink-red: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+    /* Hover States */
+    --gradient-primary-hover: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    --gradient-secondary-hover: linear-gradient(135deg, #3b9cec 0%, #00e0ee 100%);
+
     /* Spacing - Google-style generous spacing */
     --spacing-section: 5rem; /* 80px */
     --spacing-content: 3rem; /* 48px */
@@ -129,5 +147,164 @@
     @apply text-xl text-gray-600 leading-relaxed;
     font-size: var(--font-size-subheading);
     color: rgb(var(--color-text-secondary));
+  }
+
+  /* Gradient Button Components */
+  .btn-gradient-primary {
+    background: var(--gradient-primary);
+    @apply text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 border-none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gradient-primary:hover {
+    background: var(--gradient-primary-hover);
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  .btn-gradient-secondary {
+    background: var(--gradient-secondary);
+    @apply text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 border-none;
+  }
+
+  .btn-gradient-secondary:hover {
+    background: var(--gradient-secondary-hover);
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 25px rgba(75, 172, 254, 0.3);
+  }
+
+  .btn-gradient-accent {
+    background: var(--gradient-accent);
+    @apply text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 border-none;
+  }
+
+  .btn-gradient-accent:hover {
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+  }
+
+  /* Text Gradient Components */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card Gradient Components */
+  .card-gradient-border {
+    border: 1px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                var(--gradient-primary) border-box;
+    border-radius: var(--radius-card);
+  }
+
+  .card-gradient-bg {
+    background: linear-gradient(135deg,
+      rgba(102, 126, 234, 0.05) 0%,
+      rgba(118, 75, 162, 0.05) 100%);
+  }
+
+  /* Link Gradient Components */
+  .link-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply no-underline transition-all duration-300;
+  }
+
+  .link-gradient:hover {
+    background: var(--gradient-primary-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient Background Components */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .bg-gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .bg-gradient-warning {
+    background: var(--gradient-warning);
+  }
+
+  /* Hover Effects */
+  .hover-gradient-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-gradient-lift:hover {
+    @apply transform -translate-y-1;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+  }
+
+  /* Focus States */
+  .focus-gradient:focus {
+    @apply outline-none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+  }
+
+  /* Shine Effect for Special Elements */
+  .gradient-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-shine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+
+  /* Animated Gradient Background */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
