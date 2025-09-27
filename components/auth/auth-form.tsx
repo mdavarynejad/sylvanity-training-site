@@ -54,7 +54,29 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
         onSuccess?.()
       }
     } catch (error: any) {
-      setMessage(error.message)
+      // Provide more specific error messages
+      let errorMessage = error.message
+
+      if (mode === 'signin') {
+        if (error.message?.includes('Invalid login credentials')) {
+          errorMessage = 'Email or password is incorrect. Please check your credentials and try again.'
+        } else if (error.message?.includes('Email not confirmed')) {
+          errorMessage = 'Please check your email and click the confirmation link before signing in.'
+        } else if (error.message?.includes('Too many requests')) {
+          errorMessage = 'Too many login attempts. Please wait a few minutes before trying again.'
+        }
+      } else {
+        // For signup errors
+        if (error.message?.includes('User already registered')) {
+          errorMessage = 'An account with this email already exists. Try signing in instead.'
+        } else if (error.message?.includes('Password should be at least')) {
+          errorMessage = 'Password must be at least 6 characters long.'
+        } else if (error.message?.includes('Invalid email')) {
+          errorMessage = 'Please enter a valid email address.'
+        }
+      }
+
+      setMessage(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -138,12 +160,31 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
         </form>
 
         {message && (
-          <div className={`mt-4 p-3 rounded-lg text-sm ${
+          <div className={`mt-6 p-4 rounded-xl text-sm border transition-all duration-300 ${
             message.includes('error') || message.includes('Error')
-              ? 'bg-red-100 text-red-700'
-              : 'bg-green-100 text-green-700'
+              ? 'bg-red-50 text-red-800 border-red-200'
+              : 'bg-gray-50 text-gray-800 border-gray-200'
           }`}>
-            {message}
+            <div className="flex items-start space-x-3">
+              <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+                message.includes('error') || message.includes('Error')
+                  ? 'bg-red-200'
+                  : 'bg-gray-300'
+              }`}>
+                {message.includes('error') || message.includes('Error') ? (
+                  <svg className="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </div>
+              <div className="flex-1">
+                <p className="font-medium leading-relaxed">{message}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>

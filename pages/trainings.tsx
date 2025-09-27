@@ -106,17 +106,17 @@ export default function TrainingsPage() {
       </div>
 
       {/* Category Filter */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
-        <div className="bg-white rounded-lg shadow-sm border p-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
+        <div className="bg-white rounded-lg shadow-sm border mobile-card-padding">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter by Category</h3>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => handleCategoryChange(cat.value)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedCategory === cat.value
-                    ? 'bg-blue-600 text-white'
+                    ? 'btn-gradient-primary text-white transform -translate-y-0.5'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -133,10 +133,10 @@ export default function TrainingsPage() {
       </div>
 
       {loading ? (
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="bg-white rounded-lg shadow-sm border p-6 animate-pulse">
+              <div key={i} className="bg-white rounded-lg shadow-sm border mobile-card-padding animate-pulse">
                 <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
                 <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
                 <div className="h-3 bg-gray-200 rounded w-2/3"></div>

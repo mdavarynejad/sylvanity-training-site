@@ -62,12 +62,12 @@ export default function NewsletterPage() {
       <Header />
 
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 py-16">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-16">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h1 className="heading-page mb-4 sm:mb-6">
               Stay Updated with Sylvanity Training
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-subtitle max-w-3xl mx-auto">
               Subscribe to our newsletter and be the first to know about new training programs,
               industry insights, and exclusive early-bird discounts.
             </p>
@@ -134,22 +134,34 @@ export default function NewsletterPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Subscribe to Our Newsletter</h2>
 
               {submitted ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl text-green-600">✓</span>
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div className="absolute inset-0 bg-white rounded-full opacity-20 animate-ping"></div>
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Welcome to Sylvanity Training!</h3>
-                  <p className="text-gray-600 mb-4">
-                    Thank you for subscribing! A welcome email has been sent to your inbox.
+
+                  <h3 className="text-2xl font-normal text-gray-900 mb-3">You're all set!</h3>
+                  <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Welcome to Sylvanity Training. Check your inbox for a confirmation email.
                   </p>
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-left">
-                    <h4 className="font-medium text-blue-900 mb-2">📧 Didn't receive the email?</h4>
-                    <ul className="text-sm text-blue-800 space-y-1">
-                      <li>• Check your spam/junk folder</li>
-                      <li>• The email comes from "Sylvanity Training"</li>
-                      <li>• Subject: "Welcome to Sylvanity Training Newsletter!"</li>
-                      <li>• Allow a few minutes for delivery</li>
-                    </ul>
+
+                  <div className="bg-gray-50 rounded-xl p-6 text-left max-w-md mx-auto">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-5 h-5 bg-gray-400 rounded-full flex items-center justify-center mt-0.5">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-sm font-medium text-gray-900 mb-1">No email yet?</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Check your spam folder or allow a few minutes for delivery. The email comes from Sylvanity Training.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ) : (

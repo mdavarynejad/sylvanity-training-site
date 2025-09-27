@@ -146,7 +146,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         </Link>
 
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl p-12 mb-12">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl sm:rounded-2xl mobile-hero-section mobile-section-gap">
           <div className="max-w-4xl">
             <div className="flex flex-wrap gap-2 mb-4">
               {training.featured && (
@@ -165,11 +165,11 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
               {training.title}
             </h1>
 
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 leading-relaxed max-w-3xl">
               {training.description}
             </p>
 
@@ -214,8 +214,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         </div>
 
         {/* Course Overview */}
-        <div className="card p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Course Overview</h2>
+        <div className="card mobile-card-padding mobile-section-gap">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Course Overview</h2>
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 leading-relaxed">
               {training.longDescription}
@@ -225,8 +225,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
 
         {/* What You'll Learn */}
         {training.tags && training.tags.length > 0 && (
-          <div className="card p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">What You'll Learn</h2>
+          <div className="card mobile-card-padding mobile-section-gap">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">What You'll Learn</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {training.tags.map((tag, index) => (
                 <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg">
@@ -241,8 +241,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         <CourseMaterialsTabs training={training} />
 
         {/* Why Choose This Training */}
-        <div className="card p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose This {training.title} Training?</h2>
+        <div className="card mobile-card-padding mobile-section-gap">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Why Choose This {training.title} Training?</h2>
           <div className="prose max-w-none text-gray-700">
             <p className="text-lg leading-relaxed">
               {training.seoWhyChoose || `Transform your career with our comprehensive ${training.title} training program.
@@ -255,8 +255,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         </div>
 
         {/* Learning Outcomes */}
-        <div className="card p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Learning Outcomes</h2>
+        <div className="card mobile-card-padding mobile-section-gap">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Key Learning Outcomes</h2>
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
             <p className="text-gray-700 mb-6 text-lg">
               {training.seoLearningOutcomes || `Upon completing this ${training.category} training, participants will:`}
@@ -311,8 +311,8 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
         </div>
 
         {/* FAQs */}
-        <div className="card p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <div className="card mobile-card-padding mobile-section-gap">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Frequently Asked Questions</h2>
           <div className="space-y-6">
             {(training.faqs || [
               {

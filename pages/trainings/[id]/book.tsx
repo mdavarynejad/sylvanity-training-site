@@ -153,7 +153,7 @@ export default function BookingPage({ training }: BookingPageProps) {
                   <button
                     onClick={handleBooking}
                     disabled={loading}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="btn-gradient-primary hover-gradient-lift px-6 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Processing...' : 'Confirm Booking'}
                   </button>

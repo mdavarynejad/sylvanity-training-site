@@ -22,7 +22,7 @@ export default function TrainingCard({ training, variant = 'default' }: Training
   }
 
   return (
-    <div className={`${cardClasses} p-8`}>
+    <div className={`${cardClasses} mobile-card-padding`}>
       {variant === 'featured' && (
         <div className="flex items-center mb-4">
           <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
