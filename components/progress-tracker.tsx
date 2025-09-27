@@ -137,7 +137,7 @@ export default function ProgressTracker() {
           <p className="text-gray-500 mb-4">No training progress yet</p>
           <Link
             href="/trainings"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            className="btn-gradient-primary hover-gradient-lift px-4 py-2 text-sm font-medium inline-flex items-center"
           >
             Browse Trainings
           </Link>
@@ -218,7 +218,7 @@ export default function ProgressTracker() {
                 ) : (
                   <Link
                     href={`/training/${training.training_id}/course`}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    className="btn-gradient-primary hover-gradient-lift px-4 py-2 text-sm"
                   >
                     {training.status === 'not_started' ? 'Start Learning' : 'Continue Learning'}
                   </Link>

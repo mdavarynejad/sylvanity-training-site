@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 <p className="text-gray-500 text-lg mb-4">No bookings yet</p>
                 <Link
                   href="/trainings"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                  className="btn-gradient-primary hover-gradient-lift px-4 py-2 text-sm font-medium inline-flex items-center"
                 >
                   Browse Trainings
                 </Link>
@@ -314,7 +314,7 @@ export default function DashboardPage() {
                   </div>
                   <button
                     onClick={() => setShowEditProfile(true)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    className="btn-gradient-primary hover-gradient-lift px-4 py-2 text-sm"
                   >
                     Edit Profile
                   </button>
@@ -330,7 +330,7 @@ export default function DashboardPage() {
                     </div>
                     <button
                       onClick={handleDeleteAccount}
-                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm"
+                      className="btn-gradient-danger hover-gradient-lift px-4 py-2 text-sm"
                     >
                       Delete Account
                     </button>

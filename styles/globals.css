@@ -181,6 +181,16 @@
     box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
   }
 
+  .btn-gradient-danger {
+    background: var(--gradient-pink-red);
+    @apply text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 border-none;
+  }
+
+  .btn-gradient-danger:hover {
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+  }
+
   /* Text Gradient Components */
   .text-gradient-primary {
     background: var(--gradient-primary);
