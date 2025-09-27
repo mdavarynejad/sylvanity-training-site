@@ -124,15 +124,11 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </p>
 
             <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.4s'}}>
-              <Link href="/trainings">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 cursor-pointer hover-lift">
-                  Browse Trainings
-                </div>
+              <Link href="/trainings" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 hover-lift inline-block text-center">
+                Browse Trainings
               </Link>
-              <Link href="/auth/signin">
-                <div className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 cursor-pointer hover-lift">
-                  Sign In
-                </div>
+              <Link href="/auth/signin" className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 hover-lift inline-block text-center">
+                Sign In
               </Link>
             </div>
           </div>
@@ -226,13 +222,11 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </div>
 
             <div className="text-center animate-on-scroll">
-              <Link href="/trainings">
-                <div className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 cursor-pointer hover-lift">
-                  Join Our Success Stories
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+              <Link href="/trainings" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 hover-lift">
+                Join Our Success Stories
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </div>
           </div>
