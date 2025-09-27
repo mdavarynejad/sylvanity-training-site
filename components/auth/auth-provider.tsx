@@ -59,8 +59,32 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, [])
 
   const signOut = async () => {
-    if (supabase) {
-      await supabase.auth.signOut()
+    try {
+      if (!supabase) {
+        console.error('Supabase client not available')
+        // Manually clear state if supabase is not available
+        setUser(null)
+        setSession(null)
+        return
+      }
+
+      console.log('Attempting to sign out...')
+      const { error } = await supabase.auth.signOut()
+
+      if (error) {
+        console.error('Sign out error:', error)
+        throw error
+      }
+
+      console.log('Sign out successful')
+      // Clear state manually as well to ensure immediate update
+      setUser(null)
+      setSession(null)
+    } catch (error) {
+      console.error('Failed to sign out:', error)
+      // Force clear state even if sign out fails
+      setUser(null)
+      setSession(null)
     }
   }
 

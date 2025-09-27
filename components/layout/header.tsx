@@ -8,6 +8,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const [profile, setProfile] = useState<any>(null)
+  const [signingOut, setSigningOut] = useState(false)
   const router = useRouter()
   const { user, loading, signOut } = useAuth()
 
@@ -32,8 +33,15 @@ export default function Header() {
   }
 
   const handleSignOut = async () => {
-    await signOut()
-    router.push('/')
+    try {
+      setSigningOut(true)
+      await signOut()
+      router.push('/')
+    } catch (error) {
+      console.error('Failed to sign out:', error)
+    } finally {
+      setSigningOut(false)
+    }
   }
 
   const navigation = [
@@ -119,9 +127,17 @@ export default function Header() {
                         setIsUserMenuOpen(false)
                         handleSignOut()
                       }}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      disabled={signingOut}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50 flex items-center"
                     >
-                      Sign Out
+                      {signingOut ? (
+                        <>
+                          <span className="inline-block animate-spin rounded-full h-3 w-3 border-b border-gray-700 mr-2"></span>
+                          Signing out...
+                        </>
+                      ) : (
+                        'Sign Out'
+                      )}
                     </button>
                   </div>
                 )}
@@ -228,9 +244,17 @@ export default function Header() {
                         setIsMenuOpen(false)
                         handleSignOut()
                       }}
-                      className="block w-full text-left text-sm font-medium text-red-600 hover:text-red-700 py-3 px-4 transition-colors duration-200 hover:bg-red-50 mt-2"
+                      disabled={signingOut}
+                      className="block w-full text-left text-sm font-medium text-red-600 hover:text-red-700 py-3 px-4 transition-colors duration-200 hover:bg-red-50 mt-2 disabled:opacity-50 flex items-center"
                     >
-                      Sign Out
+                      {signingOut ? (
+                        <>
+                          <span className="inline-block animate-spin rounded-full h-3 w-3 border-b border-red-600 mr-2"></span>
+                          Signing out...
+                        </>
+                      ) : (
+                        'Sign Out'
+                      )}
                     </button>
                   </>
                 ) : (
