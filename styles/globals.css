@@ -130,22 +130,19 @@
     padding: var(--spacing-section) 1.5rem;
   }
 
-  /* Typography */
+  /* Typography - Improved responsive sizing */
   .heading-hero {
-    @apply text-6xl font-normal text-gray-900 leading-tight;
-    font-size: var(--font-size-hero);
+    @apply text-4xl sm:text-5xl lg:text-6xl font-normal text-gray-900 leading-tight;
     color: rgb(var(--color-text-primary));
   }
 
   .heading-page {
-    @apply text-4xl font-normal text-gray-900;
-    font-size: var(--font-size-heading);
+    @apply text-3xl sm:text-4xl font-normal text-gray-900;
     color: rgb(var(--color-text-primary));
   }
 
   .text-subtitle {
-    @apply text-xl text-gray-600 leading-relaxed;
-    font-size: var(--font-size-subheading);
+    @apply text-lg sm:text-xl text-gray-600 leading-relaxed;
     color: rgb(var(--color-text-secondary));
   }
 

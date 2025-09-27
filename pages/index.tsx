@@ -115,10 +115,10 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         {/* Hero Section */}
         <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className={`text-6xl font-normal mb-6 leading-tight gradient-text fade-in-up ${isVisible ? 'visible' : ''}`}>
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-normal mb-6 leading-tight gradient-text fade-in-up ${isVisible ? 'visible' : ''}`}>
               Sylvanity Training Platform
             </h1>
-            <p className={`text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.2s'}}>
+            <p className={`text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.2s'}}>
               Elevate your skills with our comprehensive professional development programs.
               Expert-led training designed for your success.
             </p>
