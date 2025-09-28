@@ -29,7 +29,7 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
             </p>
             <Link
               href="/trainings"
-              className="btn-gradient-primary"
+              className="btn-gradient-primary hover-gradient-lift inline-flex items-center justify-center"
             >
               View Available Trainings
             </Link>
