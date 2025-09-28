@@ -12,6 +12,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- Enhanced trainings table with new features
 -- Add status column if it doesn't exist (for existing tables)
 ALTER TABLE public.trainings ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'active';
+-- Add prerequisites column if it doesn't exist (for existing tables)
+ALTER TABLE public.trainings ADD COLUMN IF NOT EXISTS prerequisites TEXT[];
 -- Add constraint only if it doesn't exist
 DO $$
 BEGIN
@@ -37,6 +39,7 @@ CREATE TABLE IF NOT EXISTS public.trainings (
   hero_image_url TEXT,
   pdf_attachment_url TEXT,
   tags TEXT[], -- Array of tags/skills
+  prerequisites TEXT[], -- Array of prerequisite course titles
   status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'preparation', 'cancelled')), -- Course readiness status
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()

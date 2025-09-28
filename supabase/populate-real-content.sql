@@ -27,6 +27,7 @@ INSERT INTO trainings (
     hero_image_url,
     pdf_attachment_url,
     tags,
+    prerequisites,
     status,
     created_at
 ) VALUES
@@ -46,6 +47,7 @@ INSERT INTO trainings (
     '/images/trainings/ai-prompt-engineering-hero.webp',
     '/attachments/ai-prompt-engineering-syllabus.pdf',
     ARRAY['AI', 'Prompt Engineering', 'Productivity', 'SME', 'ChatGPT', 'Automation', 'Data Privacy', 'RTCFE Framework'],
+    NULL, -- no prerequisites
     'active',
     now()
 ),
@@ -65,6 +67,7 @@ INSERT INTO trainings (
     '/images/trainings/business-automation-hero.webp',
     '/attachments/automation-playbook.pdf',
     ARRAY['Automation', 'Business Processes', 'AI Workflows', 'Zapier', 'API Integration', 'Efficiency', 'Low-code', 'No-code'],
+    NULL, -- no prerequisites
     'active',
     now()
 ),
@@ -84,6 +87,7 @@ INSERT INTO trainings (
     '/images/trainings/change-management-hero.webp',
     '/attachments/change-management-toolkit.pdf',
     ARRAY['Change Management', 'AI Transformation', 'Leadership', 'SME', 'Digital Strategy', 'Kotter Model', 'Team Management'],
+    NULL, -- no prerequisites
     'active',
     now()
 ),
@@ -103,6 +107,7 @@ INSERT INTO trainings (
     '/images/trainings/agentic-ai-hero.webp',
     '/attachments/agentic-ai-blueprint.pdf',
     ARRAY['Agentic AI', 'AI Agents', 'Automation', 'Advanced AI', 'Machine Learning', 'AI Workflows', 'Autonomous Systems'],
+    ARRAY['AI & Prompt Engineering Workshop', 'AI-Powered Business Automation'], -- prerequisites
     'active',
     now()
 ),
@@ -122,6 +127,7 @@ INSERT INTO trainings (
     '/images/trainings/data-analysis-hero.webp',
     '/attachments/data-analysis-workbook.pdf',
     ARRAY['Data Analysis', 'Business Insights', 'SME', 'Spreadsheets', 'Excel', 'Visualization', 'AI-driven Analysis'],
+    NULL, -- no prerequisites
     'active',
     now()
 ),
@@ -141,6 +147,7 @@ INSERT INTO trainings (
     '/images/trainings/logistics-ai-hero.webp',
     null,  -- No PDF yet for upcoming course
     ARRAY['AI', 'Logistics', 'Supply Chain', 'Predictive Analytics', 'Automation', 'Optimization', 'Machine Learning'],
+    NULL, -- no prerequisites
     'preparation',
     now()
 );

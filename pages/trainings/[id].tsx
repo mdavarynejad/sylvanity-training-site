@@ -13,9 +13,10 @@ import Footer from '@/components/layout/footer'
 
 interface TrainingDetailPageProps {
   training: Training
+  allTrainings: Training[]
 }
 
-export default function TrainingDetailPage({ training }: TrainingDetailPageProps) {
+export default function TrainingDetailPage({ training, allTrainings }: TrainingDetailPageProps) {
   // Redirect upcoming courses to 404 or show a "coming soon" message
   if (training.upcoming) {
     return (
@@ -269,25 +270,24 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
             <p className="text-gray-700 mb-4">To get the most out of this advanced training, we recommend completing these prerequisite courses first:</p>
             <div className="space-y-3">
               {training.prerequisites.map((prerequisite, index) => {
-                // Map prerequisite titles to course IDs
-                const prerequisiteMap: Record<string, string> = {
-                  'AI & Prompt Engineering': '550e8400-e29b-41d4-a716-446655440001',
-                  'AI-Powered Business Automation': '550e8400-e29b-41d4-a716-446655440002'
-                };
-
-                const courseId = prerequisiteMap[prerequisite];
+                // Find matching course from allTrainings by title
+                const matchingCourse = allTrainings.find(course =>
+                  course.title === prerequisite ||
+                  course.title.includes(prerequisite) ||
+                  prerequisite.includes(course.title.split(' ')[0])
+                );
 
                 return (
                   <div key={index} className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100">
                     <div className="flex items-center">
                       <span className="text-blue-600 mr-3 text-lg">📚</span>
                       <span className="text-gray-800 font-medium">
-                        {prerequisite === 'AI & Prompt Engineering' ? 'AI & Prompt Engineering Workshop' : prerequisite}
+                        {prerequisite}
                       </span>
                     </div>
-                    {courseId && (
+                    {matchingCourse && (
                       <Link
-                        href={`/trainings/${courseId}`}
+                        href={`/trainings/${matchingCourse.id}`}
                         className="text-blue-600 hover:text-blue-800 font-medium text-sm underline"
                       >
                         View Course →
@@ -522,6 +522,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const training = await getTrainingById(params?.id as string)
+  const allTrainings = await getTrainings()
 
   if (!training) {
     return {
@@ -532,6 +533,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       training,
+      allTrainings,
     },
     revalidate: 60, // Revalidate every minute
   }
