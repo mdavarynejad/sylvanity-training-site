@@ -16,6 +16,7 @@ export interface Training {
   category: string
   tags: string[]
   featured: boolean
+  upcoming?: boolean
   imageUrl?: string // For list view compatibility
   heroImageUrl?: string // For detail view
   pdfAttachmentUrl?: string
