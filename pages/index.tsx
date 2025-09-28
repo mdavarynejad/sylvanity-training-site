@@ -163,43 +163,90 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
           </div>
         </div>
 
-        {/* Features Section */}
+        {/* Features Section - Enhanced Interactive Design */}
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20" ref={featuresRef}>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="animate-on-scroll bg-white border border-gray-200 rounded-lg p-8 hover-lift stagger-animation" style={{'--delay': '0.1s'} as React.CSSProperties}>
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6 bounce-in">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {/* Expert Instructors - Interactive Card */}
+            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.1s'} as React.CSSProperties}>
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Interactive Icon Container */}
+              <div className="relative w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-blue-300/50 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <svg className="w-8 h-8 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">Expert Instructors</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Learn from industry professionals with years of experience
-              </p>
+
+              <div className="relative z-10">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300">Expert Instructors</h3>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  Learn from <span className="font-medium text-blue-600 group-hover:text-blue-700">industry professionals</span> with years of hands-on experience
+                </p>
+              </div>
+
+              {/* Floating Particles Effect */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-bounce transition-opacity duration-300" style={{animationDelay: '0.1s'}}></div>
+              <div className="absolute top-8 right-8 w-1 h-1 bg-purple-400 rounded-full opacity-0 group-hover:opacity-40 group-hover:animate-pulse transition-opacity duration-300" style={{animationDelay: '0.3s'}}></div>
             </div>
-            <div className="animate-on-scroll bg-white border border-gray-200 rounded-lg p-8 hover-lift stagger-animation" style={{'--delay': '0.2s'} as React.CSSProperties}>
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mb-6 bounce-in">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            {/* Flexible Schedule - Interactive Card */}
+            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-green-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.2s'} as React.CSSProperties}>
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-teal-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Interactive Icon Container with Clock Animation */}
+              <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-green-300/50 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-teal-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <svg className="w-8 h-8 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
+                {/* Pulsing Ring Effect */}
+                <div className="absolute inset-0 rounded-xl border-2 border-green-300 opacity-0 group-hover:opacity-50 group-hover:animate-ping"></div>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">Flexible Schedule</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Choose from various schedules that fit your availability
-              </p>
+
+              <div className="relative z-10">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">Flexible Schedule</h3>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  Choose from <span className="font-medium text-green-600 group-hover:text-green-700">various schedules</span> that perfectly fit your availability
+                </p>
+              </div>
+
+              {/* Moving Time Indicators */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-green-400 rounded-full opacity-0 group-hover:opacity-70 transition-all duration-500 group-hover:translate-x-1"></div>
+              <div className="absolute top-10 right-4 w-2 h-2 bg-teal-400 rounded-full opacity-0 group-hover:opacity-50 transition-all duration-700 group-hover:translate-x-2"></div>
             </div>
-            <div className="animate-on-scroll bg-white border border-gray-200 rounded-lg p-8 hover-lift shine-effect stagger-animation" style={{'--delay': '0.3s'} as React.CSSProperties}>
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center mb-6 bounce-in relative">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            {/* Certification - Premium Interactive Card */}
+            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-yellow-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.3s'} as React.CSSProperties}>
+              {/* Premium Shimmer Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200/20 to-transparent transform -skew-x-12 translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
+
+              {/* Interactive Certificate Icon */}
+              <div className="relative w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-yellow-300/50 transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110">
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <svg className="w-8 h-8 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
+                {/* Golden Ring Animation */}
+                <div className="absolute inset-0 rounded-xl border-2 border-yellow-400 opacity-0 group-hover:opacity-60 group-hover:animate-pulse"></div>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">
-                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">Certification</span>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Receive <span className="font-medium text-orange-600">recognized certificates</span> upon completion
-              </p>
+
+              <div className="relative z-10">
+                <h3 className="text-xl font-semibold mb-4 group-hover:scale-105 transition-transform duration-300">
+                  <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent group-hover:from-yellow-600 group-hover:to-orange-600 transition-all duration-300">Professional Certification</span>
+                </h3>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  Receive <span className="font-semibold text-orange-600 group-hover:text-orange-700">industry-recognized certificates</span> upon successful completion
+                </p>
+              </div>
+
+              {/* Sparkling Effects */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-80 group-hover:animate-ping transition-opacity duration-300" style={{animationDelay: '0.2s'}}></div>
+              <div className="absolute top-8 right-8 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-bounce transition-opacity duration-300" style={{animationDelay: '0.4s'}}></div>
+              <div className="absolute bottom-6 right-6 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-pulse transition-opacity duration-300" style={{animationDelay: '0.6s'}}></div>
             </div>
           </div>
         </div>
