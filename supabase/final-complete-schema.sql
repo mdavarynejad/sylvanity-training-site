@@ -14,6 +14,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ALTER TABLE public.trainings ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'active';
 -- Add prerequisites column if it doesn't exist (for existing tables)
 ALTER TABLE public.trainings ADD COLUMN IF NOT EXISTS prerequisites TEXT[];
+-- Add featured column to testimonials if it doesn't exist (for existing tables)
+ALTER TABLE public.testimonials ADD COLUMN IF NOT EXISTS featured BOOLEAN DEFAULT false;
 -- Add constraint only if it doesn't exist
 DO $$
 BEGIN
@@ -78,6 +80,7 @@ CREATE TABLE IF NOT EXISTS public.testimonials (
   rating INTEGER CHECK (rating >= 1 AND rating <= 5),
   training_id UUID REFERENCES public.trainings(id),
   training_title VARCHAR(255),
+  featured BOOLEAN DEFAULT false,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

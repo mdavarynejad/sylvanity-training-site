@@ -160,6 +160,7 @@ INSERT INTO testimonials (
     training_title,
     rating,
     testimonial,
+    featured,
     created_at
 ) VALUES
 (
@@ -169,6 +170,7 @@ INSERT INTO testimonials (
     'AI & Prompt Engineering Workshop',
     5,
     'This workshop completely transformed how we approach AI in our startup. The practical frameworks and hands-on exercises made complex concepts accessible. Within a week, we had implemented AI solutions that saved us 10 hours weekly.',
+    true, -- featured
     now()
 ),
 (
@@ -178,6 +180,7 @@ INSERT INTO testimonials (
     'Change Management in the AI Era',
     5,
     'Outstanding training! The approach to managing AI transformation was exactly what our team needed. The toolkit provided is invaluable, and our AI adoption rate increased by 300% post-training.',
+    true, -- featured
     now()
 ),
 (
@@ -187,6 +190,7 @@ INSERT INTO testimonials (
     'Practical Data Analysis for SMEs',
     5,
     'Finally, a data analysis course that speaks SME language! Complex statistical concepts made simple and actionable. Our decision-making process is now completely data-driven.',
+    true, -- featured
     now()
 ),
 (
@@ -196,6 +200,7 @@ INSERT INTO testimonials (
     'AI-Powered Business Automation',
     4,
     'Great practical insights into business automation. The ROI from implementing just two of the suggested workflows has already covered the training cost twice over.',
+    false, -- not featured
     now()
 ),
 (
@@ -205,6 +210,7 @@ INSERT INTO testimonials (
     'Agentic AI Workshop',
     5,
     'The advanced workshop opened our eyes to the future of AI. The agentic AI solutions we built are now handling 40% of our customer inquiries autonomously.',
+    true, -- featured
     now()
 ),
 (
@@ -214,6 +220,7 @@ INSERT INTO testimonials (
     'AI & Prompt Engineering Workshop',
     5,
     'The practical approach to prompt engineering was game-changing. We now have a structured method for AI integration that every team member can follow confidently.',
+    false, -- not featured
     now()
 );
 
