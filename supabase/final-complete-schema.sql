@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS public.trainings (
   hero_image_url TEXT,
   pdf_attachment_url TEXT,
   tags TEXT[], -- Array of tags/skills
+  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'preparation', 'cancelled')), -- Course readiness status
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
