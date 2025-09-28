@@ -16,6 +16,30 @@ interface TrainingDetailPageProps {
 }
 
 export default function TrainingDetailPage({ training }: TrainingDetailPageProps) {
+  // Redirect upcoming courses to 404 or show a "coming soon" message
+  if (training.upcoming) {
+    return (
+      <>
+        <Header />
+        <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="max-w-md mx-auto text-center p-8">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">Coming Soon</h1>
+            <p className="text-gray-600 mb-6">
+              This training course is currently in preparation and not yet available for booking.
+            </p>
+            <Link
+              href="/trainings"
+              className="btn-gradient-primary"
+            >
+              View Available Trainings
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [showLeadForm, setShowLeadForm] = useState(false)
