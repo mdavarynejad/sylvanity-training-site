@@ -12,9 +12,7 @@ export async function getTrainings(): Promise<Training[]> {
 
     if (error) {
       console.error('Error fetching trainings:', error)
-      // Fallback to mock data if Supabase is not configured
-      const { mockTrainings } = await import('./mock-data')
-      return mockTrainings
+      throw error
     }
 
 
@@ -35,9 +33,9 @@ export async function getTrainings(): Promise<Training[]> {
         startDate: firstStartDate,
         startDates: startDates, // Add start dates array
         endDate: training.end_date || null,
-        maxParticipants: training.max_participants || 20,
+        maxParticipants: training.max_participants || 22,
         currentParticipants: training.current_participants || 0,
-        instructor: training.instructor,
+        instructor: '', // Removed instructor field
         level: training.level as 'Beginner' | 'Intermediate' | 'Advanced',
         category: training.category,
         tags: training.tags || [],
@@ -50,9 +48,7 @@ export async function getTrainings(): Promise<Training[]> {
     })
   } catch (error) {
     console.error('Error in getTrainings:', error)
-    // Fallback to mock data
-    const { mockTrainings } = await import('./mock-data')
-    return mockTrainings
+    throw error
   }
 }
 
@@ -67,9 +63,7 @@ export async function getTrainingById(id: string): Promise<Training | null> {
 
     if (error) {
       console.error('Error fetching training:', error)
-      // Fallback to mock data
-      const { getTrainingById: getMockTraining } = await import('./mock-data')
-      return getMockTraining(id)
+      throw error
     }
 
     if (!data) return null
@@ -90,9 +84,9 @@ export async function getTrainingById(id: string): Promise<Training | null> {
       startDate: firstStartDate,
       startDates: startDates, // Add start dates array
       endDate: data.end_date || null,
-      maxParticipants: data.max_participants || 20,
+      maxParticipants: data.max_participants || 22,
       currentParticipants: data.current_participants || 0,
-      instructor: data.instructor,
+      instructor: '', // Removed instructor field
       level: data.level as 'Beginner' | 'Intermediate' | 'Advanced',
       category: data.category,
       tags: data.tags || [],
@@ -104,9 +98,7 @@ export async function getTrainingById(id: string): Promise<Training | null> {
     }
   } catch (error) {
     console.error('Error in getTrainingById:', error)
-    // Fallback to mock data
-    const { getTrainingById: getMockTraining } = await import('./mock-data')
-    return getMockTraining(id)
+    throw error
   }
 }
 

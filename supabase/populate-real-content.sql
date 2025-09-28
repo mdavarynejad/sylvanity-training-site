@@ -1,10 +1,14 @@
 -- Sylvanity Training Platform - Real Content Population
 -- This script populates the database with authentic Sylvanity courses
--- Run this script in your Supabase SQL Editor after running the complete-migration.sql
+-- Updated: Removed instructor field, set max_participants to 22 (18 for Agentic AI)
 
 -- Clear existing data (if any)
 DELETE FROM testimonials;
 DELETE FROM trainings;
+
+-- Update existing records if you don't want to delete
+-- UPDATE trainings SET max_participants = 22 WHERE title != 'Agentic AI Workshop';
+-- UPDATE trainings SET max_participants = 18 WHERE title = 'Agentic AI Workshop';
 
 -- Insert Real Sylvanity Training Programs
 INSERT INTO trainings (
@@ -15,7 +19,6 @@ INSERT INTO trainings (
     price,
     currency,
     duration,
-    instructor,
     category,
     level,
     max_participants,
@@ -34,10 +37,9 @@ INSERT INTO trainings (
     899.00,
     'EUR',
     '1 day',
-    'Dr. Sarah Mitchell',
     'AI & Technology',
     'Beginner',
-    20,
+    22,
     12,
     '["2024-02-15", "2024-03-12", "2024-04-09", "2024-05-14"]'::jsonb,
     '/images/trainings/ai-prompt-engineering-hero.webp',
@@ -53,10 +55,9 @@ INSERT INTO trainings (
     1199.00,
     'EUR',
     '1 day',
-    'James Wilson',
     'AI & Technology',
     'Intermediate',
-    18,
+    22,
     11,
     '["2024-04-20", "2024-05-11", "2024-06-01", "2024-06-22"]'::jsonb,
     '/images/trainings/business-automation-hero.webp',
@@ -72,10 +73,9 @@ INSERT INTO trainings (
     1099.00,
     'EUR',
     '1 day',
-    'Prof. Michael Chen',
     'Leadership & Management',
     'Intermediate',
-    18,
+    22,
     8,
     '["2024-03-01", "2024-03-28", "2024-04-25", "2024-05-23"]'::jsonb,
     '/images/trainings/change-management-hero.webp',
@@ -91,10 +91,9 @@ INSERT INTO trainings (
     1299.00,
     'EUR',
     '1 day',
-    'Dr. Elena Rodriguez',
     'AI & Technology',
     'Advanced',
-    15,
+    18,  -- Special max_participants for Agentic AI
     6,
     '["2024-03-15", "2024-04-12", "2024-05-10", "2024-06-14"]'::jsonb,
     '/images/trainings/agentic-ai-hero.webp',
@@ -110,10 +109,9 @@ INSERT INTO trainings (
     999.00,
     'EUR',
     '1 day',
-    'Alex Thompson',
     'Data & Analytics',
     'Beginner',
-    20,
+    22,
     14,
     '["2024-04-05", "2024-04-26", "2024-05-17", "2024-06-07"]'::jsonb,
     '/images/trainings/data-analysis-hero.webp',
@@ -122,7 +120,7 @@ INSERT INTO trainings (
     now()
 );
 
--- Insert Real Testimonials based on Sylvanity courses
+-- Insert Real Testimonials
 INSERT INTO testimonials (
     id,
     participant_name,
@@ -147,7 +145,7 @@ INSERT INTO testimonials (
     'BuildCorp Ltd',
     'Change Management in the AI Era',
     5,
-    'Outstanding training! Prof. Chen''s approach to managing AI transformation was exactly what our team needed. The toolkit provided is invaluable, and our AI adoption rate increased by 300% post-training.',
+    'Outstanding training! The approach to managing AI transformation was exactly what our team needed. The toolkit provided is invaluable, and our AI adoption rate increased by 300% post-training.',
     now()
 ),
 (
@@ -156,7 +154,7 @@ INSERT INTO testimonials (
     'DataFlow Analytics',
     'Practical Data Analysis for SMEs',
     5,
-    'Finally, a data analysis course that speaks SME language! Alex made complex statistical concepts simple and actionable. Our decision-making process is now completely data-driven.',
+    'Finally, a data analysis course that speaks SME language! Complex statistical concepts made simple and actionable. Our decision-making process is now completely data-driven.',
     now()
 ),
 (
@@ -174,7 +172,7 @@ INSERT INTO testimonials (
     'InnovateNow',
     'Agentic AI Workshop',
     5,
-    'Dr. Rodriguez''s advanced workshop opened our eyes to the future of AI. The agentic AI solutions we built are now handling 40% of our customer inquiries autonomously.',
+    'The advanced workshop opened our eyes to the future of AI. The agentic AI solutions we built are now handling 40% of our customer inquiries autonomously.',
     now()
 ),
 (
@@ -194,10 +192,18 @@ SELECT
     currency,
     level,
     category,
+    max_participants,
     jsonb_array_length(start_dates) as num_start_dates,
     array_length(tags, 1) as num_tags
 FROM trainings
 ORDER BY created_at;
+
+-- Show max participants summary
+SELECT
+    'Max Participants Summary' as info,
+    COUNT(CASE WHEN max_participants = 22 THEN 1 END) as "Trainings with 22 seats",
+    COUNT(CASE WHEN max_participants = 18 THEN 1 END) as "Trainings with 18 seats (Agentic AI)"
+FROM trainings;
 
 -- Show testimonials summary
 SELECT

@@ -77,10 +77,6 @@ export default function TrainingCard({ training, variant = 'default' }: Training
 
       <div className="space-y-3 mb-6">
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Instructor:</span>
-          <span className="font-medium text-gray-900">{training.instructor}</span>
-        </div>
-        <div className="flex justify-between text-sm">
           <span className="text-gray-600">Next Start:</span>
           <span className="font-medium text-gray-900">
             {training.startDates && training.startDates.length > 0
@@ -97,6 +93,10 @@ export default function TrainingCard({ training, variant = 'default' }: Training
             <span className="font-medium text-blue-600">+{training.startDates.length - 1} more</span>
           </div>
         )}
+        <div className="flex justify-between text-sm">
+          <span className="text-gray-600">Max Seats:</span>
+          <span className="font-medium text-gray-900">{training.maxParticipants}</span>
+        </div>
       </div>
 
       <div className="flex justify-between items-center">
@@ -104,7 +104,7 @@ export default function TrainingCard({ training, variant = 'default' }: Training
           <div className="text-2xl font-medium text-gray-900">
             {formatPrice(training.price, training.currency)}
           </div>
-          <div className="text-sm text-gray-600">per person</div>
+          <div className="text-sm text-gray-600">per session</div>
         </div>
 
         <Link
