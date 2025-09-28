@@ -1,0 +1,328 @@
+<svg width="1200" height="1420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Updated Brand Colors -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8FAF91;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#264E70;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F7FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F7FA;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8FAF91;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#264E70;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#264E70;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8FAF91;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="leadershipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8FAF91;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#264E70;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Drop shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1420" fill="url(#bgGrad)"/>
+
+  <!-- Header Section -->
+  <rect x="0" y="0" width="1200" height="200" fill="url(#headerGrad)"/>
+
+  <!-- Company Logo Area -->
+  <text x="60" y="70" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
+    Sylvanity B.V.
+  </text>
+  <text x="60" y="105" font-family="Arial, sans-serif" font-size="20" fill="#F5F7FA">
+    AI TRAINING EXCELLENCE
+  </text>
+
+  <!-- Main Title -->
+  <text x="60" y="150" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="white">
+    Professional AI Development Programs 2025-2026
+  </text>
+
+  <!-- Contact Info -->
+  <text x="750" y="80" font-family="Arial, sans-serif" font-size="14" fill="white">
+    Email: academy@sylvanity.eu
+  </text>
+  <text x="750" y="100" font-family="Arial, sans-serif" font-size="14" fill="white">
+    Web: sylvanity.eu
+  </text>
+  <text x="750" y="120" font-family="Arial, sans-serif" font-size="14" fill="white">
+    Address: Treubstraat 19-23, Rijswijk
+  </text>
+  <text x="750" y="140" font-family="Arial, sans-serif" font-size="14" fill="white">
+    Netherlands &amp; On-site Delivery
+  </text>
+
+  <!-- Real QR Code for academy.sylvanity.eu -->
+  <g transform="translate(1050, 60)">
+    <rect x="0" y="0" width="90" height="90" fill="white" rx="5"/>
+    <image x="5" y="5" width="80" height="80" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA9klEQVRYhd2XwQ7DIAxDw5fz53jETjo2rfd6KaIVj0OtBDeNuI0JRsQeY+0xtLCeTfjuiA2Rq2vj4CZXkjpTKQ6ty57kxJU/IZk9rbuTqsR9DfysUS9SToFL6beHeJEjcGvdRmRK5zuqHG2JLI+pW2V9vJmSKKHKWwKqzV2ehJJqkuvVFlPSaUuAFLqaP5jMzs6e26r7ZFmSSlDiturBenMlwLvoZAcaxqQtAfqaqkfwJB1QJdKsP7sDLzJVfUzcqmNFta5EOmV/sggaoC+BjC9wxtU52BIET9TxZTIn6g/K94YvUSXqZF0/P75Ez8ycOqGGnuQ2Xs0QOC0imD3ZAAAAAElFTkSuQmCC"/>
+  </g>
+
+  <!-- QR Code Label -->
+  <text x="1095" y="165" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">
+    Scan for Registration
+  </text>
+
+
+  <!-- AI & Technology Courses Section -->
+  <rect x="60" y="240" width="1080" height="420" fill="white" rx="15" filter="url(#shadow)"/>
+  <rect x="60" y="240" width="1080" height="50" fill="url(#aiGrad)" rx="15"/>
+  <text x="90" y="270" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">
+    AI and Technology Training Programs
+  </text>
+
+  <!-- AI Course 1 - Enhanced with PDF content -->
+  <rect x="90" y="310" width="500" height="160" fill="#F5F7FA" stroke="#8FAF91" stroke-width="2" rx="10"/>
+  <text x="105" y="335" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    AI and Prompt Engineering Workshop
+  </text>
+  <text x="105" y="355" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Foundation Level - 8 Hours - Max 22 participants
+  </text>
+  <text x="105" y="375" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Master RTCFE Framework (Role, Task, Context, Format, Examples)
+  </text>
+  <text x="105" y="390" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Hands-on with ChatGPT, Claude, Perplexity.ai
+  </text>
+  <text x="105" y="405" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    7 comprehensive modules with practical labs
+  </text>
+  <text x="105" y="420" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Privacy and data governance best practices
+  </text>
+  <text x="105" y="440" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">
+    Dates: Nov 17, 24 | Feb 10, 17
+  </text>
+  <text x="105" y="455" font-family="Arial, sans-serif" font-size="10" fill="#264E70">
+    Topics: AI, ChatGPT, Claude, Prompt Engineering
+  </text>
+
+  <!-- AI Course 2 - Enhanced with PDF content -->
+  <rect x="610" y="310" width="500" height="160" fill="#F5F7FA" stroke="#8FAF91" stroke-width="2" rx="10"/>
+  <text x="625" y="335" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    AI-Powered Business Automation
+  </text>
+  <text x="625" y="355" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Intermediate Level - 8 Hours - Max 22 participants
+  </text>
+  <text x="625" y="375" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Effort vs Impact Matrix framework
+  </text>
+  <text x="625" y="390" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Zapier/Make integration platforms and APIs
+  </text>
+  <text x="625" y="405" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Webhook concepts and workflow building
+  </text>
+  <text x="625" y="420" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    30-day automation roadmap implementation
+  </text>
+  <text x="625" y="440" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">
+    Dates: Nov 17, 24 | Feb 10, 17
+  </text>
+  <text x="625" y="455" font-family="Arial, sans-serif" font-size="10" fill="#264E70">
+    Topics: Automation, Zapier, Make, API Integration
+  </text>
+
+  <!-- AI Course 3 - Enhanced with PDF content -->
+  <rect x="90" y="490" width="500" height="160" fill="#F5F7FA" stroke="#264E70" stroke-width="2" rx="10"/>
+  <text x="105" y="515" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    Agentic AI Workshop
+  </text>
+  <text x="105" y="535" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Advanced Level - 8 Hours - Max 18 participants
+  </text>
+  <text x="105" y="555" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    AI Agent components: Goal, Planning, Tools, Memory
+  </text>
+  <text x="105" y="570" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    No-code platforms (MindStudio, AgentGPT)
+  </text>
+  <text x="105" y="585" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Build autonomous AI teammates for complex tasks
+  </text>
+  <text x="105" y="600" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Risk management and governance frameworks
+  </text>
+  <text x="105" y="620" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">
+    Dates: Dec 12 | Jan 23 | Feb 20 | Mar 17
+  </text>
+  <text x="105" y="635" font-family="Arial, sans-serif" font-size="10" fill="#264E70">
+    Prerequisites: Courses 1 and 2 Required
+  </text>
+
+  <!-- AI Course 4 - Coming Soon -->
+  <rect x="610" y="490" width="500" height="160" fill="#F5F7FA" stroke="#8FAF91" stroke-width="2" stroke-dasharray="5,5" rx="10"/>
+  <text x="625" y="515" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    AI in Logistics and Supply Chain
+  </text>
+  <text x="625" y="535" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Intermediate Level - 8 Hours - Coming Soon
+  </text>
+  <text x="625" y="555" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Transform supply chain operations with AI-driven
+  </text>
+  <text x="625" y="570" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    optimization, predictive analytics, and smart automation
+  </text>
+  <text x="625" y="585" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Status: In Development - Course materials being finalized
+  </text>
+  <text x="625" y="600" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Prerequisite planning and market analysis in progress
+  </text>
+  <text x="625" y="620" font-family="Arial, sans-serif" font-size="10" fill="#8FAF91">
+    Topics: Logistics, Supply Chain, Predictive Analytics
+  </text>
+
+  <!-- Data & Analytics Section -->
+  <rect x="60" y="680" width="520" height="220" fill="white" rx="15" filter="url(#shadow)"/>
+  <rect x="60" y="680" width="520" height="50" fill="url(#dataGrad)" rx="15"/>
+  <text x="90" y="710" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">
+    Data and Analytics Excellence
+  </text>
+
+  <rect x="90" y="750" width="460" height="130" fill="#F5F7FA" stroke="#264E70" stroke-width="2" rx="10"/>
+  <text x="105" y="775" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    Practical Data Analysis for SMEs
+  </text>
+  <text x="105" y="795" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Foundation Level - 8 Hours - Max 22 participants
+  </text>
+  <text x="105" y="815" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    SMART framework for data-driven questions
+  </text>
+  <text x="105" y="830" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    AI-powered data cleaning and analysis with ChatGPT
+  </text>
+  <text x="105" y="845" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Data visualization and storytelling techniques
+  </text>
+  <text x="105" y="860" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Create one-page Business Insights Dashboard
+  </text>
+  <text x="105" y="875" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">
+    Dates: Nov 17, 24 | Feb 10, 17
+  </text>
+
+  <!-- Leadership & Management Section -->
+  <rect x="620" y="680" width="520" height="220" fill="white" rx="15" filter="url(#shadow)"/>
+  <rect x="620" y="680" width="520" height="50" fill="url(#leadershipGrad)" rx="15"/>
+  <text x="650" y="710" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">
+    Leadership and Change Management
+  </text>
+
+  <rect x="650" y="750" width="460" height="130" fill="#F5F7FA" stroke="#8FAF91" stroke-width="2" rx="10"/>
+  <text x="665" y="775" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#264E70">
+    Change Management in the AI Era
+  </text>
+  <text x="665" y="795" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Leadership Level - 8 Hours - Max 22 participants
+  </text>
+  <text x="665" y="815" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Kotter's 8-Step Change Management Model
+  </text>
+  <text x="665" y="830" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Stakeholder analysis and engagement strategies
+  </text>
+  <text x="665" y="845" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    Communication planning and resistance management
+  </text>
+  <text x="665" y="860" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+    One-page Change Management Plan template
+  </text>
+  <text x="665" y="875" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">
+    Dates: Nov 17, 24 | Feb 10, 17
+  </text>
+
+  <!-- Key Information Section -->
+  <rect x="60" y="940" width="1080" height="200" fill="white" rx="15" filter="url(#shadow)"/>
+  <text x="90" y="975" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#264E70">
+    Training Excellence and Comprehensive Support
+  </text>
+
+  <!-- Two columns of info -->
+  <text x="90" y="1005" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#8FAF91">
+    What's Included:
+  </text>
+  <text x="90" y="1025" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Professional certification upon completion
+  </text>
+  <text x="90" y="1040" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Comprehensive course materials, templates and checklists
+  </text>
+  <text x="90" y="1055" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Hands-on exercises with real AI tools and platforms
+  </text>
+  <text x="90" y="1070" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Post-training support and implementation guidance
+  </text>
+  <text x="90" y="1085" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Small class sizes for personalized attention
+  </text>
+  <text x="90" y="1100" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Industry-proven frameworks and methodologies
+  </text>
+
+  <text x="580" y="1005" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#264E70">
+    Training Delivery:
+  </text>
+  <text x="580" y="1025" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Our Training Center: Treubstraat 19-23, Rijswijk
+  </text>
+  <text x="580" y="1040" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    On-site at your location (Netherlands-wide)
+  </text>
+  <text x="580" y="1055" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Interactive workshop format with expert facilitators
+  </text>
+  <text x="580" y="1070" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Flexible scheduling to match business operations
+  </text>
+  <text x="580" y="1085" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    All training materials and resources provided
+  </text>
+  <text x="580" y="1100" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+    Follow-up support for implementation success
+  </text>
+
+  <!-- Testimonials Section -->
+  <rect x="60" y="1180" width="1080" height="120" fill="#F5F7FA" stroke="#8FAF91" stroke-width="1" rx="15"/>
+  <text x="90" y="1210" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#264E70">
+    Success Stories from Our Training Community:
+  </text>
+
+  <text x="90" y="1230" font-family="Arial, sans-serif" font-size="11" fill="#374151" font-style="italic">
+    "This workshop completely transformed how we approach AI in our startup. Within a week, we had implemented
+  </text>
+  <text x="90" y="1245" font-family="Arial, sans-serif" font-size="11" fill="#374151" font-style="italic">
+    AI solutions that saved us 10 hours weekly." - Sarah Johnson, TechStart Solutions
+  </text>
+
+  <text x="90" y="1265" font-family="Arial, sans-serif" font-size="11" fill="#374151" font-style="italic">
+    "Outstanding training! The ROI from implementing just two workflows has already covered the training cost
+  </text>
+  <text x="90" y="1280" font-family="Arial, sans-serif" font-size="11" fill="#374151" font-style="italic">
+    twice over. The practical frameworks make all the difference." - James Wilson, AutoMate Pro
+  </text>
+
+  <!-- Footer Call-to-Action -->
+  <rect x="60" y="1340" width="1080" height="70" fill="url(#headerGrad)" rx="15"/>
+  <text x="600" y="1375" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">
+    Transform Your Business with AI Excellence
+  </text>
+</svg>

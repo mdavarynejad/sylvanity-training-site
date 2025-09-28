@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 595 842" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="595" height="842" fill="#F5F7FA"/>
+  
+  <!-- Header Section with Brand Color -->
+  <rect width="595" height="120" fill="#E8F0E9"/>
+  <rect width="595" height="3" y="117" fill="#8FAF91"/>
+  
+  <!-- Logo Placeholder -->
+  <g transform="translate(50, 25)">
+    <circle cx="35" cy="35" r="30" fill="#8FAF91"/>
+    <text x="35" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">S</text>
+  </g>
+  
+  <!-- Company Name and Contact -->
+  <text x="120" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#264E70">Sylvanty B.V.</text>
+  <text x="120" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666">Transform Your SME with Practical AI Training</text>
+  <text x="120" y="88" font-family="Arial, sans-serif" font-size="10" fill="#8FAF91">academy@sylvanity.eu • sylvanity.eu</text>
+  
+  <!-- Main Title -->
+  <text x="297" y="155" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#264E70">Professional AI Development Programs 2025-2026</text>
+  <text x="297" y="178" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">Comprehensive Training for SME Success</text>
+  
+  <!-- Course Grid 2x3 -->
+  <g transform="translate(30, 210)">
+    <!-- Row 1 -->
+    <!-- Course 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="260" height="110" fill="white" stroke="#E0E0E0" stroke-width="1" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">1. AI and Prompt Engineering</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#666">Master prompt engineering</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#666">ChatGPT, Claude, Gemini</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#666">GDPR and privacy focus</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">8 hours • Nov 17, 24 | Feb 10, 17</text>
+    </g>
+    
+    <!-- Course 2 -->
+    <g transform="translate(275, 0)">
+      <rect width="260" height="110" fill="white" stroke="#E0E0E0" stroke-width="1" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">2. Business Automation</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#666">Build AI-powered workflows</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#666">Zapier, APIs, integrations</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#666">ROI-focused implementation</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">8 hours • Nov 17, 24 | Feb 10, 17</text>
+    </g>
+    
+    <!-- Row 2 -->
+    <!-- Course 3 -->
+    <g transform="translate(0, 125)">
+      <rect width="260" height="110" fill="white" stroke="#E0E0E0" stroke-width="1" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">3. Change Management</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#666">Lead AI transformation</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#666">Kotter's 8-Step Model</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#666">Stakeholder engagement</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">8 hours • Nov 17, 24 | Feb 10, 17</text>
+    </g>
+    
+    <!-- Course 4 -->
+    <g transform="translate(275, 125)">
+      <rect width="260" height="110" fill="white" stroke="#E0E0E0" stroke-width="1" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">4. Data Analysis with AI</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#666">AI-powered insights</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#666">Clean and analyze data</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#666">Business dashboards</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">8 hours • Nov 17, 24 | Feb 10, 17</text>
+    </g>
+    
+    <!-- Row 3 -->
+    <!-- Course 5 - Agentic AI with star -->
+    <g transform="translate(0, 250)">
+      <rect width="260" height="110" fill="white" stroke="#E0E0E0" stroke-width="1" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">5. Agentic AI ⭐</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#264E70" font-weight="bold">ADVANCED (Prereq: 1+2)</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#666">Build autonomous AI agents</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#666">Goal, Planning, Tools, Memory</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8FAF91">Dec 12 | Jan 23 | Feb 20 | Mar 17</text>
+    </g>
+    
+    <!-- Course 6 - Coming Soon with dashed border -->
+    <g transform="translate(275, 250)">
+      <rect width="260" height="110" fill="white" stroke="#999" stroke-width="1" stroke-dasharray="5,3" rx="6"/>
+      <rect width="260" height="30" fill="#264E70" opacity="0.3" rx="6 6 0 0"/>
+      <text x="15" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#999">6. Logistics and Supply Chain</text>
+      <text x="15" y="50" font-family="Arial, sans-serif" font-size="11" fill="#8FAF91" font-weight="bold">COMING SOON</text>
+      <text x="15" y="67" font-family="Arial, sans-serif" font-size="11" fill="#999">AI-driven optimization</text>
+      <text x="15" y="84" font-family="Arial, sans-serif" font-size="11" fill="#999">Predictive analytics</text>
+      <text x="15" y="102" font-family="Arial, sans-serif" font-size="11" fill="#999">Smart automation</text>
+    </g>
+  </g>
+  
+  <!-- Key Benefits -->
+  <g transform="translate(30, 590)">
+    <rect width="535" height="70" fill="white" stroke="#8FAF91" stroke-width="1" rx="6"/>
+    <text x="267" y="20" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#264E70">What's Included</text>
+    <g transform="translate(25, 35)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Professional certification</text>
+      <text x="0" y="15" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Small classes (max 22)</text>
+      
+      <text x="180" y="0" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Hands-on with real AI tools</text>
+      <text x="180" y="15" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Implementation support</text>
+      
+      <text x="360" y="0" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Proven frameworks</text>
+      <text x="360" y="15" font-family="Arial, sans-serif" font-size="10" fill="#666">✓ Course materials</text>
+    </g>
+  </g>
+  
+  <!-- Success Quote -->
+  <g transform="translate(297, 685)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11" font-style="italic" text-anchor="middle" fill="#666">"The ROI from implementing just two workflows has</text>
+    <text x="0" y="16" font-family="Arial, sans-serif" font-size="11" font-style="italic" text-anchor="middle" fill="#666">already covered the training cost twice over."</text>
+    <text x="0" y="32" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#264E70">- James Wilson, AutoMate Pro</text>
+  </g>
+  
+  <!-- Location and CTA -->
+  <g transform="translate(297, 745)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">Training Center: Treubstraat 19-23, Rijswijk • On-site: Netherlands-wide</text>
+  </g>
+  
+  <g transform="translate(297, 770)">
+    <rect x="-100" y="-15" width="200" height="35" fill="#8FAF91" rx="18"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Start Your AI Journey</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="297" y="820" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#999">academy@sylvanity.eu • sylvanity.eu</text>
+</svg>
