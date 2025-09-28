@@ -173,7 +173,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Expert Instructors - Interactive Card */}
-            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.1s'} as React.CSSProperties}>
+            <div className="group animate-on-scroll methodology-box bg-white border border-gray-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-2xl cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.1s'} as React.CSSProperties}>
               {/* Animated Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -198,7 +198,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </div>
 
             {/* Flexible Schedule - Interactive Card */}
-            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-green-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.2s'} as React.CSSProperties}>
+            <div className="group animate-on-scroll methodology-box bg-white border border-gray-200 rounded-xl p-8 hover:border-green-400 hover:shadow-2xl cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.2s'} as React.CSSProperties}>
               {/* Animated Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-teal-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -225,7 +225,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
             </div>
 
             {/* Certification - Premium Interactive Card */}
-            <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-yellow-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.3s'} as React.CSSProperties}>
+            <div className="group animate-on-scroll methodology-box bg-white border border-gray-200 rounded-xl p-8 hover:border-yellow-400 hover:shadow-2xl cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.3s'} as React.CSSProperties}>
               {/* Premium Shimmer Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200/20 to-transparent transform -skew-x-12 translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
