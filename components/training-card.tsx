@@ -10,10 +10,20 @@ export default function TrainingCard({ training, variant = 'default' }: Training
   const availableSpots = training.maxParticipants - training.currentParticipants
   const isAlmostFull = availableSpots <= 3
   const isFull = availableSpots === 0
+  const isUpcoming = training.upcoming || false
 
-  const cardClasses = variant === 'featured'
-    ? 'card border-2 border-blue-500 bg-blue-50'
-    : 'card'
+  // Design Pattern: State Pattern - Different card states
+  const getCardClasses = () => {
+    if (isUpcoming) {
+      return 'card border-2 border-dashed border-gray-300 bg-gray-50 opacity-75'
+    }
+    if (variant === 'featured') {
+      return 'card border-2 border-blue-500 bg-blue-50'
+    }
+    return 'card'
+  }
+
+  const cardClasses = getCardClasses()
 
   const levelColors = {
     'Beginner': 'bg-green-100 text-green-800',
@@ -23,10 +33,19 @@ export default function TrainingCard({ training, variant = 'default' }: Training
 
   return (
     <div className={`${cardClasses} mobile-card-padding`}>
-      {variant === 'featured' && (
+      {/* Design Pattern: Template Method - Badge rendering strategy */}
+      {variant === 'featured' && !isUpcoming && (
         <div className="flex items-center mb-4">
           <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
             Featured
+          </span>
+        </div>
+      )}
+
+      {isUpcoming && (
+        <div className="flex items-center mb-4">
+          <span className="bg-gray-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+            Coming Soon
           </span>
         </div>
       )}

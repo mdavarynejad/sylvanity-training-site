@@ -27,6 +27,7 @@ INSERT INTO trainings (
     hero_image_url,
     pdf_attachment_url,
     tags,
+    status,
     created_at
 ) VALUES
 (
@@ -45,6 +46,7 @@ INSERT INTO trainings (
     '/images/trainings/ai-prompt-engineering-hero.webp',
     '/attachments/ai-prompt-engineering-syllabus.pdf',
     ARRAY['AI', 'Prompt Engineering', 'Productivity', 'SME', 'ChatGPT', 'Automation', 'Data Privacy', 'RTCFE Framework'],
+    'active',
     now()
 ),
 (
@@ -63,6 +65,7 @@ INSERT INTO trainings (
     '/images/trainings/business-automation-hero.webp',
     '/attachments/automation-playbook.pdf',
     ARRAY['Automation', 'Business Processes', 'AI Workflows', 'Zapier', 'API Integration', 'Efficiency', 'Low-code', 'No-code'],
+    'active',
     now()
 ),
 (
@@ -81,6 +84,7 @@ INSERT INTO trainings (
     '/images/trainings/change-management-hero.webp',
     '/attachments/change-management-toolkit.pdf',
     ARRAY['Change Management', 'AI Transformation', 'Leadership', 'SME', 'Digital Strategy', 'Kotter Model', 'Team Management'],
+    'active',
     now()
 ),
 (
@@ -99,6 +103,7 @@ INSERT INTO trainings (
     '/images/trainings/agentic-ai-hero.webp',
     '/attachments/agentic-ai-blueprint.pdf',
     ARRAY['Agentic AI', 'AI Agents', 'Automation', 'Advanced AI', 'Machine Learning', 'AI Workflows', 'Autonomous Systems'],
+    'active',
     now()
 ),
 (
@@ -117,6 +122,26 @@ INSERT INTO trainings (
     '/images/trainings/data-analysis-hero.webp',
     '/attachments/data-analysis-workbook.pdf',
     ARRAY['Data Analysis', 'Business Insights', 'SME', 'Spreadsheets', 'Excel', 'Visualization', 'AI-driven Analysis'],
+    'active',
+    now()
+),
+(
+    '550e8400-e29b-41d4-a716-446655440006',
+    'AI in Logistics & Supply Chain',
+    'Transform your supply chain operations with AI-driven optimization, predictive analytics, and intelligent automation.',
+    'Coming soon: A comprehensive workshop on implementing AI solutions across logistics and supply chain operations. Learn to leverage machine learning for demand forecasting, optimize inventory management, automate route planning, and implement predictive maintenance. Designed for supply chain professionals and logistics managers seeking to modernize their operations with cutting-edge AI technologies.',
+    1299.00,
+    'EUR',
+    '1 day',
+    'AI & Technology',
+    'Intermediate',
+    22,
+    0,
+    '[]'::jsonb,  -- Empty array for upcoming course
+    '/images/trainings/logistics-ai-hero.webp',
+    null,  -- No PDF yet for upcoming course
+    ARRAY['AI', 'Logistics', 'Supply Chain', 'Predictive Analytics', 'Automation', 'Optimization', 'Machine Learning'],
+    'preparation',
     now()
 );
 

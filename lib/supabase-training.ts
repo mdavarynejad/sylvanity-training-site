@@ -40,6 +40,7 @@ export async function getTrainings(): Promise<Training[]> {
         category: training.category,
         tags: training.tags || [],
         featured: training.featured || false,
+        upcoming: (training.status === 'preparation'), // Mark as upcoming based on status field
         imageUrl: training.hero_image_url,
         heroImageUrl: training.hero_image_url, // Add heroImageUrl for detail page
         pdfAttachmentUrl: training.pdf_attachment_url, // Add PDF attachment URL
@@ -91,6 +92,7 @@ export async function getTrainingById(id: string): Promise<Training | null> {
       category: data.category,
       tags: data.tags || [],
       featured: data.featured || false,
+      upcoming: (data.status === 'preparation'), // Mark as upcoming based on status field
       imageUrl: data.hero_image_url,
       heroImageUrl: data.hero_image_url, // Add heroImageUrl for detail page
       pdfAttachmentUrl: data.pdf_attachment_url, // Add PDF attachment URL
