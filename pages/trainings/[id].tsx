@@ -262,6 +262,47 @@ export default function TrainingDetailPage({ training }: TrainingDetailPageProps
           </div>
         )}
 
+        {/* Prerequisites */}
+        {training.prerequisites && training.prerequisites.length > 0 && (
+          <div className="card mobile-card-padding mobile-section-gap">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Prerequisites</h2>
+            <p className="text-gray-700 mb-4">To get the most out of this advanced training, we recommend completing these prerequisite courses first:</p>
+            <div className="space-y-3">
+              {training.prerequisites.map((prerequisite, index) => {
+                // Map prerequisite titles to course IDs
+                const prerequisiteMap: Record<string, string> = {
+                  'AI & Prompt Engineering': '550e8400-e29b-41d4-a716-446655440001',
+                  'AI-Powered Business Automation': '550e8400-e29b-41d4-a716-446655440002'
+                };
+
+                const courseId = prerequisiteMap[prerequisite];
+
+                return (
+                  <div key={index} className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100">
+                    <div className="flex items-center">
+                      <span className="text-blue-600 mr-3 text-lg">📚</span>
+                      <span className="text-gray-800 font-medium">
+                        {prerequisite === 'AI & Prompt Engineering' ? 'AI & Prompt Engineering Workshop' : prerequisite}
+                      </span>
+                    </div>
+                    {courseId && (
+                      <Link
+                        href={`/trainings/${courseId}`}
+                        className="text-blue-600 hover:text-blue-800 font-medium text-sm underline"
+                      >
+                        View Course →
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-sm text-gray-600 mt-4">
+              <strong>Note:</strong> While these prerequisites are recommended for optimal learning, motivated learners with relevant experience may still benefit from this course.
+            </p>
+          </div>
+        )}
+
         <CourseMaterialsTabs training={training} />
 
         {/* Why Choose This Training */}
