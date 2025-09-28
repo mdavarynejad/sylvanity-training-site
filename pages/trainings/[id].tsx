@@ -30,7 +30,7 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
             </p>
             <Link
               href="/trainings"
-              className="btn-gradient-primary hover-gradient-lift inline-flex items-center justify-center"
+              className="btn-gradient-primary hover-gradient-lift px-8 py-4 font-medium text-lg inline-flex items-center justify-center"
             >
               View Available Trainings
             </Link>
@@ -382,9 +382,11 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
             {(training.faqs || [
               {
                 question: `What prerequisites are needed for this ${training.category} training?`,
-                answer: `This ${training.level} level course ${training.level === 'Beginner' ?
-                  'requires no prior experience' :
-                  'assumes basic familiarity with core concepts'}. We provide all necessary materials and support.`
+                answer: training.prerequisites && training.prerequisites.length > 0
+                  ? `This advanced course requires completion of specific prerequisite trainings. Please see the "Prerequisites" section above for the required courses and their links.`
+                  : `This ${training.level} level course ${training.level === 'Beginner' ?
+                    'requires no prior experience' :
+                    'assumes basic familiarity with core concepts'}. We provide all necessary materials and support.`
               },
               {
                 question: "What certification will I receive?",

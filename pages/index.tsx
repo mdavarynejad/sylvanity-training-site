@@ -163,8 +163,14 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
           </div>
         </div>
 
-        {/* Features Section - Enhanced Interactive Design */}
+        {/* Our Training Methodology Section - Enhanced Interactive Design */}
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20" ref={featuresRef}>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-gray-900 mb-4">Our Training Methodology</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Experience a comprehensive approach to professional development with our proven methodology
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Expert Instructors - Interactive Card */}
             <div className="group animate-on-scroll bg-white border border-gray-200 rounded-xl p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-pointer relative overflow-hidden stagger-animation" style={{'--delay': '0.1s'} as React.CSSProperties}>
