@@ -10,6 +10,16 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- =====================================
 
 -- Enhanced trainings table with new features
+-- Add status column if it doesn't exist (for existing tables)
+ALTER TABLE public.trainings ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'active';
+-- Add constraint only if it doesn't exist
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'trainings_status_check') THEN
+        ALTER TABLE public.trainings ADD CONSTRAINT trainings_status_check CHECK (status IN ('active', 'preparation', 'cancelled'));
+    END IF;
+END $$;
+
 CREATE TABLE IF NOT EXISTS public.trainings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title VARCHAR(255) NOT NULL,
@@ -318,6 +328,16 @@ CREATE POLICY "Users can insert own bookings" ON public.bookings
 
 CREATE POLICY "Users can update own bookings" ON public.bookings
     FOR UPDATE USING (auth.uid() = user_id);
+
+-- Drop existing progress tracking policies first
+DROP POLICY IF EXISTS "Training modules are viewable by everyone" ON public.training_modules;
+DROP POLICY IF EXISTS "Users can view own progress" ON public.user_progress;
+DROP POLICY IF EXISTS "Users can insert own progress" ON public.user_progress;
+DROP POLICY IF EXISTS "Users can update own progress" ON public.user_progress;
+DROP POLICY IF EXISTS "Users can view own certificates" ON public.certificates;
+DROP POLICY IF EXISTS "Assessments are viewable by everyone" ON public.training_assessments;
+DROP POLICY IF EXISTS "Users can view own assessment attempts" ON public.assessment_attempts;
+DROP POLICY IF EXISTS "Users can insert own assessment attempts" ON public.assessment_attempts;
 
 -- Progress tracking policies
 CREATE POLICY "Training modules are viewable by everyone" ON public.training_modules

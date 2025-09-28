@@ -52,12 +52,18 @@ export default function TrainingCard({ training, variant = 'default' }: Training
 
       <div className="mb-4">
         <h3 className="text-xl font-medium mb-3 leading-tight">
-          <Link
-            href={`/trainings/${training.id}`}
-            className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
-          >
-            {training.title}
-          </Link>
+          {isUpcoming ? (
+            <span className="text-gray-900 cursor-default">
+              {training.title}
+            </span>
+          ) : (
+            <Link
+              href={`/trainings/${training.id}`}
+              className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
+            >
+              {training.title}
+            </Link>
+          )}
         </h3>
         <p className="text-gray-600 leading-relaxed line-clamp-2">
           {training.description}
