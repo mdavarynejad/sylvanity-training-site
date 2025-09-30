@@ -61,7 +61,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         <meta property="twitter:title" content="Sylvanity Academy Platform - Professional AI & Technology Training" />
         <meta property="twitter:description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
-        <meta property="twitter:creator" content="@sylvanity" />
+        <meta property="twitter:creator" content="@Sylvanity_BV" />
 
         {/* Additional SEO */}
         <meta name="keywords" content="AI training, technology training, professional development, SME training, artificial intelligence, machine learning, leadership development, data analytics" />
@@ -253,6 +253,37 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
               <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-80 group-hover:animate-ping transition-opacity duration-300" style={{animationDelay: '0.2s'}}></div>
               <div className="absolute top-8 right-8 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-bounce transition-opacity duration-300" style={{animationDelay: '0.4s'}}></div>
               <div className="absolute bottom-6 right-6 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-pulse transition-opacity duration-300" style={{animationDelay: '0.6s'}}></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Training Brochure Download Section */}
+        <div className="w-full py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Get Our Complete Training Guide</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Download our comprehensive training brochure with detailed course information, schedules, and everything you need to know about our professional development programs.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <a
+                href="/attachments/sylvanity-training-flyer-final.png"
+                className="btn-gradient-primary hover-gradient-lift px-8 py-4 text-lg font-semibold"
+                download="Sylvanity-Training-Programs-2025.png"
+              >
+                Download Training Brochure
+              </a>
+
+              <a
+                href="/attachments/sylvanity-training-flyer-final.png"
+                className="btn-gradient-secondary hover-gradient-lift px-8 py-4 text-lg font-semibold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Preview Brochure
+              </a>
             </div>
           </div>
         </div>

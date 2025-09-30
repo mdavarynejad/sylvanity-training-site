@@ -106,7 +106,7 @@ export default function NewsletterForm({ source = 'footer', className = '' }: Ne
         <button
           type="submit"
           disabled={loading || !email}
-          className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-400 transition flex items-center justify-center"
+          className="w-full btn-gradient-primary transition flex items-center justify-center"
         >
           {loading ? (
             <>

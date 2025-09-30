@@ -105,9 +105,45 @@ export default function TrainingsPage() {
         </div>
       </div>
 
+      {/* Complete Training Overview - Full Width Hero */}
+      <div className="w-full bg-gradient-to-r from-brand-sage to-brand-blue text-white py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+              Complete Training Overview
+            </h2>
+            <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed">
+              Download our comprehensive training brochure with all course details, schedules, and pricing information.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/brochure"
+                className="bg-white text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                View Training Brochure
+              </a>
+              <a
+                href="/attachments/sylvanity-training-flyer-final.png"
+                className="bg-white/10 border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 inline-flex items-center justify-center gap-2"
+                download="Sylvanity-Training-Programs-2025.png"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download Brochure
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Category Filter */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
-        <div className="bg-white rounded-lg shadow-sm border mobile-card-padding">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 mt-8 sm:mt-12">
+        <div className="bg-white rounded-lg shadow-sm border mobile-card-padding pt-6 sm:pt-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter by Category</h3>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (

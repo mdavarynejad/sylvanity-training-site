@@ -5,7 +5,13 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-sage': 'rgb(var(--color-brand-primary) / <alpha-value>)',
+        'brand-blue': 'rgb(var(--color-brand-secondary) / <alpha-value>)',
+        'brand-tertiary': 'rgb(var(--color-brand-tertiary) / <alpha-value>)',
+      },
+    },
   },
   plugins: [],
 }

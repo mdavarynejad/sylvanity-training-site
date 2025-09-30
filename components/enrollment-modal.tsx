@@ -98,7 +98,7 @@ export default function EnrollmentModal({
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-t-2xl">
+        <div className="bg-gradient-to-r from-brand-sage to-brand-blue text-white p-6 rounded-t-2xl">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">Complete Your Enrollment</h2>
             <button
@@ -110,7 +110,7 @@ export default function EnrollmentModal({
               </svg>
             </button>
           </div>
-          <p className="text-blue-100 mt-2">{training.title}</p>
+          <p className="text-white/90 mt-2">{training.title}</p>
         </div>
 
         <div className="p-6 space-y-6">
@@ -143,7 +143,7 @@ export default function EnrollmentModal({
               {discount === 0 && (
                 <div className="border-t pt-3 flex justify-between">
                   <span className="font-semibold text-gray-900">Total Price:</span>
-                  <span className="font-bold text-2xl text-blue-600">
+                  <span className="font-bold text-2xl text-brand-sage">
                     {formatPrice(training.price, training.currency)}
                   </span>
                 </div>
@@ -164,7 +164,7 @@ export default function EnrollmentModal({
                       value={date}
                       checked={selectedDate === date}
                       onChange={(e) => setSelectedDate(e.target.value)}
-                      className="mr-3 text-blue-600"
+                      className="mr-3 text-brand-sage"
                     />
                     <div>
                       <div className="font-medium text-gray-900">{formatDate(date)}</div>
@@ -193,12 +193,12 @@ export default function EnrollmentModal({
                     if (promoError) setPromoError('')
                   }}
                   placeholder="Enter promo code"
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 uppercase"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sage focus:border-brand-sage uppercase"
                 />
                 <button
                   onClick={() => validatePromoCode(promoCode)}
                   disabled={validatingPromo || !promoCode.trim()}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-6 py-3 btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {validatingPromo ? 'Checking...' : 'Apply'}
                 </button>
@@ -225,7 +225,7 @@ export default function EnrollmentModal({
                   type="checkbox"
                   checked={dataConsent}
                   onChange={(e) => setDataConsent(e.target.checked)}
-                  className="mt-1 text-blue-600"
+                  className="mt-1 text-brand-sage"
                   required
                 />
                 <div className="text-sm">
@@ -234,7 +234,7 @@ export default function EnrollmentModal({
                   </span>
                   <button
                     onClick={() => setShowTerms(!showTerms)}
-                    className="text-blue-600 hover:text-blue-700 ml-1"
+                    className="text-brand-sage hover:text-brand-blue ml-1"
                   >
                     View Details
                   </button>
@@ -246,7 +246,7 @@ export default function EnrollmentModal({
                   type="checkbox"
                   checked={marketingConsent}
                   onChange={(e) => setMarketingConsent(e.target.checked)}
-                  className="mt-1 text-blue-600"
+                  className="mt-1 text-brand-sage"
                 />
                 <span className="text-sm text-gray-900">
                   I would like to receive updates about new training programs and special offers (optional)
@@ -269,39 +269,39 @@ export default function EnrollmentModal({
           </div>
 
           {/* Training Details Summary */}
-          <div className="bg-blue-50 rounded-lg p-6">
-            <h4 className="font-semibold text-blue-900 mb-4">Training Details</h4>
+          <div className="bg-gradient-to-br from-brand-sage/5 to-brand-blue/5 rounded-lg p-6 border border-brand-sage/20">
+            <h4 className="font-semibold text-brand-blue mb-4">Training Details</h4>
             <div className="grid grid-cols-2 gap-4 text-sm mb-4">
               <div>
-                <span className="text-blue-700">Duration:</span>
-                <span className="ml-2 text-blue-900">{training.duration}</span>
+                <span className="text-brand-blue/80">Duration:</span>
+                <span className="ml-2 text-brand-blue">{training.duration}</span>
               </div>
               <div>
-                <span className="text-blue-700">Level:</span>
-                <span className="ml-2 text-blue-900">{training.level}</span>
+                <span className="text-brand-blue/80">Level:</span>
+                <span className="ml-2 text-brand-blue">{training.level}</span>
               </div>
               <div>
-                <span className="text-blue-700">Format:</span>
-                <span className="ml-2 text-blue-900">{training.format || 'Interactive Workshop'}</span>
+                <span className="text-brand-blue/80">Format:</span>
+                <span className="ml-2 text-brand-blue">{training.format || 'Interactive Workshop'}</span>
               </div>
               <div>
-                <span className="text-blue-700">Certificate:</span>
-                <span className="ml-2 text-blue-900">✓ Included</span>
+                <span className="text-brand-blue/80">Certificate:</span>
+                <span className="ml-2 text-brand-blue">✓ Included</span>
               </div>
             </div>
 
-            <div className="border-t border-blue-200 pt-6">
-              <h5 className="text-lg font-semibold text-blue-900 mb-4">Training Location & Delivery</h5>
-              <p className="text-blue-800 mb-6 leading-relaxed">
+            <div className="border-t border-brand-sage/30 pt-6">
+              <h5 className="text-lg font-semibold text-brand-blue mb-4">Training Location & Delivery</h5>
+              <p className="text-brand-blue/90 mb-6 leading-relaxed">
                 One of our employees will contact you to agree on the optimal training location. Choose from our flexible delivery options:
               </p>
 
               <div className="grid gap-4">
                 {/* In-house Location */}
-                <div className="bg-white rounded-xl p-6 border border-blue-200 hover:shadow-md transition-shadow duration-200">
+                <div className="bg-white rounded-xl p-6 border border-brand-sage/30 hover:shadow-md hover:border-brand-sage/50 transition-all duration-200">
                   <div className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-brand-sage/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg className="w-6 h-6 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
@@ -347,10 +347,10 @@ export default function EnrollmentModal({
 
 
                 {/* On-site Delivery */}
-                <div className="bg-white rounded-xl p-6 border border-blue-200 hover:shadow-md transition-shadow duration-200">
+                <div className="bg-white rounded-xl p-6 border border-brand-sage/30 hover:shadow-md hover:border-brand-sage/50 transition-all duration-200">
                   <div className="flex items-start">
-                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg className="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
@@ -378,7 +378,7 @@ export default function EnrollmentModal({
             <button
               onClick={handleProceed}
               disabled={!dataConsent || (!selectedDate && training.startDates?.length > 0)}
-              className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+              className="flex-1 px-6 py-3 btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
             >
               Proceed to Payment
             </button>

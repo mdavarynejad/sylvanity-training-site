@@ -87,8 +87,8 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
           </div>
 
           {training && (
-            <div className="mb-4 p-3 bg-blue-50 rounded-lg">
-              <p className="text-sm text-blue-800">
+            <div className="mb-4 p-3 bg-brand-sage-light rounded-lg">
+              <p className="text-sm text-brand-blue">
                 <strong>Interested in:</strong> {training.title}
               </p>
             </div>
@@ -117,7 +117,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-sage focus:border-transparent"
                 placeholder="Your full name"
               />
             </div>
@@ -133,7 +133,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-sage focus:border-transparent"
                 placeholder="your@email.com"
               />
             </div>
@@ -148,7 +148,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-sage focus:border-transparent"
                 placeholder="Your company name"
               />
             </div>
@@ -163,7 +163,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-sage focus:border-transparent"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -178,7 +178,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
                 value={formData.message}
                 onChange={handleChange}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-sage focus:border-transparent"
                 placeholder="Any specific questions about this training?"
               />
             </div>
