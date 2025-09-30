@@ -257,61 +257,80 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
           </div>
         </div>
 
-        {/* Testimonials Section */}
-        <div className="bg-gradient-to-br from-gray-50 to-blue-50 py-20" ref={testimonialsRef}>
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16 animate-on-scroll">
-              <h2 className="text-4xl font-normal text-gray-900 mb-4">What Our Participants Say</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Real feedback from SME leaders who have transformed their businesses with our AI training programs
-              </p>
-            </div>
+        {/* Hero Testimonial Section */}
+        <div className="w-full bg-gradient-to-br from-brand-sage/10 to-brand-blue/10 py-20" ref={testimonialsRef}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto text-center">
+              {featuredTestimonials.length > 0 && (
+                <div className="animate-on-scroll">
+                  {/* Hero Testimonial Card */}
+                  <div className="bg-white rounded-2xl shadow-xl p-12 lg:p-16 border border-gray-100 relative overflow-hidden">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-brand-sage/5 to-brand-blue/5 opacity-50"></div>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand-sage/10 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-brand-blue/10 to-transparent rounded-full transform -translate-x-12 translate-y-12"></div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              {featuredTestimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 hover-lift stagger-animation"
-                  style={{'--delay': `${0.1 * (index + 1)}s`} as React.CSSProperties}
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center">
-                      <div className="text-yellow-500 text-lg mr-3">
-                        {renderStars(testimonial.rating)}
+                    <div className="relative z-10">
+                      {/* Quote Icon */}
+                      <div className="mb-8">
+                        <svg className="w-16 h-16 text-brand-sage mx-auto opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                        </svg>
                       </div>
-                      <span className="text-sm font-medium text-gray-600">
-                        {testimonial.rating === 5 ? 'Excellent' : testimonial.rating === 4 ? 'Very Good' : 'Good'}
-                      </span>
-                    </div>
-                    <div className="text-xs text-gray-400 font-medium">
-                      VERIFIED
+
+                      {/* Rating */}
+                      <div className="flex items-center justify-center mb-8">
+                        <div className="text-yellow-500 text-2xl mr-4">
+                          {renderStars(featuredTestimonials[0].rating)}
+                        </div>
+                        <span className="text-lg font-medium text-gray-600 bg-gray-50 px-4 py-2 rounded-full">
+                          Excellent Training
+                        </span>
+                      </div>
+
+                      {/* Testimonial Text */}
+                      <blockquote className="text-2xl lg:text-3xl text-gray-800 mb-12 leading-relaxed font-light">
+                        "{featuredTestimonials[0].testimonial}"
+                      </blockquote>
+
+                      {/* Author Info */}
+                      <div className="border-t border-gray-200 pt-8">
+                        <div className="text-xl font-semibold text-gray-900 mb-2">
+                          {featuredTestimonials[0].participantName}
+                        </div>
+                        <div className="text-lg text-brand-blue font-medium mb-2">
+                          {featuredTestimonials[0].participantCompany}
+                        </div>
+                        <div className="text-base text-gray-600">
+                          {featuredTestimonials[0].trainingTitle}
+                        </div>
+                      </div>
+
+                      {/* Verification Badge */}
+                      <div className="mt-8">
+                        <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-50 text-green-700 border border-green-200">
+                          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                          Verified Participant
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <blockquote className="text-gray-700 mb-6 leading-relaxed">
-                    "{testimonial.testimonial}"
-                  </blockquote>
-
-                  <div className="border-t border-gray-100 pt-6">
-                    <div className="font-medium text-gray-900">{testimonial.participantName}</div>
-                    {testimonial.participantCompany && (
-                      <div className="text-sm text-gray-600 mt-1">{testimonial.participantCompany}</div>
-                    )}
-                    <div className="text-sm bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium mt-2">{testimonial.trainingTitle}</div>
+                  {/* Call to Action */}
+                  <div className="mt-16 animate-on-scroll" style={{animationDelay: '0.3s'}}>
+                    <Link href="/trainings">
+                      <span className="btn-gradient-primary hover-gradient-lift text-lg inline-flex items-center cursor-pointer px-8 py-4">
+                        Join Our Success Stories
+                        <svg className="ml-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="text-center animate-on-scroll">
-              <Link href="/trainings">
-                <span className="btn-gradient-primary hover-gradient-lift text-base inline-flex items-center cursor-pointer">
-                  Join Our Success Stories
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </Link>
+              )}
             </div>
           </div>
         </div>

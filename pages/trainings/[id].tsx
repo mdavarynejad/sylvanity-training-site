@@ -8,6 +8,7 @@ import LeadCaptureForm from '@/components/forms/lead-capture-form'
 import PromoCodeModal from '@/components/forms/promo-code-modal'
 import CourseMaterialsTabs from '@/components/course-materials-tabs'
 import EnrollmentModal, { EnrollmentData } from '@/components/enrollment-modal'
+import AnimatedContainer from '@/components/animated-container'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
@@ -17,6 +18,13 @@ interface TrainingDetailPageProps {
 }
 
 export default function TrainingDetailPage({ training, allTrainings }: TrainingDetailPageProps) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [showLeadForm, setShowLeadForm] = useState(false)
+  const [showPromoCode, setShowPromoCode] = useState(false)
+  const [showEnrollmentModal, setShowEnrollmentModal] = useState(false)
+  const [generatedPromoCode, setGeneratedPromoCode] = useState('')
+
   // Redirect upcoming courses to 404 or show a "coming soon" message
   if (training.upcoming) {
     return (
@@ -40,13 +48,6 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
       </>
     )
   }
-
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [showLeadForm, setShowLeadForm] = useState(false)
-  const [showPromoCode, setShowPromoCode] = useState(false)
-  const [showEnrollmentModal, setShowEnrollmentModal] = useState(false)
-  const [generatedPromoCode, setGeneratedPromoCode] = useState('')
 
   const stripeConfigured = isStripeConfigured()
 
@@ -160,41 +161,41 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
   return (
     <div className="page-container">
       <Header />
-      <div className="page-section">
-        <Link href="/trainings">
-          <div className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 bg-white border border-gray-200 hover:border-gray-300 px-4 py-3 rounded-lg transition-all duration-200 hover:shadow-md mb-12 group cursor-pointer">
-            <svg className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="text-sm font-medium">All Trainings</span>
-          </div>
-        </Link>
 
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl sm:rounded-2xl mobile-hero-section mobile-section-gap">
+      {/* Hero Section - Full Width */}
+      <div className="w-full bg-gray-50 bg-opacity-80 text-gray-900 py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <div className="flex flex-wrap gap-2 mb-4">
+            <Link href="/trainings">
+              <div className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 bg-white border border-gray-200 hover:border-gray-300 px-4 py-3 rounded-lg transition-all duration-200 hover:shadow-md mb-8 group cursor-pointer">
+                <svg className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span className="text-sm font-medium">All Trainings</span>
+              </div>
+            </Link>
+            <div className="flex flex-wrap gap-2 mb-6">
               {training.featured && (
-                <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+                <span className="bg-brand-sage text-white text-sm font-medium px-3 py-1 rounded-full">
                   ⭐ Featured
                 </span>
               )}
-              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
                 {training.level}
               </span>
-              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
                 {training.category}
               </span>
-              <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
                 {training.duration}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
               {training.title}
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed max-w-3xl">
               {training.description}
             </p>
 
@@ -231,13 +232,16 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
             </div>
 
             {!stripeConfigured && (
-              <p className="text-blue-200 text-sm mt-4">
+              <p className="text-gray-600 text-sm mt-4">
                 💡 Demo mode: Contact us for enrollment details
               </p>
             )}
           </div>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <main className="page-section">
         {/* Course Overview */}
         <div className="card mobile-card-padding mobile-section-gap">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Course Overview</h2>
@@ -250,22 +254,34 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
 
         {/* What You'll Learn */}
         {training.tags && training.tags.length > 0 && (
-          <div className="card mobile-card-padding mobile-section-gap">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">What You'll Learn</h2>
+          <AnimatedContainer
+            variant="section"
+            pattern="floating"
+            theme="brand"
+            intensity="medium"
+            className="card mobile-card-padding mobile-section-gap"
+          >
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">What You&apos;ll Learn</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {training.tags.map((tag, index) => (
-                <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg">
-                  <span className="text-blue-600 mr-3">✓</span>
+                <div key={index} className="flex items-center p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200">
+                  <span className="text-brand-sage mr-3">✓</span>
                   <span className="text-gray-800 font-medium">{tag}</span>
                 </div>
               ))}
             </div>
-          </div>
+          </AnimatedContainer>
         )}
 
         {/* Prerequisites */}
         {training.prerequisites && training.prerequisites.length > 0 && (
-          <div className="card mobile-card-padding mobile-section-gap">
+          <AnimatedContainer
+            variant="section"
+            pattern="geometric"
+            theme="purple"
+            intensity="medium"
+            className="card mobile-card-padding mobile-section-gap"
+          >
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Prerequisites</h2>
             <p className="text-gray-700 mb-4">To get the most out of this advanced training, we recommend completing these prerequisite courses first:</p>
             <div className="space-y-3">
@@ -300,7 +316,7 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
             <p className="text-sm text-gray-600 mt-4">
               <strong>Note:</strong> While these prerequisites are recommended for optimal learning, motivated learners with relevant experience may still benefit from this course.
             </p>
-          </div>
+          </AnimatedContainer>
         )}
 
         <CourseMaterialsTabs training={training} />
@@ -360,18 +376,36 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
         <div className="card p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Training Methodology</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+            <AnimatedContainer
+              variant="card"
+              pattern="floating"
+              theme="brand"
+              intensity="medium"
+              className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200 hover:border-brand-sage"
+            >
               <h3 className="font-bold text-gray-900 mb-3 text-lg">🎯 Interactive Learning</h3>
               <p className="text-gray-700">Engaging workshops with hands-on exercises and group discussions</p>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+            </AnimatedContainer>
+            <AnimatedContainer
+              variant="card"
+              pattern="geometric"
+              theme="blue"
+              intensity="medium"
+              className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200 hover:border-brand-blue"
+            >
               <h3 className="font-bold text-gray-900 mb-3 text-lg">💡 Real-World Cases</h3>
               <p className="text-gray-700">Learn from actual business scenarios and industry best practices</p>
-            </div>
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+            </AnimatedContainer>
+            <AnimatedContainer
+              variant="card"
+              pattern="organic"
+              theme="mixed"
+              intensity="medium"
+              className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg border border-gray-200 hover:border-brand-sage-light"
+            >
               <h3 className="font-bold text-gray-900 mb-3 text-lg">📚 Comprehensive Materials</h3>
               <p className="text-gray-700">Access to exclusive resources, templates, and ongoing support</p>
-            </div>
+            </AnimatedContainer>
           </div>
         </div>
 
@@ -405,73 +439,78 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
           </div>
         </div>
 
-        {/* Call to Action Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-12 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Skills?</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join hundreds of professionals who have already enhanced their capabilities through our expert-led training programs.
-          </p>
+      </main>
 
-          {error && (
-            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg max-w-md mx-auto">
-              {error}
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
-            <button
-              onClick={handleEnrollClick}
-              disabled={loading || !stripeConfigured}
-              className={`w-full sm:w-auto px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 ${
-                !stripeConfigured
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : loading
-                  ? 'btn-gradient-primary opacity-80 cursor-wait'
-                  : 'btn-gradient-primary hover-gradient-lift'
-              }`}
-            >
-              {loading ? (
-                <>
-                  <span className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></span>
-                  Processing...
-                </>
-              ) : !stripeConfigured ? (
-                'Enrollment Currently Unavailable'
-              ) : (
-                'Enroll Now'
-              )}
-            </button>
-
-            <button
-              onClick={() => setShowLeadForm(true)}
-              className="w-full sm:w-auto btn-gradient-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
-            >
-              Get More Information
-            </button>
-          </div>
-
-          {!stripeConfigured && (
-            <p className="text-blue-600 text-sm mt-4">
-              💡 Demo mode: Contact us for enrollment details
+      {/* Call to Action Section - Full Width */}
+      <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Skills?</h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join hundreds of professionals who have already enhanced their capabilities through our expert-led training programs.
             </p>
-          )}
 
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✓</span>
-              Instant Enrollment
+            {error && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg max-w-md mx-auto">
+                {error}
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
+              <button
+                onClick={handleEnrollClick}
+                disabled={loading || !stripeConfigured}
+                className={`w-full sm:w-auto px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 ${
+                  !stripeConfigured
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : loading
+                    ? 'btn-gradient-primary opacity-80 cursor-wait'
+                    : 'btn-gradient-primary hover-gradient-lift'
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <span className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></span>
+                    Processing...
+                  </>
+                ) : !stripeConfigured ? (
+                  'Enrollment Currently Unavailable'
+                ) : (
+                  'Enroll Now'
+                )}
+              </button>
+
+              <button
+                onClick={() => setShowLeadForm(true)}
+                className="w-full sm:w-auto btn-gradient-secondary hover-gradient-lift px-8 py-4 font-medium text-lg"
+              >
+                Get More Information
+              </button>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✓</span>
-              Secure Payment
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✓</span>
-              Money-Back Guarantee
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✓</span>
-              Certificate Included
+
+            {!stripeConfigured && (
+              <p className="text-blue-600 text-sm mt-4">
+                💡 Demo mode: Contact us for enrollment details
+              </p>
+            )}
+
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+              <div className="flex items-center">
+                <span className="text-green-600 mr-2">✓</span>
+                Instant Enrollment
+              </div>
+              <div className="flex items-center">
+                <span className="text-green-600 mr-2">✓</span>
+                Secure Payment
+              </div>
+              <div className="flex items-center">
+                <span className="text-green-600 mr-2">✓</span>
+                Money-Back Guarantee
+              </div>
+              <div className="flex items-center">
+                <span className="text-green-600 mr-2">✓</span>
+                Certificate Included
+              </div>
             </div>
           </div>
         </div>
@@ -497,13 +536,15 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
       )}
 
       {/* Enrollment Modal */}
-      <EnrollmentModal
-        training={training}
-        isOpen={showEnrollmentModal}
-        onClose={() => setShowEnrollmentModal(false)}
-        onProceedToPayment={handleProceedToPayment}
-        onValidatePromoCode={validatePromoCode}
-      />
+      {showEnrollmentModal && (
+        <EnrollmentModal
+          training={training}
+          isOpen={showEnrollmentModal}
+          onClose={() => setShowEnrollmentModal(false)}
+          onProceedToPayment={handleProceedToPayment}
+          onValidatePromoCode={validatePromoCode}
+        />
+      )}
 
       <Footer />
     </div>

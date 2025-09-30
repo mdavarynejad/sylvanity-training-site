@@ -101,7 +101,7 @@ export default function TrainingList({
       {featuredTrainings.length > 0 && (
         <div className="mb-20">
           <h2 className="text-3xl font-medium text-gray-900 mb-8">Featured Trainings</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredTrainings.map(training => (
               <TrainingCard key={training.id} training={training} variant="featured" />
             ))}
@@ -115,7 +115,7 @@ export default function TrainingList({
           <h2 className="text-3xl font-medium text-gray-900 mb-8">
             {featuredTrainings.length > 0 ? 'All Trainings' : 'Trainings'}
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {regularTrainings.map(training => (
               <TrainingCard key={training.id} training={training} />
             ))}

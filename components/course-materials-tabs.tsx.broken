@@ -304,6 +304,7 @@ export default function CourseMaterialsTabs({ training }: CourseMaterialsTabsPro
                 <p className="text-sm text-gray-600">Access to updated materials</p>
               </div>
             </div>
+          </div>
           </AnimatedContainer>
 
           {training.pdfAttachmentUrl && (

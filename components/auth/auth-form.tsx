@@ -83,12 +83,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
   }
 
   return (
-    <div className="max-w-md mx-auto">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          {mode === 'signin' ? 'Sign In' : 'Create Account'}
-        </h2>
-
+    <div className="w-full">
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === 'signup' && (
             <>
@@ -187,7 +182,6 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
             </div>
           </div>
         )}
-      </div>
     </div>
   )
 }
