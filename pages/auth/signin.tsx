@@ -27,7 +27,7 @@ export default function SignInPage() {
   }
 
   const getPageTitle = () => {
-    return activeTab === 'signin' ? 'Welcome Back' : 'Join Sylvanity Training'
+    return activeTab === 'signin' ? 'Welcome Back' : 'Join Sylvanity Academy'
   }
 
   const getPageDescription = () => {

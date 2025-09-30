@@ -10,8 +10,8 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy – Sylvanity Training</title>
-        <meta name="description" content="Privacy Policy for Sylvanity Training platform" />
+        <title>Privacy Policy – Sylvanity Academy</title>
+        <meta name="description" content="Privacy Policy for Sylvanity Academy platform" />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
           {/* Header */}
           <header className="mb-12">
             <h1 className="text-3xl font-normal text-gray-900 mb-4">
-              Sylvanity Training Privacy Policy
+              Sylvanity Academy Privacy Policy
             </h1>
             <div className="text-sm text-gray-600">
               <p>Effective: {effectiveDate}</p>
@@ -80,7 +80,7 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-medium text-gray-900 mb-6">How we use information</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  We use the information we collect from all of our services to provide, maintain, protect and improve them, to develop new ones, and to protect Sylvanity Training and our users.
+                  We use the information we collect from all of our services to provide, maintain, protect and improve them, to develop new ones, and to protect Sylvanity Academy and our users.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Provide our services</h3>
@@ -115,12 +115,12 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-medium text-gray-900 mb-6">Sharing your information</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  We do not share personal information with companies, organizations and individuals outside of Sylvanity Training unless one of the following circumstances applies:
+                  We do not share personal information with companies, organizations and individuals outside of Sylvanity Academy unless one of the following circumstances applies:
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">With your consent</h3>
                 <p>
-                  We will share personal information with companies, organizations or individuals outside of Sylvanity Training when we have your consent to do so.
+                  We will share personal information with companies, organizations or individuals outside of Sylvanity Academy when we have your consent to do so.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">For external processing</h3>
@@ -130,13 +130,13 @@ export default function PrivacyPolicy() {
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">For legal reasons</h3>
                 <p>
-                  We will share personal information with companies, organizations or individuals outside of Sylvanity Training if we have a good-faith belief that access, use, preservation or disclosure of the information is reasonably necessary to:
+                  We will share personal information with companies, organizations or individuals outside of Sylvanity Academy if we have a good-faith belief that access, use, preservation or disclosure of the information is reasonably necessary to:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>Meet any applicable law, regulation, legal process or enforceable governmental request</li>
                   <li>Enforce applicable Terms of Service, including investigation of potential violations</li>
                   <li>Detect, prevent, or otherwise address fraud, security or technical issues</li>
-                  <li>Protect against harm to the rights, property or safety of Sylvanity Training, our users or the public</li>
+                  <li>Protect against harm to the rights, property or safety of Sylvanity Academy, our users or the public</li>
                 </ul>
               </div>
             </section>
@@ -146,7 +146,7 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-medium text-gray-900 mb-6">Data security</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  We work hard to protect Sylvanity Training and our users from unauthorized access to or unauthorized alteration, disclosure or destruction of information we hold.
+                  We work hard to protect Sylvanity Academy and our users from unauthorized access to or unauthorized alteration, disclosure or destruction of information we hold.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Encryption</h3>
@@ -156,7 +156,7 @@ export default function PrivacyPolicy() {
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Access controls</h3>
                 <p>
-                  We restrict access to personal information to Sylvanity Training employees, contractors and agents who need to know that information in order to process it for us.
+                  We restrict access to personal information to Sylvanity Academy employees, contractors and agents who need to know that information in order to process it for us.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Regular security reviews</h3>
@@ -319,7 +319,7 @@ export default function PrivacyPolicy() {
           {/* Footer Info */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500 text-center">
-              Sylvanity Training B.V. • Netherlands • Effective {effectiveDate}
+              Sylvanity Academy B.V. • Netherlands • Effective {effectiveDate}
             </p>
           </div>
         </main>

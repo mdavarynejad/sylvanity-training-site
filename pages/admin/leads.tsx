@@ -290,7 +290,7 @@ export default function AdminLeads() {
                         </button>
                         <button
                           onClick={() => {
-                            const mailto = `mailto:${lead.email}?subject=Follow up from Sylvanity Training&body=Hi ${lead.name},%0D%0A%0D%0AThank you for your interest in our training programs.`
+                            const mailto = `mailto:${lead.email}?subject=Follow up from Sylvanity Academy&body=Hi ${lead.name},%0D%0A%0D%0AThank you for your interest in our training programs.`
                             window.open(mailto)
                           }}
                           className="text-green-600 hover:text-green-900"

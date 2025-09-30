@@ -10,8 +10,8 @@ export default function TermsOfService() {
   return (
     <>
       <Head>
-        <title>Terms of Service – Sylvanity Training</title>
-        <meta name="description" content="Terms of Service for Sylvanity Training platform" />
+        <title>Terms of Service – Sylvanity Academy</title>
+        <meta name="description" content="Terms of Service for Sylvanity Academy platform" />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -22,7 +22,7 @@ export default function TermsOfService() {
           {/* Header */}
           <header className="mb-12">
             <h1 className="text-3xl font-normal text-gray-900 mb-4">
-              Sylvanity Training Terms of Service
+              Sylvanity Academy Terms of Service
             </h1>
             <div className="text-sm text-gray-600">
               <p>Effective: {effectiveDate}</p>
@@ -52,7 +52,7 @@ export default function TermsOfService() {
               <h2 className="text-xl font-medium text-gray-900 mb-6">Introduction</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Welcome to Sylvanity Training! We&apos;re a professional training platform focused on AI, technology, and leadership development for small and medium enterprises (SMEs).
+                  Welcome to Sylvanity Academy! We&apos;re a professional training platform focused on AI, technology, and leadership development for small and medium enterprises (SMEs).
                 </p>
                 <p>
                   We provide these Terms of Service to help you understand the rules that govern your use of our services. These terms apply to all our training programs, digital content, and platform features.
@@ -180,7 +180,7 @@ export default function TermsOfService() {
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Limitation of liability</h3>
                 <p>
-                  To the extent allowed by applicable law, Sylvanity Training will not be responsible for lost profits, revenues, or data, financial losses, or indirect, special, consequential, exemplary, or punitive damages.
+                  To the extent allowed by applicable law, Sylvanity Academy will not be responsible for lost profits, revenues, or data, financial losses, or indirect, special, consequential, exemplary, or punitive damages.
                 </p>
               </div>
             </section>
@@ -191,7 +191,7 @@ export default function TermsOfService() {
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <h3 className="text-lg font-medium text-gray-900">When these terms apply</h3>
                 <p>
-                  These terms describe the relationship between you and Sylvanity Training. They apply to your use of our services.
+                  These terms describe the relationship between you and Sylvanity Academy. They apply to your use of our services.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">What happens if these terms change</h3>
@@ -232,7 +232,7 @@ export default function TermsOfService() {
           {/* Footer Info */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500 text-center">
-              Sylvanity Training B.V. • Netherlands • Effective {effectiveDate}
+              Sylvanity Academy B.V. • Netherlands • Effective {effectiveDate}
             </p>
           </div>
         </main>

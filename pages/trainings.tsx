@@ -71,21 +71,21 @@ export default function TrainingsPage() {
   return (
     <>
       <Head>
-        <title>AI Training Programs - Sylvanity Training Platform</title>
+        <title>AI Training Programs - Sylvanity Academy Platform</title>
         <meta name="description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sylvanity-training-site.netlify.app/trainings" />
-        <meta property="og:title" content="AI Training Programs - Sylvanity Training Platform" />
+        <meta property="og:title" content="AI Training Programs - Sylvanity Academy Platform" />
         <meta property="og:description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
         <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
-        <meta property="og:site_name" content="Sylvanity Training" />
+        <meta property="og:site_name" content="Sylvanity Academy" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="AI Training Programs - Sylvanity Training Platform" />
+        <meta property="twitter:title" content="AI Training Programs - Sylvanity Academy Platform" />
         <meta property="twitter:description" content="Browse our comprehensive AI and technology training programs. Expert-led courses in artificial intelligence, machine learning, data analytics, and leadership development for SME professionals." />
         <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
 

@@ -39,7 +39,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
   return (
     <>
       <Head>
-        <title>Sylvanity Training Platform - Professional AI & Technology Training</title>
+        <title>Sylvanity Academy Platform - Professional AI & Technology Training</title>
         <meta name="description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -47,25 +47,25 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sylvanity-training-site.netlify.app/" />
-        <meta property="og:title" content="Sylvanity Training Platform - Professional AI & Technology Training" />
+        <meta property="og:title" content="Sylvanity Academy Platform - Professional AI & Technology Training" />
         <meta property="og:description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="400" />
-        <meta property="og:site_name" content="Sylvanity Training" />
+        <meta property="og:site_name" content="Sylvanity Academy" />
         <meta property="og:locale" content="en_US" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://sylvanity-training-site.netlify.app/" />
-        <meta property="twitter:title" content="Sylvanity Training Platform - Professional AI & Technology Training" />
+        <meta property="twitter:title" content="Sylvanity Academy Platform - Professional AI & Technology Training" />
         <meta property="twitter:description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
         <meta property="twitter:creator" content="@sylvanity" />
 
         {/* Additional SEO */}
         <meta name="keywords" content="AI training, technology training, professional development, SME training, artificial intelligence, machine learning, leadership development, data analytics" />
-        <meta name="author" content="Sylvanity Training" />
+        <meta name="author" content="Sylvanity Academy" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://sylvanity-training-site.netlify.app/" />
         <style jsx>{`
@@ -141,7 +141,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-normal mb-6 leading-tight gradient-text fade-in-up ${isVisible ? 'visible' : ''}`}>
-              Sylvanity Training Platform
+              Sylvanity Academy Platform
             </h1>
             <p className={`text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.2s'}}>
               Elevate your skills with our comprehensive professional development programs.

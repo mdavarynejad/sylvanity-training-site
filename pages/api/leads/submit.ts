@@ -94,7 +94,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Send discount email
-    const emailResult = await sendDiscountEmail(email, name, promoCode, 'Sylvanity Training')
+    const emailResult = await sendDiscountEmail(email, name, promoCode, 'Sylvanity Academy')
     if (!emailResult.success) {
       console.log('⚠️ Failed to send discount email:', emailResult.error)
     }

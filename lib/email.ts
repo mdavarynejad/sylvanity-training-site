@@ -12,11 +12,11 @@ export async function sendNewsletterConfirmation(email: string, name?: string) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Sylvanity Training <onboarding@resend.dev>',
+      from: 'Sylvanity Academy <onboarding@resend.dev>',
       to: [email],
-      subject: 'Welcome to Sylvanity Training Newsletter!',
+      subject: 'Welcome to Sylvanity Academy Newsletter!',
       html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #2563eb;">Welcome to Sylvanity Training! 🎉</h1>
+        <h1 style="color: #2563eb;">Welcome to Sylvanity Academy! 🎉</h1>
         <p>Hi ${name || 'there'},</p>
         <p>Thank you for subscribing to our newsletter! You'll now receive updates about:</p>
         <ul>
@@ -32,7 +32,7 @@ export async function sendNewsletterConfirmation(email: string, name?: string) {
           <p>Browse our current training programs and find the perfect fit for your professional development:</p>
           <a href="${process.env.NEXT_PUBLIC_APP_URL}/trainings" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">View Training Programs</a>
         </div>
-        <p style="color: #6b7280; font-size: 14px;">Best regards,<br>The Sylvanity Training Team</p>
+        <p style="color: #6b7280; font-size: 14px;">Best regards,<br>The Sylvanity Academy Team</p>
         <p style="color: #9ca3af; font-size: 12px;">You can unsubscribe from these emails at any time by clicking <a href="${process.env.NEXT_PUBLIC_APP_URL}/unsubscribe" style="color: #9ca3af;">here</a>.</p>
       </div>`,
     })
@@ -58,7 +58,7 @@ export async function sendDiscountEmail(email: string, name: string, promoCode: 
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Sylvanity Training <onboarding@resend.dev>',
+      from: 'Sylvanity Academy <onboarding@resend.dev>',
       to: [email],
       subject: `Your 10% Discount Code: ${promoCode}`,
       html: `
@@ -76,7 +76,7 @@ export async function sendDiscountEmail(email: string, name: string, promoCode: 
             <a href="${process.env.NEXT_PUBLIC_APP_URL}/trainings" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">View Training Programs</a>
           </div>
           <p style="color: #6b7280; font-size: 14px;">
-            Best regards,<br>The Sylvanity Training Team
+            Best regards,<br>The Sylvanity Academy Team
           </p>
         </div>
       `
@@ -110,7 +110,7 @@ export async function sendTrainingConfirmation(
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Sylvanity Training <onboarding@resend.dev>',
+      from: 'Sylvanity Academy <onboarding@resend.dev>',
       to: [email],
       subject: `Registration Confirmed: ${trainingTitle}`,
       html: `
@@ -153,7 +153,7 @@ export async function sendTrainingConfirmation(
           <p style="color: #6b7280; font-size: 14px;">
             We're excited to have you join us for this transformative learning experience!<br><br>
             Best regards,<br>
-            The Sylvanity Training Team
+            The Sylvanity Academy Team
           </p>
         </div>
       `,

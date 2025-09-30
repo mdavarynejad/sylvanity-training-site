@@ -316,7 +316,7 @@ export default function AdminNewsletter() {
                       <div className="flex justify-end space-x-2">
                         <button
                           onClick={() => {
-                            const mailto = `mailto:${subscriber.email}?subject=Newsletter from Sylvanity Training`
+                            const mailto = `mailto:${subscriber.email}?subject=Newsletter from Sylvanity Academy`
                             window.open(mailto)
                           }}
                           className="text-blue-600 hover:text-blue-900"

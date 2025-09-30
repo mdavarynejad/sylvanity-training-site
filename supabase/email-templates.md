@@ -10,7 +10,7 @@
 
 ## 📧 **Confirm Signup Template**
 
-**Subject:** `Welcome to Sylvanity Training - Confirm Your Account`
+**Subject:** `Welcome to Sylvanity Academy - Confirm Your Account`
 
 **HTML Body:**
 ```html
@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Your Sylvanity Training Account</title>
+    <title>Confirm Your Sylvanity Academy Account</title>
     <style>
         body {
             margin: 0;
@@ -128,11 +128,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="logo">Sylvanity Training</h1>
+            <h1 class="logo">Sylvanity Academy</h1>
         </div>
 
         <div class="content">
-            <h2 class="title">Welcome to Sylvanity Training!</h2>
+            <h2 class="title">Welcome to Sylvanity Academy!</h2>
             <p class="subtitle">You're one step away from accessing world-class AI and technology training programs.</p>
 
             <div class="info-box">
@@ -158,7 +158,7 @@
 
         <div class="footer">
             <p class="footer-text">
-                This email was sent by Sylvanity Training<br>
+                This email was sent by Sylvanity Academy<br>
                 Need help? <a href="mailto:support@sylvanity.com" class="link">Contact our support team</a>
             </p>
         </div>
@@ -171,7 +171,7 @@
 
 ## 🔄 **Password Reset Template**
 
-**Subject:** `Reset Your Sylvanity Training Password`
+**Subject:** `Reset Your Sylvanity Academy Password`
 
 **HTML Body:**
 ```html
@@ -279,12 +279,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="logo">Sylvanity Training</h1>
+            <h1 class="logo">Sylvanity Academy</h1>
         </div>
 
         <div class="content">
             <h2 class="title">Reset Your Password</h2>
-            <p class="subtitle">We received a request to reset the password for your Sylvanity Training account.</p>
+            <p class="subtitle">We received a request to reset the password for your Sylvanity Academy account.</p>
 
             <div class="button-container">
                 <a href="{{ .ConfirmationURL }}" class="cta-button">Reset Password</a>
@@ -302,7 +302,7 @@
 
         <div class="footer">
             <p class="footer-text">
-                This email was sent by Sylvanity Training<br>
+                This email was sent by Sylvanity Academy<br>
                 <a href="mailto:support@sylvanity.com" class="link">Contact support</a> if you need assistance
             </p>
         </div>
@@ -315,7 +315,7 @@
 
 ## 📱 **Magic Link Template**
 
-**Subject:** `Your Sylvanity Training Sign-in Link`
+**Subject:** `Your Sylvanity Academy Sign-in Link`
 
 **HTML Body:**
 ```html
@@ -324,7 +324,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in to Sylvanity Training</title>
+    <title>Sign in to Sylvanity Academy</title>
     <style>
         body {
             margin: 0;
@@ -406,12 +406,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="logo">Sylvanity Training</h1>
+            <h1 class="logo">Sylvanity Academy</h1>
         </div>
 
         <div class="content">
             <h2 class="title">Sign in to Your Account</h2>
-            <p class="subtitle">Click the button below to securely sign in to your Sylvanity Training account.</p>
+            <p class="subtitle">Click the button below to securely sign in to your Sylvanity Academy account.</p>
 
             <div class="button-container">
                 <a href="{{ .ConfirmationURL }}" class="cta-button">Sign In Now</a>
@@ -424,7 +424,7 @@
 
         <div class="footer">
             <p class="footer-text">
-                This email was sent by Sylvanity Training<br>
+                This email was sent by Sylvanity Academy<br>
                 <a href="mailto:support@sylvanity.com" class="link">Contact support</a>
             </p>
         </div>

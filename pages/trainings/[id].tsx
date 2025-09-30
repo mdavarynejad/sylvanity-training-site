@@ -424,7 +424,7 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
               },
               {
                 question: "What certification will I receive?",
-                answer: "Upon successful completion, you'll receive an official Sylvanity Training certificate recognized by industry leaders."
+                answer: "Upon successful completion, you'll receive an official Sylvanity Academy certificate recognized by industry leaders."
               },
               {
                 question: "Is this training available online?",

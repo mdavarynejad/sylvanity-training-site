@@ -1,4 +1,4 @@
--- Sylvanity Training Platform - Real Content Population
+-- Sylvanity Academy Platform - Real Content Population
 -- This script populates the database with authentic Sylvanity courses
 -- Updated: Removed instructor field, set max_participants to 22 (18 for Agentic AI)
 
@@ -10,7 +10,7 @@ DELETE FROM trainings;
 -- UPDATE trainings SET max_participants = 22 WHERE title != 'Agentic AI Workshop';
 -- UPDATE trainings SET max_participants = 18 WHERE title = 'Agentic AI Workshop';
 
--- Insert Real Sylvanity Training Programs
+-- Insert Real Sylvanity Academy Programs
 INSERT INTO trainings (
     id,
     title,

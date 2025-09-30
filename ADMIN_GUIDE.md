@@ -1,6 +1,6 @@
-# Sylvanity Training Platform - Admin Guide
+# Sylvanity Academy Platform - Admin Guide
 
-This guide provides comprehensive instructions for administrators to manage the Sylvanity Training Platform effectively.
+This guide provides comprehensive instructions for administrators to manage the Sylvanity Academy Platform effectively.
 
 ---
 

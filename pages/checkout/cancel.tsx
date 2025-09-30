@@ -5,7 +5,7 @@ export default function CheckoutCancel() {
   return (
     <>
       <Head>
-        <title>Payment Cancelled - Sylvanity Training</title>
+        <title>Payment Cancelled - Sylvanity Academy</title>
       </Head>
 
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

@@ -7,8 +7,8 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About - Sylvanity Training Platform</title>
-        <meta name="description" content="Learn about Sylvanity Training Platform and our mission to empower professionals with AI and technology skills" />
+        <title>About - Sylvanity Academy Platform</title>
+        <meta name="description" content="Learn about Sylvanity Academy Platform and our mission to empower professionals with AI and technology skills" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -19,7 +19,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="page-header">
           <div className="text-center">
-            <h1 className="heading-page mb-6">About Sylvanity Training</h1>
+            <h1 className="heading-page mb-6">About Sylvanity Academy</h1>
             <p className="text-subtitle max-w-4xl mx-auto">
               Empowering professionals and businesses with cutting-edge AI and technology training
               programs designed for the modern digital workplace.
@@ -33,7 +33,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-medium text-gray-900 mb-6">Our Mission</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                At Sylvanity Training, we believe that sustainable and privacy-first AI solutions
+                At Sylvanity Academy, we believe that sustainable and privacy-first AI solutions
                 are the future of business. Our mission is to bridge the gap between emerging
                 technologies and practical business applications, helping SMEs and professionals
                 stay ahead in the rapidly evolving digital landscape.
@@ -54,7 +54,7 @@ export default function AboutPage() {
           {/* Features Section */}
           <div className="mb-20">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-medium text-gray-900 mb-4">Why Choose Sylvanity Training?</h2>
+              <h2 className="text-4xl font-medium text-gray-900 mb-4">Why Choose Sylvanity Academy?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 We combine industry expertise with practical learning to deliver exceptional training experiences
               </p>

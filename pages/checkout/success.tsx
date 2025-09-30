@@ -50,7 +50,7 @@ export default function CheckoutSuccess() {
   return (
     <>
       <Head>
-        <title>Payment Successful - Sylvanity Training</title>
+        <title>Payment Successful - Sylvanity Academy</title>
       </Head>
 
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

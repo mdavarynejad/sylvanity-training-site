@@ -1,4 +1,4 @@
-# Sylvanity Training Site
+# Sylvanity Academy Site
 
 A comprehensive training platform offering professional development programs with seamless registration, payment processing, lead capture, and administrative management.
 

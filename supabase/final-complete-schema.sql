@@ -1,4 +1,4 @@
--- Sylvanity Training Platform - FINAL COMPLETE Database Schema
+-- Sylvanity Academy Platform - FINAL COMPLETE Database Schema
 -- This is the MASTER FILE - run this to recreate the entire database
 -- Version: 2025-09-27 (includes auth fixes and handles existing policies)
 

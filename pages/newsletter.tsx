@@ -53,8 +53,8 @@ export default function NewsletterPage() {
   return (
     <>
       <Head>
-        <title>Newsletter - Sylvanity Training Platform</title>
-        <meta name="description" content="Subscribe to the Sylvanity Training newsletter for the latest updates on AI and technology training programs" />
+        <title>Newsletter - Sylvanity Academy Platform</title>
+        <meta name="description" content="Subscribe to the Sylvanity Academy newsletter for the latest updates on AI and technology training programs" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -65,7 +65,7 @@ export default function NewsletterPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-16">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h1 className="heading-page mb-4 sm:mb-6">
-              Stay Updated with Sylvanity Training
+              Stay Updated with Sylvanity Academy
             </h1>
             <p className="text-subtitle max-w-3xl mx-auto">
               Subscribe to our newsletter and be the first to know about new training programs,
@@ -144,7 +144,7 @@ export default function NewsletterPage() {
 
                   <h3 className="text-2xl font-normal text-gray-900 mb-3">You're all set!</h3>
                   <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Welcome to Sylvanity Training. Check your inbox for a confirmation email.
+                    Welcome to Sylvanity Academy. Check your inbox for a confirmation email.
                   </p>
 
                   <div className="bg-gray-50 rounded-xl p-6 text-left max-w-md mx-auto">
@@ -158,7 +158,7 @@ export default function NewsletterPage() {
                       <div className="flex-1">
                         <h4 className="text-sm font-medium text-gray-900 mb-1">No email yet?</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          Check your spam folder or allow a few minutes for delivery. The email comes from Sylvanity Training.
+                          Check your spam folder or allow a few minutes for delivery. The email comes from Sylvanity Academy.
                         </p>
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export default function NewsletterPage() {
 
                   <div className="mt-6 text-center">
                     <p className="text-sm text-gray-500">
-                      By subscribing, you agree to receive email updates from Sylvanity Training.
+                      By subscribing, you agree to receive email updates from Sylvanity Academy.
                       You can unsubscribe at any time.
                     </p>
                   </div>

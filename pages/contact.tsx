@@ -50,8 +50,8 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Contact - Sylvanity Training Platform</title>
-        <meta name="description" content="Get in touch with Sylvanity Training Platform for inquiries about our AI and technology training programs" />
+        <title>Contact - Sylvanity Academy Platform</title>
+        <meta name="description" content="Get in touch with Sylvanity Academy Platform for inquiries about our AI and technology training programs" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

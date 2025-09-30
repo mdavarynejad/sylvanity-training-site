@@ -96,7 +96,7 @@ export default function CertificatePage() {
           <div class="certificate">
             <div class="header">
               <div class="title">CERTIFICATE OF COMPLETION</div>
-              <div class="subtitle">Sylvanity Training</div>
+              <div class="subtitle">Sylvanity Academy</div>
             </div>
 
             <div class="content">
@@ -116,7 +116,7 @@ export default function CertificatePage() {
                 <div class="signature-block">
                   <div class="signature-line"></div>
                   <p>Training Director</p>
-                  <p>Sylvanity Training</p>
+                  <p>Sylvanity Academy</p>
                 </div>
                 <div class="signature-block">
                   <div class="signature-line"></div>
@@ -215,7 +215,7 @@ export default function CertificatePage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold text-blue-600 mb-4">CERTIFICATE OF COMPLETION</h1>
-            <h2 className="text-2xl text-gray-700">Sylvanity Training</h2>
+            <h2 className="text-2xl text-gray-700">Sylvanity Academy</h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
           </div>
 
@@ -246,7 +246,7 @@ export default function CertificatePage() {
               <div className="text-center">
                 <div className="w-48 border-t-2 border-gray-800 mb-2"></div>
                 <p className="text-sm text-gray-600">Training Director</p>
-                <p className="text-sm text-gray-600">Sylvanity Training</p>
+                <p className="text-sm text-gray-600">Sylvanity Academy</p>
               </div>
 
               <div className="text-center">
