@@ -117,17 +117,20 @@ export default function BrochurePage() {
                 <div className="flex justify-center">
                   <div className={`w-full ${isFullscreen ? 'max-w-4xl' : 'max-w-3xl'}`}>
                     <div className="relative w-full" style={{ aspectRatio: '3/4' }}>
+                      {/* Mobile-first approach: show PNG by default, SVG on larger screens if supported */}
+                      <img
+                        src="/attachments/sylvanity-training-flyer-final.png"
+                        alt="Sylvanity Training Programs Brochure"
+                        className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg object-contain"
+                        style={{ display: 'block' }}
+                      />
+                      {/* SVG overlay for desktop browsers that support it */}
                       <object
                         data="/attachments/sylvanity-training-flyer-final.svg"
                         type="image/svg+xml"
-                        className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg"
-                        style={{ objectFit: 'contain' }}
+                        className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg hidden sm:block"
+                        style={{ objectFit: 'contain', pointerEvents: 'none' }}
                       >
-                        <img
-                          src="/attachments/sylvanity-training-flyer-final.png"
-                          alt="Sylvanity Training Programs Brochure"
-                          className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg object-contain"
-                        />
                       </object>
                     </div>
                   </div>
