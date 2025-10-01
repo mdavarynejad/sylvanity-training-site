@@ -193,7 +193,7 @@ export default function ChangePasswordModal({ isOpen, onClose }: ChangePasswordM
             <button
               type="submit"
               disabled={loading || formData.newPassword !== formData.confirmPassword || formData.newPassword.length < 6}
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 btn-gradient-primary hover-gradient-lift px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Updating...' : 'Update Password'}
             </button>

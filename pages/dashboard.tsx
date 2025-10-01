@@ -343,11 +343,6 @@ export default function DashboardPage() {
             <ProgressTracker />
           </div>
 
-          {/* Security Settings Section */}
-          <div className="mt-8">
-            <SecuritySettings />
-          </div>
-
           {/* Account Management Section */}
           <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-md">
             <div className="px-4 py-5 sm:px-6">
@@ -381,24 +376,13 @@ export default function DashboardPage() {
                   </button>
                 </div>
 
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h4 className="text-sm font-medium text-red-900">Delete Account</h4>
-                      <p className="text-sm text-red-600">
-                        Permanently delete your account and all associated data. This action cannot be undone.
-                      </p>
-                    </div>
-                    <button
-                      onClick={handleDeleteAccount}
-                      className="btn-gradient-danger hover-gradient-lift px-4 py-2 text-sm"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
+          </div>
+
+          {/* Security Settings Section */}
+          <div className="mt-8">
+            <SecuritySettings />
           </div>
         </div>
       </div>

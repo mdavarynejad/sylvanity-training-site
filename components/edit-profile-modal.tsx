@@ -14,7 +14,6 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     full_name: '',
-    email: '',
     company: '',
     phone: ''
   })
@@ -24,7 +23,6 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
     if (profile) {
       setFormData({
         full_name: profile.full_name || '',
-        email: profile.email || user?.email || '',
         company: profile.company || '',
         phone: profile.phone || ''
       })
@@ -43,33 +41,11 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
 
       console.log('Updating profile for user:', user.id, 'with data:', formData)
 
-      // Check if email has changed
-      const emailChanged = formData.email !== user.email
-
-      // If email changed, update auth email first
-      if (emailChanged) {
-        console.log('Email change detected, updating auth email...')
-        const { error: authError } = await supabase.auth.updateUser({
-          email: formData.email
-        })
-
-        if (authError) {
-          console.error('Auth email update error:', authError)
-          throw new Error(`Failed to update email: ${authError.message}`)
-        }
-
-        setMessage({
-          type: 'success',
-          text: 'Email update initiated! Please check both your old and new email addresses for confirmation links.'
-        })
-      }
-
       // Update profile in database
       const { data, error } = await supabase
         .from('profiles')
         .update({
           full_name: formData.full_name,
-          email: formData.email,
           company: formData.company,
           phone: formData.phone,
           updated_at: new Date().toISOString()
@@ -83,10 +59,7 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
       }
 
       console.log('Profile updated successfully:', data)
-
-      if (!emailChanged) {
-        setMessage({ type: 'success', text: 'Profile updated successfully!' })
-      }
+      setMessage({ type: 'success', text: 'Profile updated successfully!' })
 
       // Force immediate data refresh
       console.log('Triggering profile refresh...')
@@ -101,7 +74,7 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
       // Close modal after showing success message
       setTimeout(() => {
         onClose()
-      }, emailChanged ? 3000 : 1500)
+      }, 1500)
 
     } catch (error: any) {
       setMessage({ type: 'error', text: error.message || 'Failed to update profile' })
@@ -148,22 +121,6 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
               />
             </div>
 
-            {/* Email */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="your.email@example.com"
-                required
-              />
-              <p className="mt-1 text-xs text-gray-500">This is your login email</p>
-            </div>
 
             {/* Company */}
             <div>
@@ -219,7 +176,7 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 btn-gradient-primary hover-gradient-lift px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Saving...' : 'Save Changes'}
             </button>
