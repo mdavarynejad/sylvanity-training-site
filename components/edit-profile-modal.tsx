@@ -41,8 +41,31 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
         throw new Error('Authentication required')
       }
 
+      console.log('Updating profile for user:', user.id, 'with data:', formData)
+
+      // Check if email has changed
+      const emailChanged = formData.email !== user.email
+
+      // If email changed, update auth email first
+      if (emailChanged) {
+        console.log('Email change detected, updating auth email...')
+        const { error: authError } = await supabase.auth.updateUser({
+          email: formData.email
+        })
+
+        if (authError) {
+          console.error('Auth email update error:', authError)
+          throw new Error(`Failed to update email: ${authError.message}`)
+        }
+
+        setMessage({
+          type: 'success',
+          text: 'Email update initiated! Please check both your old and new email addresses for confirmation links.'
+        })
+      }
+
       // Update profile in database
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('profiles')
         .update({
           full_name: formData.full_name,
@@ -52,16 +75,33 @@ export default function EditProfileModal({ isOpen, onClose, profile, onUpdate }:
           updated_at: new Date().toISOString()
         })
         .eq('id', user.id)
+        .select()  // Return the updated data
 
-      if (error) throw error
+      if (error) {
+        console.error('Profile update error:', error)
+        throw error
+      }
 
-      setMessage({ type: 'success', text: 'Profile updated successfully!' })
+      console.log('Profile updated successfully:', data)
 
-      // Call parent update function to refresh data
+      if (!emailChanged) {
+        setMessage({ type: 'success', text: 'Profile updated successfully!' })
+      }
+
+      // Force immediate data refresh
+      console.log('Triggering profile refresh...')
+      await onUpdate()
+
+      // Additional safety refresh after a small delay
+      setTimeout(async () => {
+        console.log('Secondary profile refresh...')
+        await onUpdate()
+      }, 500)
+
+      // Close modal after showing success message
       setTimeout(() => {
-        onUpdate()
         onClose()
-      }, 1500)
+      }, emailChanged ? 3000 : 1500)
 
     } catch (error: any) {
       setMessage({ type: 'error', text: error.message || 'Failed to update profile' })

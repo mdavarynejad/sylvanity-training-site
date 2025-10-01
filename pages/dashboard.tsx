@@ -5,6 +5,7 @@ import { useAuth } from '@/components/auth/auth-provider'
 import { supabase } from '@/lib/supabase'
 import EditProfileModal from '@/components/edit-profile-modal'
 import ProgressTracker from '@/components/progress-tracker'
+import SecuritySettings from '@/components/security-settings'
 
 interface Booking {
   id: string
@@ -42,14 +43,51 @@ export default function DashboardPage() {
 
   const fetchUserData = async () => {
     try {
-      // Fetch user profile
-      const { data: profileData } = await supabase
+      console.log('Fetching user data for:', user?.id)
+
+      // Clear existing profile state first
+      setProfile(null)
+
+      // Fetch user profile with a small delay to ensure database consistency
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user?.id)
         .single()
 
-      setProfile(profileData)
+      if (profileError) {
+        console.error('Profile fetch error:', profileError)
+
+        // If profile doesn't exist, create it
+        if (profileError.code === 'PGRST116') { // No rows returned
+          console.log('Profile does not exist, creating new profile for user:', user?.id)
+          const { data: newProfile, error: createError } = await supabase
+            .from('profiles')
+            .insert({
+              id: user?.id,
+              email: user?.email || '',
+              full_name: '',
+              company: ''
+            })
+            .select()
+            .single()
+
+          if (createError) {
+            console.error('Error creating profile:', createError)
+            throw createError
+          }
+
+          console.log('New profile created:', newProfile)
+          setProfile(newProfile)
+        } else {
+          throw profileError
+        }
+      } else {
+        console.log('Profile data fetched:', profileData)
+        setProfile(profileData)
+      }
 
       // Fetch user bookings
       const { data: bookingsData } = await supabase
@@ -157,21 +195,25 @@ export default function DashboardPage() {
             <p className="mt-2 text-gray-600">Manage your training bookings and account</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Total Bookings Card */}
+            <div className="group relative bg-gradient-to-br from-brand-sage/10 via-white to-brand-blue/10 overflow-hidden shadow-lg rounded-xl border border-gray-200 hover:border-brand-sage transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-sage/20 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="relative p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">📚</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-brand-sage to-brand-sage/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
                     </div>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
+                      <dt className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
                         Total Bookings
                       </dt>
-                      <dd className="text-lg font-medium text-gray-900">
+                      <dd className="text-3xl font-bold text-gray-900 group-hover:text-brand-sage transition-colors duration-300">
                         {bookings.length}
                       </dd>
                     </dl>
@@ -180,20 +222,24 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+            {/* Confirmed Bookings Card */}
+            <div className="group relative bg-gradient-to-br from-green-50 via-white to-emerald-50 overflow-hidden shadow-lg rounded-xl border border-gray-200 hover:border-green-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-200/30 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="relative p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">✓</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
+                      <dt className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
                         Confirmed
                       </dt>
-                      <dd className="text-lg font-medium text-gray-900">
+                      <dd className="text-3xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
                         {bookings.filter(b => b.status === 'confirmed').length}
                       </dd>
                     </dl>
@@ -202,20 +248,24 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+            {/* Pending Bookings Card */}
+            <div className="group relative bg-gradient-to-br from-yellow-50 via-white to-amber-50 overflow-hidden shadow-lg rounded-xl border border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-200/30 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="relative p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">⏳</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     </div>
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
+                      <dt className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
                         Pending
                       </dt>
-                      <dd className="text-lg font-medium text-gray-900">
+                      <dd className="text-3xl font-bold text-gray-900 group-hover:text-yellow-600 transition-colors duration-300">
                         {bookings.filter(b => b.status === 'pending').length}
                       </dd>
                     </dl>
@@ -237,11 +287,13 @@ export default function DashboardPage() {
             {bookings.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-gray-500 text-lg mb-4">No bookings yet</p>
-                <Link
-                  href="/trainings"
-                  className="btn-gradient-primary hover-gradient-lift px-4 py-2 text-sm font-medium inline-flex items-center"
-                >
-                  Browse Trainings
+                <Link href="/trainings">
+                  <span className="btn-gradient-primary hover-gradient-lift text-base inline-flex items-center justify-center gap-2 px-6 py-3 cursor-pointer">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    Browse Trainings
+                  </span>
                 </Link>
               </div>
             ) : (
@@ -291,6 +343,11 @@ export default function DashboardPage() {
             <ProgressTracker />
           </div>
 
+          {/* Security Settings Section */}
+          <div className="mt-8">
+            <SecuritySettings />
+          </div>
+
           {/* Account Management Section */}
           <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-md">
             <div className="px-4 py-5 sm:px-6">
@@ -310,6 +367,10 @@ export default function DashboardPage() {
                       Name: {profile?.full_name || 'Not provided'}<br />
                       Email: {user?.email}<br />
                       Company: {profile?.company || 'Not provided'}
+                      {/* Debug info - remove in production */}
+                      <br /><small style={{color: '#999', fontSize: '10px'}}>
+                        Debug: Profile ID: {profile?.id}, Updated: {profile?.updated_at}
+                      </small>
                     </p>
                   </div>
                   <button
@@ -347,7 +408,11 @@ export default function DashboardPage() {
         isOpen={showEditProfile}
         onClose={() => setShowEditProfile(false)}
         profile={profile}
-        onUpdate={fetchUserData}
+        onUpdate={async () => {
+          console.log('Profile update callback triggered')
+          await fetchUserData()
+          console.log('Profile data refreshed')
+        }}
       />
     </div>
   )

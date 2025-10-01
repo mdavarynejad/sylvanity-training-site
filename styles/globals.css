@@ -44,6 +44,9 @@
     --gradient-sage-light: linear-gradient(135deg, #8FAF91 0%, #B8D4BA 100%);
     --gradient-blue-light: linear-gradient(135deg, #264E70 0%, #4A7FA7 100%);
 
+    /* Danger/Delete Gradient */
+    --gradient-pink-red: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+
     /* Brand Hover States */
     --gradient-primary-hover: linear-gradient(135deg, #779787 0%, #1F4056 100%);
     --gradient-secondary-hover: linear-gradient(135deg, #1F4056 0%, #779787 100%);

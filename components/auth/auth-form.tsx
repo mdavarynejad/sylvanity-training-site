@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
 interface AuthFormProps {
@@ -131,9 +132,18 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                Password
+              </label>
+              {mode === 'signin' && (
+                <Link href="/auth/forgot-password">
+                  <span className="text-sm text-brand-sage hover:text-brand-blue transition-colors cursor-pointer">
+                    Forgot password?
+                  </span>
+                </Link>
+              )}
+            </div>
             <input
               type="password"
               id="password"

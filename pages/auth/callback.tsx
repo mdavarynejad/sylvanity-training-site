@@ -36,8 +36,9 @@ export default function AuthCallback() {
             .eq('id', user.id)
             .single()
 
-          if (!existingProfile && !profileError) {
-            // Create profile
+          // Create profile if it doesn't exist (when we get an error because no record found)
+          if (!existingProfile || profileError) {
+            console.log('Creating new profile for user:', user.id)
             const { error: insertError } = await supabase
               .from('profiles')
               .insert({
@@ -49,11 +50,15 @@ export default function AuthCallback() {
 
             if (insertError) {
               console.error('Error creating profile:', insertError)
+            } else {
+              console.log('Profile created successfully for user:', user.id)
             }
+          } else {
+            console.log('Profile already exists for user:', user.id)
           }
 
-          // Redirect to dashboard
-          router.push('/dashboard')
+          // Redirect to confirmation success page
+          router.push('/auth/confirmation-success')
         } else {
           // No session, redirect to signin
           router.push('/auth/signin?message=Please sign in to continue')
