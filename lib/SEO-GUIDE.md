@@ -12,7 +12,7 @@ Import the helper and use it in your page's `<Head>`:
 
 ```tsx
 import Head from 'next/head'
-import { getMetaTags } from '@/lib/seo-config'
+import { getMetaTags } from '@/lib/seo-helpers'
 
 export default function MyPage() {
   return (

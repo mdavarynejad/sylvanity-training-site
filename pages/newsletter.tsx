@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
-import { getMetaTags } from '@/lib/seo-config'
+import { getMetaTags } from '@/lib/seo-helpers'
 
 export default function NewsletterPage() {
   const [formData, setFormData] = useState({
