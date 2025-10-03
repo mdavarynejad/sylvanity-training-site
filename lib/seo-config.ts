@@ -5,6 +5,8 @@
  * to generate meta tags for social media sharing.
  */
 
+import React from 'react'
+
 export const DEFAULT_SEO = {
   siteName: 'Sylvanity Academy',
   siteUrl: 'https://sylvanity-training-site.netlify.app',
@@ -63,33 +65,42 @@ export function generateMetaTags(config: PageSEO = {}) {
 
 /**
  * Helper to generate JSX meta tags for Next.js Head component
+ * Returns an array of React elements instead of JSX Fragment
  */
 export function getMetaTags(config: PageSEO = {}) {
   const meta = generateMetaTags(config)
 
-  return (
-    <>
-      {/* Basic Meta */}
-      <title>{meta.title}</title>
-      <meta name="description" content={meta.description} />
-      {meta.keywords && <meta name="keywords" content={meta.keywords} />}
-      <link rel="canonical" href={meta.canonical} />
+  const tags = [
+    // Basic Meta
+    <title key="title">{meta.title}</title>,
+    <meta key="description" name="description" content={meta.description} />,
+    <link key="canonical" rel="canonical" href={meta.canonical} />,
 
-      {/* Open Graph */}
-      <meta property="og:type" content={meta.openGraph.type} />
-      <meta property="og:url" content={meta.openGraph.url} />
-      <meta property="og:title" content={meta.openGraph.title} />
-      <meta property="og:description" content={meta.openGraph.description} />
-      <meta property="og:site_name" content={meta.openGraph.siteName} />
-      <meta property="og:image" content={meta.openGraph.images[0].url} />
+    // Open Graph
+    <meta key="og:type" property="og:type" content={meta.openGraph.type} />,
+    <meta key="og:url" property="og:url" content={meta.openGraph.url} />,
+    <meta key="og:title" property="og:title" content={meta.openGraph.title} />,
+    <meta key="og:description" property="og:description" content={meta.openGraph.description} />,
+    <meta key="og:site_name" property="og:site_name" content={meta.openGraph.siteName} />,
+    <meta key="og:image" property="og:image" content={meta.openGraph.images[0].url} />,
 
-      {/* Twitter */}
-      <meta property="twitter:card" content={meta.twitter.card} />
-      <meta property="twitter:url" content={meta.twitter.url} />
-      <meta property="twitter:title" content={meta.twitter.title} />
-      <meta property="twitter:description" content={meta.twitter.description} />
-      <meta property="twitter:image" content={meta.twitter.image} />
-      {meta.twitter.site && <meta property="twitter:site" content={meta.twitter.site} />}
-    </>
-  )
+    // Twitter
+    <meta key="twitter:card" property="twitter:card" content={meta.twitter.card} />,
+    <meta key="twitter:url" property="twitter:url" content={meta.twitter.url} />,
+    <meta key="twitter:title" property="twitter:title" content={meta.twitter.title} />,
+    <meta key="twitter:description" property="twitter:description" content={meta.twitter.description} />,
+    <meta key="twitter:image" property="twitter:image" content={meta.twitter.image} />,
+  ]
+
+  // Add optional keywords
+  if (meta.keywords) {
+    tags.push(<meta key="keywords" name="keywords" content={meta.keywords} />)
+  }
+
+  // Add optional Twitter site
+  if (meta.twitter.site) {
+    tags.push(<meta key="twitter:site" property="twitter:site" content={meta.twitter.site} />)
+  }
+
+  return tags
 }
