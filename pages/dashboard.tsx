@@ -362,6 +362,10 @@ export default function DashboardPage() {
                       Name: {profile?.full_name || 'Not provided'}<br />
                       Email: {user?.email}<br />
                       Company: {profile?.company || 'Not provided'}
+                      <br /><small style={{color: '#999', fontSize: '10px'}}>
+                        Profile ID: {profile?.id}<br />
+                        Last Updated: {profile?.updated_at ? new Date(profile.updated_at).toLocaleString() : 'N/A'}
+                      </small>
                     </p>
                   </div>
                   <button
