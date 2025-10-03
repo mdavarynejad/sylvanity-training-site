@@ -58,16 +58,16 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white border-b-4 border-brand-sage sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center hover:opacity-75 transition-opacity duration-200">
               <img
                 src="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png"
                 alt="Sylvanity"
-                className="h-8 w-auto"
+                className="h-12 w-auto"
               />
             </div>
           </Link>
@@ -78,10 +78,27 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                style={{
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(item.href)) {
+                    e.currentTarget.style.backgroundColor = '#3b82f6'
+                    e.currentTarget.style.color = 'white'
+                    e.currentTarget.style.transform = 'scale(1.05)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(item.href)) {
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                    e.currentTarget.style.color = '#1f2937'
+                    e.currentTarget.style.transform = 'scale(1)'
+                  }
+                }}
+                className={`text-base font-bold px-4 py-2 rounded-lg border-2 border-transparent ${
                   isActive(item.href)
-                    ? 'text-gradient-primary'
-                    : 'text-gray-700 hover:text-gray-900'
+                    ? 'text-white bg-blue-600 border-blue-600'
+                    : 'text-gray-800'
                 }`}
               >
                 {item.name}
@@ -143,19 +160,26 @@ export default function Header() {
                 )}
               </div>
             ) : (
-              <Link
-                href="/auth/signin"
-                className="btn-gradient-secondary px-4 py-2 text-sm hover-gradient-lift"
-              >
-                Sign In
-              </Link>
+              <>
+                <Link href="/auth/signin">
+                  <span className="flex items-center gap-2 text-base font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+                    Sign In
+                  </span>
+                </Link>
+                <span className="text-gray-300 text-xl mx-2">|</span>
+              </>
             )}
 
-            <Link
-              href="/trainings"
-              className="btn-gradient-primary px-4 py-2 text-sm hover-gradient-lift"
-            >
-              Browse Trainings
+            <Link href="/trainings">
+              <span className="flex items-center gap-2 text-base font-semibold text-gray-800 hover:text-green-600 transition-colors cursor-pointer">
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                Browse Trainings
+              </span>
             </Link>
           </div>
 

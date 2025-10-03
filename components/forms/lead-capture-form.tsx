@@ -46,6 +46,7 @@ export default function LeadCaptureForm({ training, onSuccess, onClose, source =
         body: JSON.stringify({
           ...formData,
           interestedTrainingId: training?.id,
+          trainingTitle: training?.title,
           source,
         }),
       })

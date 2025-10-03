@@ -172,7 +172,7 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4 sm:py-6">
             <div className="flex items-center">
-              <Link href="/" className="text-lg sm:text-xl font-bold text-gradient-primary">
+              <Link href="/" className="text-xl sm:text-2xl font-extrabold text-gradient-primary">
                 Sylvanity Academy
               </Link>
             </div>

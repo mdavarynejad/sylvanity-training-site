@@ -39,7 +39,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
   return (
     <>
       <Head>
-        <title>Sylvanity Academy Platform - Professional AI & Technology Training</title>
+        <title>Sylvanity Academy Platform - Professional AI and Automation Training</title>
         <meta name="description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -47,7 +47,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sylvanity-training-site.netlify.app/" />
-        <meta property="og:title" content="Sylvanity Academy Platform - Professional AI & Technology Training" />
+        <meta property="og:title" content="Sylvanity Academy Platform - Professional AI and Automation Training" />
         <meta property="og:description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
         <meta property="og:image:width" content="800" />
@@ -58,7 +58,7 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://sylvanity-training-site.netlify.app/" />
-        <meta property="twitter:title" content="Sylvanity Academy Platform - Professional AI & Technology Training" />
+        <meta property="twitter:title" content="Sylvanity Academy Platform - Professional AI and Automation Training" />
         <meta property="twitter:description" content="Elevate your skills with expert-led AI and technology training programs. Professional development designed for SME leaders and teams." />
         <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
         <meta property="twitter:creator" content="@Sylvanity_BV" />
@@ -337,15 +337,6 @@ export default function HomePage({ featuredTestimonials }: HomePageProps) {
                         </div>
                       </div>
 
-                      {/* Verification Badge */}
-                      <div className="mt-8">
-                        <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-50 text-green-700 border border-green-200">
-                          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                          </svg>
-                          Verified Participant
-                        </span>
-                      </div>
                     </div>
                   </div>
 

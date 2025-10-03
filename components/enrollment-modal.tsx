@@ -260,7 +260,7 @@ export default function EnrollmentModal({
                     <li>• Your data will be used to process your enrollment and deliver training services</li>
                     <li>• We'll store your contact information for course completion certificates</li>
                     <li>• Payment information is processed securely through our payment provider</li>
-                    <li>• You can request data deletion at any time by contacting support@sylvanity.eu</li>
+                    <li>• You can request data deletion at any time by <a href="/contact" className="text-brand-sage hover:text-brand-blue underline">contacting us through our contact form</a></li>
                     <li>• We comply with GDPR and other applicable data protection regulations</li>
                   </ul>
                 </div>
@@ -308,8 +308,9 @@ export default function EnrollmentModal({
                     <div className="flex-1">
                       <h6 className="font-semibold text-gray-900 mb-2">Our Training Center</h6>
                       <p className="text-gray-600 text-sm mb-3">
-                        Treubstraat 19-23, Rijswijk<br />
-                        <span className="text-xs text-gray-500">Plaspoelpolder business district, between Delft and Den Haag</span>
+                        Unit 59, FLEX Treubstraat 21<br />
+                        2288EH, Rijswijk, The Netherlands<br />
+                        <span className="text-xs text-gray-500">+31 84 83 32 120</span>
                       </p>
 
                       <div className="grid grid-cols-2 gap-4">

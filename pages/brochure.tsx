@@ -11,18 +11,10 @@ export default function BrochurePage() {
     setIsFullscreen(!isFullscreen)
   }
 
-  const handleDownload = (format: 'svg' | 'png' | 'png-hd') => {
+  const handleDownload = () => {
     const link = document.createElement('a')
-    if (format === 'svg') {
-      link.href = '/attachments/sylvanity-training-flyer-final.svg'
-      link.download = 'Sylvanity-Training-Programs-2025.svg'
-    } else if (format === 'png-hd') {
-      link.href = '/attachments/sylvanity-training-flyer-final-hd.png'
-      link.download = 'Sylvanity-Training-Programs-2025-HD.png'
-    } else {
-      link.href = '/attachments/sylvanity-training-flyer-final.png'
-      link.download = 'Sylvanity-Training-Programs-2025.png'
-    }
+    link.href = '/attachments/sylvanity-training-flyer-final.pdf'
+    link.download = 'Sylvanity-Training-Programs-2025.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -61,22 +53,13 @@ export default function BrochurePage() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <button
-                  onClick={() => handleDownload('png-hd')}
+                  onClick={handleDownload}
                   className="bg-white text-gray-900 hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  Download HD PNG
-                </button>
-                <button
-                  onClick={() => handleDownload('svg')}
-                  className="bg-white/10 border border-white/20 text-white hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 inline-flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  Download SVG
+                  Download PDF
                 </button>
                 <button
                   onClick={handleFullscreen}
@@ -115,23 +98,15 @@ export default function BrochurePage() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className={`${isFullscreen ? 'p-2 sm:p-4' : 'p-4 sm:p-6'}`}>
                 <div className="flex justify-center">
-                  <div className={`w-full ${isFullscreen ? 'max-w-4xl' : 'max-w-3xl'}`}>
-                    <div className="relative w-full" style={{ aspectRatio: '3/4' }}>
-                      {/* Mobile-first approach: show PNG by default, SVG on larger screens if supported */}
-                      <img
-                        src="/attachments/sylvanity-training-flyer-final.png"
-                        alt="Sylvanity Training Programs Brochure"
-                        className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg object-contain"
-                        style={{ display: 'block' }}
+                  <div className={`w-full ${isFullscreen ? 'max-w-6xl' : 'max-w-4xl'}`}>
+                    <div className="relative w-full" style={{ minHeight: isFullscreen ? '90vh' : '800px' }}>
+                      {/* PDF Viewer */}
+                      <iframe
+                        src="/attachments/sylvanity-training-flyer-final.pdf"
+                        className="w-full h-full border border-gray-200 rounded-lg"
+                        style={{ minHeight: isFullscreen ? '90vh' : '800px' }}
+                        title="Sylvanity Training Programs Brochure PDF"
                       />
-                      {/* SVG overlay for desktop browsers that support it */}
-                      <object
-                        data="/attachments/sylvanity-training-flyer-final.svg"
-                        type="image/svg+xml"
-                        className="absolute inset-0 w-full h-full border border-gray-200 rounded-lg hidden sm:block"
-                        style={{ objectFit: 'contain', pointerEvents: 'none' }}
-                      >
-                      </object>
                     </div>
                   </div>
                 </div>

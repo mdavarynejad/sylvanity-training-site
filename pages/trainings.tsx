@@ -17,7 +17,7 @@ export default function TrainingsPage() {
 
   const categories = [
     { value: 'all', label: 'All Categories' },
-    { value: 'AI', label: 'AI & Technology' },
+    { value: 'AI', label: 'AI and Automation' },
     { value: 'Leadership', label: 'Leadership & Management' },
     { value: 'Data', label: 'Data & Analytics' },
     { value: 'Strategy', label: 'Strategy & Planning' }
@@ -127,9 +127,9 @@ export default function TrainingsPage() {
                 View Training Brochure
               </a>
               <a
-                href="/attachments/sylvanity-training-flyer-final.png"
+                href="/attachments/sylvanity-training-flyer-final.pdf"
                 className="bg-white/10 border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 inline-flex items-center justify-center gap-2"
-                download="Sylvanity-Training-Programs-2025.png"
+                download="Sylvanity-Training-Programs-2025.pdf"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

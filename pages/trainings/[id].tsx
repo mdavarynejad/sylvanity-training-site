@@ -447,7 +447,7 @@ export default function TrainingDetailPage({ training, allTrainings }: TrainingD
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Skills?</h2>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Join hundreds of professionals who have already enhanced their capabilities through our expert-led training programs.
+              Start your learning journey with our expert-led training programs designed to enhance your professional capabilities.
             </p>
 
             {error && (

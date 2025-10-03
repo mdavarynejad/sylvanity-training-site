@@ -4,8 +4,8 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
 export default function PrivacyPolicy() {
-  const lastUpdated = 'January 15, 2024'
-  const effectiveDate = 'January 15, 2024'
+  const lastUpdated = 'May 2025'
+  const effectiveDate = 'May 2025'
 
   return (
     <>
@@ -257,27 +257,25 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-medium text-gray-900 mb-6">Contact us</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  If you have questions about this Privacy Policy or our privacy practices, please contact us:
+                  If you have questions about this Privacy Policy or our privacy practices, we're here to help.
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Privacy questions</h3>
                 <p>
-                  For privacy-related questions, email us at{' '}
-                  <a href="mailto:privacy@sylvanity.com" className="text-blue-600 hover:underline">
-                    privacy@sylvanity.com
-                  </a>
+                  For privacy-related questions, concerns, or requests regarding your personal data, please{' '}
+                  <Link href="/contact" className="text-brand-sage hover:text-brand-blue underline">
+                    contact us through our contact form
+                  </Link>
+                  .
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">General inquiries</h3>
                 <p>
-                  For general questions about our services, visit our{' '}
-                  <Link href="/contact" className="text-blue-600 hover:underline">
-                    contact page
-                  </Link>{' '}
-                  or email{' '}
-                  <a href="mailto:support@sylvanity.com" className="text-blue-600 hover:underline">
-                    support@sylvanity.com
-                  </a>
+                  For general questions about our services or any other inquiries, please{' '}
+                  <Link href="/contact" className="text-brand-sage hover:text-brand-blue underline">
+                    visit our contact page
+                  </Link>
+                  .
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Data protection authority</h3>
@@ -292,28 +290,15 @@ export default function PrivacyPolicy() {
           <div className="mt-16 p-6 bg-gray-50 rounded-lg">
             <h2 className="text-lg font-medium text-gray-900 mb-4">Questions about this policy?</h2>
             <p className="text-gray-700 mb-4">
-              If you have questions about this Privacy Policy or our privacy practices, please contact us:
+              We're here to help with any questions or concerns you may have about this Privacy Policy or our privacy practices.
             </p>
-            <div className="space-y-2 text-sm text-gray-600">
-              <p>
-                Privacy Team:{' '}
-                <a href="mailto:privacy@sylvanity.com" className="text-blue-600 hover:underline">
-                  privacy@sylvanity.com
-                </a>
-              </p>
-              <p>
-                General Support:{' '}
-                <a href="mailto:support@sylvanity.com" className="text-blue-600 hover:underline">
-                  support@sylvanity.com
-                </a>
-              </p>
-              <p>
-                Website:{' '}
-                <Link href="/contact" className="text-blue-600 hover:underline">
-                  Contact Form
-                </Link>
-              </p>
-            </div>
+            <p className="text-gray-700">
+              Please{' '}
+              <Link href="/contact" className="text-brand-sage hover:text-brand-blue underline font-medium">
+                contact us through our contact form
+              </Link>{' '}
+              and we'll respond to your inquiry as soon as possible.
+            </p>
           </div>
 
           {/* Footer Info */}

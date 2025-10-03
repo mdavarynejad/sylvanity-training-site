@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
-import { sendDiscountEmail } from '@/lib/email'
+import { sendContactFormResponse, sendContactNotificationToAdmin } from '@/lib/email'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -15,6 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       phone,
       message,
       interestedTrainingId,
+      trainingTitle,
       source = 'training_page'
     } = req.body
 
@@ -93,10 +94,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Continue with the flow even if database fails
     }
 
-    // Send discount email
-    const emailResult = await sendDiscountEmail(email, name, promoCode, 'Sylvanity Academy')
+    // Send contact form response email to user
+    const emailResult = await sendContactFormResponse(email, name, message || '', promoCode, trainingTitle)
     if (!emailResult.success) {
-      console.log('⚠️ Failed to send discount email:', emailResult.error)
+      console.log('⚠️ Failed to send contact form response:', emailResult.error)
+    }
+
+    // Send notification to admin
+    const adminEmailResult = await sendContactNotificationToAdmin(email, name, company, message || 'No message provided')
+    if (!adminEmailResult.success) {
+      console.log('⚠️ Failed to send admin notification:', adminEmailResult.error)
     }
 
     // Mock response

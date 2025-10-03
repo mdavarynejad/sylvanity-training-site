@@ -83,7 +83,7 @@ export default function NewsletterPage() {
                     <span className="text-blue-600">🤖</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">New AI & Technology Training Programs</h3>
+                    <h3 className="font-medium text-gray-900">New AI and Automation Training Programs</h3>
                     <p className="text-gray-600">Be the first to know about our latest course offerings and training modules.</p>
                   </div>
                 </div>

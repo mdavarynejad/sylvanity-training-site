@@ -4,8 +4,8 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
 export default function TermsOfService() {
-  const lastUpdated = 'January 15, 2024'
-  const effectiveDate = 'January 15, 2024'
+  const lastUpdated = 'May 2025'
+  const effectiveDate = 'May 2025'
 
   return (
     <>
@@ -166,11 +166,11 @@ export default function TermsOfService() {
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <h3 className="text-lg font-medium text-gray-900">First, let&apos;s try to work it out</h3>
                 <p>
-                  Before taking formal action, we&apos;ll try to resolve any disagreements directly with you. Contact us at{' '}
-                  <a href="mailto:support@sylvanity.com" className="text-blue-600 hover:underline">
-                    support@sylvanity.com
-                  </a>{' '}
-                  if you have concerns.
+                  Before taking formal action, we&apos;ll try to resolve any disagreements directly with you. If you have concerns, please{' '}
+                  <Link href="/contact" className="text-brand-sage hover:text-brand-blue underline">
+                    contact us through our contact form
+                  </Link>
+                  .
                 </p>
 
                 <h3 className="text-lg font-medium text-gray-900 mt-6">Legal proceedings</h3>
@@ -211,22 +211,15 @@ export default function TermsOfService() {
           <div className="mt-16 p-6 bg-gray-50 rounded-lg">
             <h2 className="text-lg font-medium text-gray-900 mb-4">Questions about these terms?</h2>
             <p className="text-gray-700 mb-4">
-              If you have questions about these terms or our services, please contact us:
+              We're here to help with any questions or concerns you may have about these terms or our services.
             </p>
-            <div className="space-y-2 text-sm text-gray-600">
-              <p>
-                Email:{' '}
-                <a href="mailto:support@sylvanity.com" className="text-blue-600 hover:underline">
-                  support@sylvanity.com
-                </a>
-              </p>
-              <p>
-                Website:{' '}
-                <Link href="/contact" className="text-blue-600 hover:underline">
-                  Contact Form
-                </Link>
-              </p>
-            </div>
+            <p className="text-gray-700">
+              Please{' '}
+              <Link href="/contact" className="text-brand-sage hover:text-brand-blue underline font-medium">
+                contact us through our contact form
+              </Link>{' '}
+              and we'll respond to your inquiry as soon as possible.
+            </p>
           </div>
 
           {/* Footer Info */}

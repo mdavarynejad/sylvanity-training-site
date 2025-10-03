@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
-import { sendNewsletterConfirmation } from '@/lib/email'
+import { sendNewsletterConfirmation, sendNewsletterWelcomeBack } from '@/lib/email'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -66,10 +66,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
           subscriberData = updatedData
         } else {
-          // Already active subscriber
+          // Already active subscriber - send welcome back email
+          console.log('📧 Existing subscriber attempting to re-subscribe:', email)
+          const emailResult = await sendNewsletterWelcomeBack(email, name)
+          console.log('📧 Welcome back email result:', emailResult)
+
           return res.status(200).json({
             success: true,
-            message: 'You are already subscribed to our newsletter!',
+            message: 'You are already subscribed to our newsletter! Check your email for confirmation.',
             subscriber: {
               id: existingSubscriber.id,
               email,

@@ -58,8 +58,8 @@ export const mockTrainings: Training[] = [
     currentParticipants: 12,
     instructor: 'Dr. Sarah Mitchell',
     level: 'Beginner',
-    category: 'AI & Technology',
-    tags: ['AI', 'prompt engineering', 'productivity', 'SME', 'ChatGPT', 'automation'],
+    category: 'AI and Automation',
+    tags: ['AI', 'prompt engineering', 'productivity'],
     featured: true,
     heroImageUrl: '/images/trainings/ai-prompt-engineering-hero.webp',
     pdfAttachmentUrl: '/attachments/ai-prompt-engineering-syllabus.pdf',
@@ -96,7 +96,7 @@ export const mockTrainings: Training[] = [
     currentParticipants: 6,
     instructor: 'Dr. Elena Rodriguez',
     level: 'Advanced',
-    category: 'AI & Technology',
+    category: 'AI and Automation',
     tags: ['agentic AI', 'AI agents', 'automation', 'advanced AI', 'machine learning', 'AI workflows'],
     featured: true,
     heroImageUrl: '/images/trainings/agentic-ai-hero.webp',
@@ -135,7 +135,7 @@ export const mockTrainings: Training[] = [
     currentParticipants: 11,
     instructor: 'Automation Expert James Wilson',
     level: 'Intermediate',
-    category: 'AI & Technology',
+    category: 'AI and Automation',
     tags: ['automation', 'business processes', 'AI workflows', 'efficiency', 'Zapier', 'API integration'],
     featured: false,
     heroImageUrl: '/images/trainings/business-automation-hero.webp',
@@ -177,7 +177,7 @@ export const mockTestimonials: Testimonial[] = [
 
 export const categories = [
   'All',
-  'AI & Technology',
+  'AI and Automation',
   'Leadership & Management',
   'Data & Analytics',
   'Strategy & Planning'

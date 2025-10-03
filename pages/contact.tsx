@@ -98,7 +98,24 @@ export default function ContactPage() {
                   </div>
                   <div className="group-hover:translate-x-1 transition-transform duration-300">
                     <h3 className="text-lg font-medium text-gray-900 mb-2 group-hover:text-brand-blue transition-colors duration-300">Phone</h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">+1-555-TRAINING</p>
+                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">+31 84 83 32 120</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start group cursor-pointer">
+                  <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mr-6 mt-1 group-hover:bg-purple-100 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                    <svg className="w-6 h-6 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="group-hover:translate-x-1 transition-transform duration-300">
+                    <h3 className="text-lg font-medium text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">Address</h3>
+                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+                      Unit 59, FLEX Treubstraat 21<br />
+                      2288EH, Rijswijk<br />
+                      The Netherlands
+                    </p>
                   </div>
                 </div>
 
