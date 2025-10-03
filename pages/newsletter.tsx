@@ -54,8 +54,27 @@ export default function NewsletterPage() {
     <>
       <Head>
         <title>Newsletter - Sylvanity Academy Platform</title>
-        <meta name="description" content="Subscribe to the Sylvanity Academy newsletter for the latest updates on AI and technology training programs" />
+        <meta name="description" content="Subscribe to the Sylvanity Academy newsletter for the latest updates on AI and technology training programs, exclusive early-bird discounts, and industry insights." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sylvanity-training-site.netlify.app/newsletter" />
+        <meta property="og:title" content="Stay Updated with Sylvanity Academy Newsletter" />
+        <meta property="og:description" content="Subscribe to our newsletter and be the first to know about new AI training programs, industry insights, and exclusive early-bird discounts." />
+        <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
+        <meta property="og:site_name" content="Sylvanity Academy" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://sylvanity-training-site.netlify.app/newsletter" />
+        <meta property="twitter:title" content="Stay Updated with Sylvanity Academy Newsletter" />
+        <meta property="twitter:description" content="Subscribe to our newsletter and be the first to know about new AI training programs, industry insights, and exclusive early-bird discounts." />
+        <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
+
+        {/* Additional SEO */}
+        <meta name="keywords" content="AI newsletter, technology training updates, professional development newsletter, AI industry insights, training program updates" />
+        <link rel="canonical" href="https://sylvanity-training-site.netlify.app/newsletter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
