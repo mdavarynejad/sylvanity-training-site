@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import { getMetaTags } from '@/lib/seo-config'
 
 export default function NewsletterPage() {
   const [formData, setFormData] = useState({
@@ -53,29 +54,13 @@ export default function NewsletterPage() {
   return (
     <>
       <Head>
-        <title>Newsletter - Sylvanity Academy Platform</title>
-        <meta name="description" content="Subscribe to the Sylvanity Academy newsletter for the latest updates on AI and technology training programs, exclusive early-bird discounts, and industry insights." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sylvanity-training-site.netlify.app/newsletter" />
-        <meta property="og:title" content="Stay Updated with Sylvanity Academy Newsletter" />
-        <meta property="og:description" content="Subscribe to our newsletter and be the first to know about new AI training programs, industry insights, and exclusive early-bird discounts." />
-        <meta property="og:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
-        <meta property="og:site_name" content="Sylvanity Academy" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://sylvanity-training-site.netlify.app/newsletter" />
-        <meta property="twitter:title" content="Stay Updated with Sylvanity Academy Newsletter" />
-        <meta property="twitter:description" content="Subscribe to our newsletter and be the first to know about new AI training programs, industry insights, and exclusive early-bird discounts." />
-        <meta property="twitter:image" content="https://sylvanity.eu/hs-fs/hubfs/LOGO%202.png" />
-
-        {/* Additional SEO */}
-        <meta name="keywords" content="AI newsletter, technology training updates, professional development newsletter, AI industry insights, training program updates" />
-        <link rel="canonical" href="https://sylvanity-training-site.netlify.app/newsletter" />
-        <link rel="icon" href="/favicon.ico" />
+        {getMetaTags({
+          title: 'Stay Updated with Sylvanity Academy Newsletter',
+          description: 'Subscribe to our newsletter and be the first to know about new AI training programs, industry insights, and exclusive early-bird discounts.',
+          url: 'https://sylvanity-training-site.netlify.app/newsletter',
+          keywords: 'AI newsletter, technology training updates, professional development newsletter, AI industry insights, training program updates'
+        })}
       </Head>
 
       <Header />
