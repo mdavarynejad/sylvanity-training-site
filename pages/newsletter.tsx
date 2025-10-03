@@ -79,8 +79,8 @@ export default function NewsletterPage() {
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-blue-600">🤖</span>
+                  <div className="w-8 h-8 bg-brand-sage/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-brand-sage">🤖</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">New AI and Automation Training Programs</h3>
@@ -89,8 +89,8 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-blue-600">👥</span>
+                  <div className="w-8 h-8 bg-brand-blue/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-brand-blue">👥</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Leadership & Management Workshops</h3>
@@ -99,8 +99,8 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-blue-600">📊</span>
+                  <div className="w-8 h-8 bg-brand-sage/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-brand-sage">📊</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Data & Analytics Courses</h3>
@@ -109,8 +109,8 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-blue-600">🎯</span>
+                  <div className="w-8 h-8 bg-brand-blue/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-brand-blue">🎯</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Exclusive Early-Bird Discounts</h3>
@@ -119,8 +119,8 @@ export default function NewsletterPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                    <span className="text-blue-600">💡</span>
+                  <div className="w-8 h-8 bg-brand-sage/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-brand-sage">💡</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Industry Insights and Tips</h3>
@@ -177,7 +177,7 @@ export default function NewsletterPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sage focus:border-brand-sage"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -193,7 +193,7 @@ export default function NewsletterPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sage focus:border-brand-sage"
                         placeholder="Enter your email address"
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function NewsletterPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full btn-gradient-primary hover-gradient-lift py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? 'Subscribing...' : 'Subscribe to Newsletter'}
                     </button>
@@ -224,7 +224,7 @@ export default function NewsletterPage() {
             </div>
           </div>
 
-          <div className="mt-16 bg-blue-50 rounded-lg p-8 text-center">
+          <div className="mt-16 bg-gradient-to-r from-brand-sage/10 to-brand-blue/10 rounded-lg p-8 text-center">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               Ready to Start Learning?
             </h3>

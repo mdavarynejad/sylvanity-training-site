@@ -362,10 +362,6 @@ export default function DashboardPage() {
                       Name: {profile?.full_name || 'Not provided'}<br />
                       Email: {user?.email}<br />
                       Company: {profile?.company || 'Not provided'}
-                      {/* Debug info - remove in production */}
-                      <br /><small style={{color: '#999', fontSize: '10px'}}>
-                        Debug: Profile ID: {profile?.id}, Updated: {profile?.updated_at}
-                      </small>
                     </p>
                   </div>
                   <button
